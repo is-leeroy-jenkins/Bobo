@@ -1,4 +1,4 @@
-![ScreenShot](https://i.ibb.co/pQgHy39/App-ML.png)
+![ScreenShot](https://)
 
 # Optical Text Recognition Trainer in ML.Net
 
