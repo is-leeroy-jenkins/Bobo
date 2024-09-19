@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>True</UseWindowsForms>
@@ -21,11 +20,9 @@ algorithms written in C#.</Description>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>True</Optimize>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="Data\Clients\SqlCe\CompactView.exe" />
     <None Remove="Data\Clients\SQLite\DB Browser for SQLite.exe" />
@@ -205,53 +202,49 @@ algorithms written in C#.</Description>
     <None Remove="Resources\Assets\ToolStripImages\SunButton.png" />
     <None Remove="Resources\Assets\ToolStripImages\ToggleButton.png" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="Resources\Assets\NinjaImages\BudExNinjaGrey.ico" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="7.3.2" />
     <PackageReference Include="EPPlus.System.Drawing" Version="6.1.1" />
     <PackageReference Include="Google.Apis" Version="1.68.0" />
     <PackageReference Include="Google.Apis.CustomSearchAPI.v1" Version="1.68.0.3520" />
     <PackageReference Include="MahApps.Metro" Version="2.4.10" />
-    <PackageReference Include="Microsoft.ML" Version="1.7.1" />
-    <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="1.7.1" />
-    <PackageReference Include="Microsoft.ML.LightGbm" Version="1.7.1" />
-    <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu" Version="1.12.1" />
-    <PackageReference Include="Microsoft.ML.OnnxTransformer" Version="1.7.1" />
-    <PackageReference Include="Microsoft.ML.Vision" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML" Version="3.0.1" />
+    <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="3.0.1" />
+    <PackageReference Include="Microsoft.ML.LightGbm" Version="3.0.1" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu" Version="1.19.2" />
+    <PackageReference Include="Microsoft.ML.OnnxTransformer" Version="3.0.1" />
+    <PackageReference Include="Microsoft.ML.Vision" Version="3.0.1" />
     <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1001" />
     <PackageReference Include="Microsoft.Office.Interop.Outlook" Version="15.0.4797.1004" />
     <PackageReference Include="Microsoft.Office.Interop.Word" Version="15.0.4797.1004" />
     <PackageReference Include="ModernWpfUI" Version="0.9.6" />
-    <PackageReference Include="SciSharp.TensorFlow.Redist-Windows-GPU" Version="2.3.1" />
+    <PackageReference Include="SciSharp.TensorFlow.Redist-Windows-GPU" Version="2.10.3" />
     <!--
       <PackageReference Include="SciSharp.TensorFlow.Redist" Version="1.14.0" />
     -->
-    <PackageReference Include="OpenCvSharp4" Version="4.6.0.20220608" />
-    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.6.0.20220608" />
+    <PackageReference Include="OpenCvSharp4" Version="4.10.0.20240616" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.10.0.20240616" />
     <PackageReference Include="SkiaSharp" Version="2.88.8" />
-    <PackageReference Include="Syncfusion.Licensing" Version="24.1.41" />
-    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="24.1.41" />
-    <PackageReference Include="Syncfusion.Shared.Base" Version="24.1.41" />
-    <PackageReference Include="Syncfusion.Shared.WPF" Version="24.1.41" />
-    <PackageReference Include="Syncfusion.Themes.FluentDark.WPF" Version="24.1.41" />
-    <PackageReference Include="Syncfusion.Tools.WPF" Version="24.1.41" />
-    <PackageReference Include="Syncfusion.UI.WPF.NET" Version="24.1.41" />
+    <PackageReference Include="Syncfusion.Licensing" Version="27.1.48" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="27.1.48" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="27.1.48" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="27.1.48" />
+    <PackageReference Include="Syncfusion.Themes.FluentDark.WPF" Version="27.1.48" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="27.1.48" />
+    <PackageReference Include="Syncfusion.UI.WPF.NET" Version="27.1.48" />
     <PackageReference Include="System.Data.OleDb" Version="8.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
     <PackageReference Include="ToastNotifications.Messages.Net6" Version="1.0.4" />
     <PackageReference Include="ToastNotifications.Net6" Version="1.0.4" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Resources\Fonts\" />
     <Folder Include="Resources\Reports\" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="..\License.md">
       <Pack>True</Pack>
@@ -262,7 +255,6 @@ algorithms written in C#.</Description>
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="LinqStatistics">
       <HintPath>Libraries\LinqStatistics\LinqStatistics.dll</HintPath>
@@ -271,7 +263,6 @@ algorithms written in C#.</Description>
       <HintPath>Libraries\SQLCE\System.Data.SqlServerCe.dll</HintPath>
     </Reference>
   </ItemGroup>
-
   <ItemGroup>
     <Resource Include="Data\Clients\SqlCe\CompactView.exe" />
     <Resource Include="Data\Clients\SQLite\DB Browser for SQLite.exe" />
@@ -451,12 +442,10 @@ algorithms written in C#.</Description>
     <Resource Include="Resources\Assets\ToolStripImages\SunButton.png" />
     <Resource Include="Resources\Assets\ToolStripImages\ToggleButton.png" />
   </ItemGroup>
-
   <ItemGroup>
     <None Update="Resources\Assets\NinjaImages\png\BudExNinja.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
-
 </Project>
