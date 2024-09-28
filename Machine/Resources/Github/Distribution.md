@@ -1,8 +1,8 @@
-# How to distribute Ninja within your own Department/Agency/Region/Division/Branch/Section
+# How to distribute Bobo within your own Department/Agency/Region/Division/Branch/Section
 
 #### Step 1: Clone the source
 
-Create a Github clone of Badger using [our tutorial](Compilation.md).
+Create a Github clone of Bobo using [our tutorial](Compilation.md).
 
 #### Step 2: Edit the configuration strings
  

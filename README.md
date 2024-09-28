@@ -41,10 +41,10 @@ Run `Bobo.sln`
 
 ## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Assets/GitHubImages/documentation.png) Documentation
 
-- [User Guide](Resources/Github/Users.md) - how to use Bobo.
-- [Compilation Guide](Resources/Github/Compilation.md) - instructions on how to compile Bobo.
-- [Configuration Guide](Resources/Github/Configuration.md) - information for the Bobo configuration file. 
-- [Distribution Guide](Resources/Github/Distribution.md) -  distributing Bobo.
+- [User Guide](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Github/Users.md) - how to use Bobo.
+- [Compilation Guide](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Github/Compilation.md) - instructions on how to compile Bobo.
+- [Configuration Guide](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Github/Configuration.md) - information for the Bobo configuration file. 
+- [Distribution Guide](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Github/Distribution.md) -  distributing Bobo.
 
 
 ![Statistics](https://i.ibb.co/rHScR48/Accuracy.png "Accuracy")

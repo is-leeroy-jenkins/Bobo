@@ -6,14 +6,14 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>True</UseWindowsForms>
     <StartupObject>Bobo.App</StartupObject>
-    <ApplicationIcon>Resources\Assets\NinjaImages\BudExNinjaGrey.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Assets\BoboImages\BudExBoboGrey.ico</ApplicationIcon>
     <Title>Bobo </Title>
     <Company>Terry D. Eppler</Company>
     <Description>Bobo is a single page WPF application that can train a model
 for optical text recognition using 6 different machine learning
 algorithms written in C#.</Description>
     <Copyright>2024 Terry D. Eppler</Copyright>
-    <PackageIcon>BudExNinja.png</PackageIcon>
+    <PackageIcon>BudExBobo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>License.md</PackageLicenseFile>
@@ -203,7 +203,7 @@ algorithms written in C#.</Description>
     <None Remove="Resources\Assets\ToolStripImages\ToggleButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Assets\NinjaImages\BudExNinjaGrey.ico" />
+    <Content Include="Resources\Assets\BoboImages\BudExBoboGrey.ico" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="7.3.2" />
@@ -443,7 +443,7 @@ algorithms written in C#.</Description>
     <Resource Include="Resources\Assets\ToolStripImages\ToggleButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="Resources\Assets\NinjaImages\png\BudExNinja.png">
+    <None Update="Resources\Assets\BoboImages\png\BudExBobo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
