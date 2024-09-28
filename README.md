@@ -12,13 +12,9 @@ The most efficient algorithm for character recognition is surprisingly Light gra
 - Bobo supports 'AnyCPU' as well as x86/x64 specific builds
 - [Controls](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/Controls) - controls associated main ui layer and related functionality.
 - [Enumerations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Enumerations) - various enumerations used for budgetary accounting.
-- [Extensions](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Extensions)- useful extension methods for budget analysis by type.
-- [Sockets](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Sockets) - tcp/udp/websockets classses
-- [Interfaces](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Sockets) - network interface classes
-- [Converters](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Converters) - type converters 
-- [Stats](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Stats) - statistic classes 
-- [Clients](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Clients) - other tools used and available.
-- [Models](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Models) - models used in network analysis
+- [Extensions](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/Extensions)- useful extension methods for budget analysis by type.
+- [Clients](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/Data/Clients) - other tools used and available.
+- [IO](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/IO) - models used in network analysis
 - [Structs](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/Structs) - structs used in Bobo.
 - [Static](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/Static) - static types used by Bobo.
 - [Views](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/UI/Views) - Views
