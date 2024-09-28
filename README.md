@@ -6,27 +6,27 @@ Bobo is single page WPF application that can train a model for optical text reco
 The most efficient algorithm for character recognition is surprisingly Light gradient boosting machine, not Tensorflow, surprisingly character recognition accuracy of the trained model is far far better than google's tesseract engine. No claim is meaningful without supporting data:
 
 
-## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/csharp.png) Code
+## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Assets/GitHubImages/csharp.png) Code
 
 - Bobo supports 'AnyCPU' as well as x86/x64 specific builds
-- [Controls](https://github.com/is-leeroy-jenkins/Bobo/tree/master/UI/Controls) - controls associated main ui layer and related functionality.
-- [Enumerations](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Enumerations) - various enumerations used for budgetary accounting.
-- [Extensions](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Extensions)- useful extension methods for budget analysis by type.
-- [Sockets](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Network/Sockets) - tcp/udp/websockets classses
-- [Interfaces](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Network/Sockets) - network interface classes
-- [Converters](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Network/Converters) - type converters 
-- [Stats](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Network/Stats) - statistic classes 
-- [Clients](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Clients) - other tools used and available.
-- [Models](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Network/Models) - models used in network analysis
-- [Services](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Services) - networking service classes used in Bobo.
-- [Static](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Static) - static types used by Bobo.
-- [Interfaces](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Network/Interfaces) - abstractions used in network analysis.
-- [Views](https://github.com/is-leeroy-jenkins/Bobo/tree/master/UI/Views) - Views
-- [ViewModels](https://github.com/is-leeroy-jenkins/Bobo/tree/master/UI/ViewModels) - models used by the ui
-- [Themes](https://github.com/is-leeroy-jenkins/Bobo/tree/master/UI/Themes) - themes used in the ui
-- [Windows](https://github.com/is-leeroy-jenkins/Bobo/tree/master/UI/Windows) - window classes
+- [Controls](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/Controls) - controls associated main ui layer and related functionality.
+- [Enumerations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Enumerations) - various enumerations used for budgetary accounting.
+- [Extensions](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Extensions)- useful extension methods for budget analysis by type.
+- [Sockets](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Sockets) - tcp/udp/websockets classses
+- [Interfaces](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Sockets) - network interface classes
+- [Converters](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Converters) - type converters 
+- [Stats](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Stats) - statistic classes 
+- [Clients](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Clients) - other tools used and available.
+- [Models](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Models) - models used in network analysis
+- [Services](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Services) - networking service classes used in Bobo.
+- [Static](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Static) - static types used by Bobo.
+- [Interfaces](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Interfaces) - abstractions used in network analysis.
+- [Views](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/Views) - Views
+- [ViewModels](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/ViewModels) - models used by the ui
+- [Themes](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/Themes) - themes used in the ui
+- [Windows](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/Windows) - window classes
 
-## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/tools.png) Build
+## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Assets/GitHubImages/tools.png) Build
 
 - [x] VisualStudio 2022
 - [x] Based on .NET8 and WPF
@@ -38,7 +38,7 @@ $ cd Bobo
 Run `Bobo.sln`
 
 
-## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/documentation.png) Documentation
+## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Assets/GitHubImages/documentation.png) Documentation
 
 - [User Guide](Resources/Github/Users.md) - how to use Bobo.
 - [Compilation Guide](Resources/Github/Compilation.md) - instructions on how to compile Bobo.
