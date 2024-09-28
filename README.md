@@ -19,13 +19,12 @@ The most efficient algorithm for character recognition is surprisingly Light gra
 - [Stats](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Stats) - statistic classes 
 - [Clients](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Clients) - other tools used and available.
 - [Models](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Models) - models used in network analysis
-- [Services](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Services) - networking service classes used in Bobo.
-- [Static](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Static) - static types used by Bobo.
-- [Interfaces](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Network/Interfaces) - abstractions used in network analysis.
-- [Views](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/Views) - Views
-- [ViewModels](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/ViewModels) - models used by the ui
-- [Themes](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/Themes) - themes used in the ui
-- [Windows](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/Windows) - window classes
+- [Structs](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/Structs) - structs used in Bobo.
+- [Static](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/Static) - static types used by Bobo.
+- [Views](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/UI/Views) - Views
+- [ViewModels](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/UI/ViewModels) - models used by the ui
+- [Themes](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/UI/Themes) - themes used in the ui
+- [Windows](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/UI/Windows) - window classes
 
 ## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Assets/GitHubImages/tools.png) Build
 
