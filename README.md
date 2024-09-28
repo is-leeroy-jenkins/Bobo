@@ -2,7 +2,8 @@
 
 # an optical text recognition trainer in ml.net
 
-Bobo is single page WPF application that can train a model for optical text recognition using 6 different machine learning algorithms viz SDCA maximum entropy, SDCA non-calibrated, Limited memory BFGS, Naive Bayes, Light gradient boosting machine, and Tensorflow. The application allows the user to choose the fonts available locally on the user's machine, the application generates optical data for selected characters which are then used as training data for model training. The application allows users to set minimum and maximum rotations for generating optical character data for training.
+Bobo is small Windows Presentation Framework application that can train a model for optical text recognition using 6 different machine learning algorithms viz SDCA maximum entropy, SDCA non-calibrated, Limited memory BFGS, Naive Bayes, Light gradient boosting machine, and Tensorflow. 
+The application allows the user to choose the fonts available locally on the user's machine, the application generates optical data for selected characters which are then used as training data for model training. The application allows users to set minimum and maximum rotations for generating optical character data for training.
 The most efficient algorithm for character recognition is surprisingly Light gradient boosting machine, not Tensorflow, surprisingly character recognition accuracy of the trained model is far far better than google's tesseract engine. No claim is meaningful without supporting data:
 
 
