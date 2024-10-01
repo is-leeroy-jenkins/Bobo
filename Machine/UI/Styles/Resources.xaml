@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Bobo"
     xmlns:sys="clr-namespace:System;assembly=netstandard">
+
     <sys:String x:Key="NormalTextPhrase">The quick brown fox jumps over the lazy dog</sys:String>
     <sys:String x:Key="NumericTextPhrase">0 1 2 3 4 5 6 7 8 9</sys:String>
     <sys:String x:Key="LowerCaseTextPhrase">the quick brown fox jumps over the lazy dog</sys:String>
@@ -13,14 +14,14 @@
         Color="#FFFFEE93" />
     <SolidColorBrush
         x:Key="AccentBrush"
-        Color="#FFD700" />
+        Color="#FF0078D4" />
     <SolidColorBrush
         x:Key="DisabledAccentBrush"
         Color="#8A6400" />
 
     <SolidColorBrush
         x:Key="HighlightedBackgroundBrush"
-        Color="#4C4C4C" />
+        Color="SteelBlue" />
     <SolidColorBrush
         x:Key="PressedBackgroundBrush"
         Color="#252525" />
@@ -50,14 +51,14 @@
     </Style>
 
     <Style TargetType="Control">
-        <Setter Property="Background" Value="Black" />
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{StaticResource ControlBackground}" />
+        <Setter Property="Foreground" Value="{StaticResource FormForeground}" />
     </Style>
 
     <Style TargetType="Button">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
-        <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource FormForeground}" />
+        <Setter Property="Background" Value="{StaticResource ControlInteriorBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -73,15 +74,17 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{StaticResource HighlightedBackgroundBrush}" />
-                            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
+                            <Setter Property="Background" Value="{StaticResource BlueBorderBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource WhiteForeground}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource LightBlueBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{StaticResource PressedBackgroundBrush}" />
-                            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
+                            <Setter Property="Background" Value="{StaticResource GreenBackground}" />
+                            <Setter Property="Foreground" Value="{StaticResource WhiteForeground}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource BrightGreenForeground}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                            <Setter Property="Background" Value="{StaticResource FormBackground}" />
                             <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

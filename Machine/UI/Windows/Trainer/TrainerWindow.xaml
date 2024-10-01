@@ -5,14 +5,123 @@
     xmlns:bobo="clr-namespace:Bobo"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sync="http://schemas.syncfusion.com/wpf"
     xmlns:sys="clr-namespace:System;assembly=netstandard"
     Title="Model Trainer"
-    Width="1280"
+    Width="1350"
     Height="800"
+    sync:SfSkinManager.Theme="{sync:SkinManagerExtension ThemeName=FluentDark}"
     DataContext="{StaticResource ViewModel}"
     Style="{StaticResource DarkWindow}"
     WindowState="Maximized"
     mc:Ignorable="d">
+
+    <!--  ******************************************** Resources *********************************************  -->
+
+    <Window.Resources>
+        <Style TargetType="ToolTip">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+            <Setter Property="Background" Value="{StaticResource BlackBackground}" />
+            <Setter Property="Foreground" Value="{StaticResource LightBlueBrush}" />
+        </Style>
+    </Window.Resources>
+
+    <!--  ******************************************** Context Menu ******************************************  -->
+
+    <Window.ContextMenu>
+        <ContextMenu x:Name="MainWindowContextMenu">
+            <sync:MenuItemAdv
+                Click="OnFileMenuOptionClick"
+                Header="File"
+                ToolTip="Browse File System">
+                <sync:MenuItemAdv.Icon>
+                    <Image Source="/Resources/Assets/MenuImages/FileItem.png" />
+                </sync:MenuItemAdv.Icon>
+            </sync:MenuItemAdv>
+
+            <sync:MenuItemAdv
+                Click="OnFolderMenuOptionClick"
+                Header="Folder"
+                ToolTip="Browse Directories">
+                <sync:MenuItemAdv.Icon>
+                    <Image Source="/Resources/Assets/MenuImages/FolderItem.png" />
+                </sync:MenuItemAdv.Icon>
+            </sync:MenuItemAdv>
+
+            <Separator Background="{StaticResource BlueBorderBrush}" />
+
+            <sync:MenuItemAdv
+                Click="OnChromeOptionClick"
+                Header="Chrome"
+                ToolTip="Launch Chrome Browser">
+                <sync:MenuItemAdv.Icon>
+                    <Image Source="/Resources/Assets/MenuImages/ChromeItem.png" />
+                </sync:MenuItemAdv.Icon>
+            </sync:MenuItemAdv>
+
+            <sync:MenuItemAdv
+                Click="OnEdgeOptionClick"
+                Header="Edge"
+                ToolTip="Launch Edge Browser">
+                <sync:MenuItemAdv.Icon>
+                    <Image Source="/Resources/Assets/MenuImages/EdgeItem.png" />
+                </sync:MenuItemAdv.Icon>
+            </sync:MenuItemAdv>
+
+            <sync:MenuItemAdv
+                Click="OnFirefoxOptionClick"
+                Header="FireFox"
+                ToolTip="Launch Firefox Browser">
+                <sync:MenuItemAdv.Icon>
+                    <Image Source="/Resources/Assets/MenuImages/FirefoxItem.png" />
+                </sync:MenuItemAdv.Icon>
+            </sync:MenuItemAdv>
+
+            <Separator Background="{StaticResource BlueBorderBrush}" />
+
+            <sync:MenuItemAdv
+                Click="OnCalculatorMenuOptionClick"
+                Header="Calculator"
+                ToolTip="Open Calculator">
+                <sync:MenuItemAdv.Icon>
+                    <Image Source="/Resources/Assets/MenuImages/CalculatorItem.png" />
+                </sync:MenuItemAdv.Icon>
+            </sync:MenuItemAdv>
+
+            <sync:MenuItemAdv
+                Click="OnControlPanelOptionClick"
+                Header="Control Panel"
+                ToolTip="Windows 10 Control Panel">
+                <sync:MenuItemAdv.Icon>
+                    <Image Source="/Resources/Assets/MenuImages/ControlPanelItem.png" />
+                </sync:MenuItemAdv.Icon>
+            </sync:MenuItemAdv>
+
+            <sync:MenuItemAdv
+                Click="OnTaskManagerOptionClick"
+                Header="Task Manager"
+                ToolTip="Windows 10 Task Manager">
+                <sync:MenuItemAdv.Icon>
+                    <Image Source="/Resources/Assets/MenuImages/TaskManagerItem.png" />
+                </sync:MenuItemAdv.Icon>
+            </sync:MenuItemAdv>
+
+            <Separator Background="{StaticResource BlueBorderBrush}" />
+
+            <sync:MenuItemAdv
+                Click="OnCloseOptionClick"
+                Header="Close"
+                ToolTip="Exit Application">
+                <sync:MenuItemAdv.Icon>
+                    <Image Source="/Resources/Assets/MenuImages/CloseItem.png" />
+                </sync:MenuItemAdv.Icon>
+            </sync:MenuItemAdv>
+
+        </ContextMenu>
+    </Window.ContextMenu>
+
+    <!--  ************************************************   Input Bindings  *****************************************  -->
 
     <Window.InputBindings>
         <KeyBinding
@@ -68,7 +177,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="3"
             HorizontalAlignment="Stretch"
-            Background="{StaticResource AccentBrush}">
+            Background="{StaticResource SteelBlueBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
@@ -81,7 +190,7 @@
                 FontFamily="Alias"
                 FontSize="54"
                 FontWeight="Light"
-                Foreground="{StaticResource BackgroundBrush}">
+                Foreground="{StaticResource WhiteForeground}">
                 <Run Text="MODEL TRAINER" />
                 <Path
                     Grid.Column="2"
@@ -229,7 +338,7 @@
                     Grid.ColumnSpan="2"
                     Margin="0,10"
                     FontSize="18"
-                    Foreground="{StaticResource AccentBrush}"
+                    Foreground="{StaticResource LightBlueBrush}"
                     Text="Font weight settings" />
                 <CheckBox
                     x:Name="NormalCheckBox"
@@ -278,7 +387,7 @@
                     Grid.ColumnSpan="2"
                     Margin="0,10"
                     FontSize="18"
-                    Foreground="{StaticResource AccentBrush}"
+                    Foreground="{StaticResource LightBlueBrush}"
                     Text="Character settings" />
                 <CheckBox
                     x:Name="LowerCaseCheckBox"
@@ -312,7 +421,7 @@
                     Grid.ColumnSpan="2"
                     Margin="0,10"
                     FontSize="18"
-                    Foreground="{StaticResource AccentBrush}"
+                    Foreground="{StaticResource LightBlueBrush}"
                     Text="Normal font rotation settings" />
                 <CheckBox
                     x:Name="UseNormalFontRotation"
@@ -387,7 +496,7 @@
                     Grid.ColumnSpan="2"
                     Margin="0,10"
                     FontSize="18"
-                    Foreground="{StaticResource AccentBrush}"
+                    Foreground="{StaticResource LightBlueBrush}"
                     Text="Italic font rotation settings" />
                 <CheckBox
                     x:Name="UseItalicFontRotation"
@@ -462,7 +571,7 @@
                     Grid.ColumnSpan="2"
                     Margin="0,10"
                     FontSize="18"
-                    Foreground="{StaticResource AccentBrush}"
+                    Foreground="{StaticResource LightBlueBrush}"
                     Text="Engine Settings" />
                 <TextBlock
                     Margin="0,0,0,20"
@@ -512,7 +621,7 @@
                 Grid.ColumnSpan="2"
                 Margin="0,10"
                 FontSize="18"
-                Foreground="{StaticResource AccentBrush}"
+                Foreground="{StaticResource LightBlueBrush}"
                 Text="Selected Fonts" />
             <ScrollViewer
                 Grid.Row="1"
