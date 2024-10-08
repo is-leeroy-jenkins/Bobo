@@ -1,46 +1,79 @@
-# Please read my project article at codeproject.com
-https://www.codeproject.com/Tips/5377103/ChatGPT-API-in-Csharp-WPF-XAML-MVVM
+####_
+![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/logo3.png)
 
-# Feel free to explore my other repositories on GitHub!
-https://github.com/psun247
+SharpBrowser is the fastest open source C# web browser there is! Slightly faster than Google Chrome when rendering web pages due to lightweight CEF renderer. We compared every available .NET browsing engine and finally settled on the high-performance [CefSharp](https://github.com/cefsharp/CefSharp/). Released under the permissive MIT license.
 
-# ChatGPT API in C# WPF / XAML / MVVM
-C# WPF app that communicates with OpenAI GPT-3.5 Turbo API (added History tab and SQL Server support on 2024/06/17)
+## System requirements
 
-![Screenshot1](https://github.com/psun247/CSharpWpfChatGPT/assets/31531761/93cd7b42-2b38-492c-9659-e07e5d6b0a13)
+- You need [VC++ 2019 Runtime](https://aka.ms/vs/17/release/vc_redist.x64.exe) 32-bit and 64-bit versions
 
-![Screenshot2](https://github.com/psun247/CSharpWpfChatGPT/assets/31531761/58e7d9e0-3984-4806-88c9-8a51a3d0118e)
+- You need .NET 6.
 
-![Screenshot3](https://github.com/psun247/CSharpWpfChatGPT/assets/31531761/6ba94def-2aa5-4168-a293-eeb493e2a529)
+- You need to install the version of VC++ Runtime that CEFSharp needs. Since we are using CefSharp 106, according to [this](https://github.com/cefsharp/CefSharp/#release-branches) we need the above versions
 
-# Setup
-Create an Open AI account to obtain an API key (free):
-https://platform.openai.com/account/api-keys
 
-You can use the key as a command line parameter (without compiling the project):
-1. Click CSharpWpfChatGPT_v1.3 under Releases on the right side of this page
-2. Download CSharpWpfChatGPT_v1.3_net6.0-windows.zip
-3. Unzip the file and run CSharpWpfChatGPT.exe /the key obtained above (CSharpWpfChatGPT.exe /sk-Ih...WPd)
+## Getting started
 
-Or in App.xaml.cs, modify this:
-"<Your Open AI API Key is something like \"sk-Ih...WPd\">";
+- See the [Compilation Guide](docs/Compilation.md) for steps to get started.
 
-Build CSharpWpfChatGPT.sln with Visual Studio 2022 (Community version okay).  This app is targeted for .NET 6 and 8.  If you don't have .NET 8 installed, remove net8.0-windows in CSharpWpfChatGPT.csproj.
 
-# Whetstone.ChatGPT
-I used John Iwasz's excellent Whetstone.ChatGPT to do the heavy lifting for ChatGPT API calls.
+## Documentation
 
-https://www.nuget.org/packages/Whetstone.ChatGPT
+- [User Guide](docs/Users.md)
+- [Compilation Guide](docs/Compilation.md)
+- [Configuration Guide](docs/Configuration.md)
+- [Distribution Guide](docs/Distribution.md)
 
-# Other Supporting Libraries
-CommunityToolkit.Mvvm
- 
-https://www.nuget.org/packages/CommunityToolkit.Mvvm
- 
-ModernWpfUI
- 
-https://www.nuget.org/packages/ModernWpfUI/
- 
-RestoreWindowPlace
 
-https://www.nuget.org/packages/RestoreWindowPlace
+## Code
+
+- SharpBrowser uses CefSharp 106 and is built on NET 6
+- SharpBrowser supports AnyCPU as well as x86/x64 specific builds
+- `MainForm.cs` - main web browser UI and related functionality
+- `Handlers` - various handlers that we have registered with CefSharp that enable deeper integration between us and CefSharp
+- `Data/JSON.cs` - fast JSON serializer/deserializer
+- `bin` - Binaries are included in the `bin` folder due to the complex CefSharp setup required. Don't empty this folder.
+- `bin/storage` - HTML and JS required for downloads manager and custom error pages
+
+## Credits
+
+- [Robin Rodricks](https://github.com/robinrodricks) - SharpBrowser project.
+- [Alex Maitland](https://github.com/amaitland) - CefSharp project, wrapper for CEF embeddable browser.
+- [Ahmet Uzun](https://github.com/postacik) - Original browser project.
+
+## Screenshots
+
+### Apple.com
+
+![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/1.png)
+
+### WebAssembly & WebGL
+
+![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/5.png)
+
+### YouTube
+
+![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/6.png)
+
+### Google Maps
+
+![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/2.png)
+
+### Search Bar
+
+![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/search.png)
+
+### Downloads Tab
+
+![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/3.png)
+
+### Developer Tools
+
+![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/4.png)
+
+### Custom Error Pages
+
+![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/error1.png)
+
+![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/error2.png)
+
