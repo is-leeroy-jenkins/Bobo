@@ -2,7 +2,7 @@ _
 ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/ProjectTemplate.png)
 ## C# WPF app that communicates with OpenAI GPT-3.5 Turbo API 
 
-### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/system_requirements.png)  System requirements
+### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/system_requirements.png)    System requirements
 
 - You need [VC++ 2019 Runtime](https://aka.ms/vs/17/release/vc_redist.x64.exe) 32-bit and 64-bit versions
 
@@ -10,11 +10,11 @@ _
 
 - You need to install the version of VC++ Runtime.
 
-### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/baby.png)  Getting started
+### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/baby.png)    Getting started
 
 - See the [Compilation Guide](docs/Compilation.md) for steps to get started.
 
-### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/features.png)  Basic Use
+### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/features.png)    Basic Use
 - To use the code, you need to sign up and get your OpenAI GPT-3.5 Turbo API key (free) at: https://platform.openai.com/account/api-keys
 - Put your key in App.xaml.cs. Your key could look like 'sk-Ih...WPd'.
 - Bobo uses the MVVM design pattern with MainWindow class and ChatViewModel class.
@@ -130,7 +130,7 @@ _
 -  Lastly, you can ask GPT-3.5 Turbo to create an image based on a prompt (seen above)
 
   
-### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/documentation.png)  Documentation
+### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/documentation.png)    Documentation
 
 - [User Guide](docs/Users.md)
 - [Compilation Guide](docs/Compilation.md)
@@ -138,7 +138,7 @@ _
 - [Distribution Guide](docs/Distribution.md)
 
 
-### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/csharp.png)  Code
+### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/csharp.png)    Code
 
 - Bobo is built on NET 6
 - Bobo supports AnyCPU as well as x86/x64 specific builds
