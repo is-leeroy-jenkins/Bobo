@@ -1,76 +1,46 @@
-## Bobo
-![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Assets/GitHubImages/Bobo.png)
+# Please read my project article at codeproject.com
+https://www.codeproject.com/Tips/5377103/ChatGPT-API-in-Csharp-WPF-XAML-MVVM
 
-# an optical text recognition trainer in ml.net
+# Feel free to explore my other repositories on GitHub!
+https://github.com/psun247
 
-Bobo is small Windows Presentation Framework application that can train a model for optical text recognition using 6 different machine learning algorithms viz SDCA maximum entropy, SDCA non-calibrated, Limited memory BFGS, Naive Bayes, Light gradient boosting machine, and Tensorflow. 
-The application allows the user to choose the fonts available locally on the user's machine, the application generates optical data for selected characters which are then used as training data for model training. The application allows users to set minimum and maximum rotations for generating optical character data for training.
-The most efficient algorithm for character recognition is surprisingly Light gradient boosting machine, not Tensorflow, surprisingly character recognition accuracy of the trained model is far far better than google's tesseract engine. No claim is meaningful without supporting data:
+# ChatGPT API in C# WPF / XAML / MVVM
+C# WPF app that communicates with OpenAI GPT-3.5 Turbo API (added History tab and SQL Server support on 2024/06/17)
 
+![Screenshot1](https://github.com/psun247/CSharpWpfChatGPT/assets/31531761/93cd7b42-2b38-492c-9659-e07e5d6b0a13)
 
-## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Assets/GitHubImages/csharp.png) Code
+![Screenshot2](https://github.com/psun247/CSharpWpfChatGPT/assets/31531761/58e7d9e0-3984-4806-88c9-8a51a3d0118e)
 
-- Bobo supports 'AnyCPU' as well as x86/x64 specific builds
-- [Controls](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/UI/Controls) - controls associated main ui layer and related functionality.
-- [Enumerations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Enumerations) - various enumerations used for budgetary accounting.
-- [Extensions](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/Extensions)- useful extension methods for budget analysis by type.
-- [Clients](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/Data/Clients) - other tools used and available.
-- [IO](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/IO) - models used in network analysis
-- [Structs](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/Structs) - structs used in Bobo.
-- [Static](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/Static) - static types used by Bobo.
-- [Views](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/UI/Views) - Views
-- [ViewModels](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/UI/ViewModels) - models used by the ui
-- [Themes](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/UI/Themes) - themes used in the ui
-- [Windows](https://github.com/is-leeroy-jenkins/Bobo/tree/master/Machine/UI/Windows) - window classes
+![Screenshot3](https://github.com/psun247/CSharpWpfChatGPT/assets/31531761/6ba94def-2aa5-4168-a293-eeb493e2a529)
 
-## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Assets/GitHubImages/tools.png) Build
+# Setup
+Create an Open AI account to obtain an API key (free):
+https://platform.openai.com/account/api-keys
 
-- [x] VisualStudio 2022
-- [x] Based on .NET8 and WPF
+You can use the key as a command line parameter (without compiling the project):
+1. Click CSharpWpfChatGPT_v1.3 under Releases on the right side of this page
+2. Download CSharpWpfChatGPT_v1.3_net6.0-windows.zip
+3. Unzip the file and run CSharpWpfChatGPT.exe /the key obtained above (CSharpWpfChatGPT.exe /sk-Ih...WPd)
 
-```bash
-$ git clone https://github.com/is-leeroy-jenkins/Bobo.git
-$ cd Bobo
-```
-Run `Bobo.sln`
+Or in App.xaml.cs, modify this:
+"<Your Open AI API Key is something like \"sk-Ih...WPd\">";
 
+Build CSharpWpfChatGPT.sln with Visual Studio 2022 (Community version okay).  This app is targeted for .NET 6 and 8.  If you don't have .NET 8 installed, remove net8.0-windows in CSharpWpfChatGPT.csproj.
 
-## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Assets/GitHubImages/documentation.png) Documentation
+# Whetstone.ChatGPT
+I used John Iwasz's excellent Whetstone.ChatGPT to do the heavy lifting for ChatGPT API calls.
 
-- [User Guide](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Github/Users.md) - how to use Bobo.
-- [Compilation Guide](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Github/Compilation.md) - instructions on how to compile Bobo.
-- [Configuration Guide](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Github/Configuration.md) - information for the Bobo configuration file. 
-- [Distribution Guide](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Machine/Resources/Github/Distribution.md) -  distributing Bobo.
+https://www.nuget.org/packages/Whetstone.ChatGPT
 
+# Other Supporting Libraries
+CommunityToolkit.Mvvm
+ 
+https://www.nuget.org/packages/CommunityToolkit.Mvvm
+ 
+ModernWpfUI
+ 
+https://www.nuget.org/packages/ModernWpfUI/
+ 
+RestoreWindowPlace
 
-![Statistics](https://i.ibb.co/rHScR48/Accuracy.png "Accuracy")
-
-## Short tutorial
-* On left panel you can view and browse fonts available on your system. 
-* Hit enter to add font with current settings to cart on right panel.
-* Use left and right arrow key for next and previous font selected.
-* Select the settings for training generation in center panel.
-* Press F5 for training model with selected engine/algorithm. 
-* Progress of training can be checked on lower right corner
-* Press F9 to test the selected font panel
-
-
-## Shortcuts 
-* **ENTER** - Add font to cart
-* **DELETE** - Delete font shown in font panel from cart.
-* **FORWARD ARROW KEY** - Show next system font in font panel.
-* **BACKWARD ARROW KEY** - Show previous system font in font panel.
-* **Shift + DELETE** - Empty font cart.
-* **F5** - Train model for fonts in cart for selected engine.
-* **F8** - Test Accuracy (Not Recommended - inaccurate calculation in some engines)
-* **F9** - Test selected model against selected font in font panel for current fonts settings.
-
-## MIT LICENSE
-
-Copyright (c) 2021-2024 Terry D. Eppler
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+https://www.nuget.org/packages/RestoreWindowPlace
