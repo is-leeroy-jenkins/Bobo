@@ -1,7 +1,6 @@
-####_
-![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/logo3.png)
-
-SharpBrowser is the fastest open source C# web browser there is! Slightly faster than Google Chrome when rendering web pages due to lightweight CEF renderer. We compared every available .NET browsing engine and finally settled on the high-performance [CefSharp](https://github.com/cefsharp/CefSharp/). Released under the permissive MIT license.
+_
+![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/ProjectTemplate.png)
+## C# WPF app that communicates with OpenAI GPT-3.5 Turbo API 
 
 ## System requirements
 
@@ -9,8 +8,7 @@ SharpBrowser is the fastest open source C# web browser there is! Slightly faster
 
 - You need .NET 6.
 
-- You need to install the version of VC++ Runtime that CEFSharp needs. Since we are using CefSharp 106, according to [this](https://github.com/cefsharp/CefSharp/#release-branches) we need the above versions
-
+- You need to install the version of VC++ Runtime.
 
 ## Getting started
 
@@ -35,45 +33,5 @@ SharpBrowser is the fastest open source C# web browser there is! Slightly faster
 - `bin` - Binaries are included in the `bin` folder due to the complex CefSharp setup required. Don't empty this folder.
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages
 
-## Credits
 
-- [Robin Rodricks](https://github.com/robinrodricks) - SharpBrowser project.
-- [Alex Maitland](https://github.com/amaitland) - CefSharp project, wrapper for CEF embeddable browser.
-- [Ahmet Uzun](https://github.com/postacik) - Original browser project.
-
-## Screenshots
-
-### Apple.com
-
-![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/1.png)
-
-### WebAssembly & WebGL
-
-![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/5.png)
-
-### YouTube
-
-![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/6.png)
-
-### Google Maps
-
-![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/2.png)
-
-### Search Bar
-
-![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/search.png)
-
-### Downloads Tab
-
-![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/3.png)
-
-### Developer Tools
-
-![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/4.png)
-
-### Custom Error Pages
-
-![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/error1.png)
-
-![](https://github.com/sharpbrowser/SharpBrowser/raw/master/images/error2.png)
 
