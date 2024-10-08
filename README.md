@@ -1,6 +1,6 @@
 _
 ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/ProjectTemplate.png)
-## C# WPF app that communicates with OpenAI GPT-3.5 Turbo API 
+### C# WPF app that communicates with OpenAI GPT-3.5 Turbo API 
 
 ## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/system_requirements.png)System requirements
 
