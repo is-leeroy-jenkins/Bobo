@@ -14,7 +14,7 @@ _
 
 - See the [Compilation Guide](docs/Compilation.md) for steps to get started.
 
-### ![]()  Basic Use
+### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/features.png)  Basic Use
 - To use the code, you need to sign up and get your OpenAI GPT-3.5 Turbo API key (free) at: https://platform.openai.com/account/api-keys
 - Put your key in App.xaml.cs. Your key could look like 'sk-Ih...WPd'.
 - Bobo uses the MVVM design pattern with MainWindow class and ChatViewModel class.
