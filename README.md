@@ -3,7 +3,6 @@ _
 ## C# WPF app that communicates with OpenAI GPT-3.5 Turbo API 
 
 ### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/system_requirements.png)    System requirements
-
 - You need [VC++ 2019 Runtime](https://aka.ms/vs/17/release/vc_redist.x64.exe) 32-bit and 64-bit versions
 
 - You need .NET 6.
@@ -11,7 +10,6 @@ _
 - You need to install the version of VC++ Runtime.
 
 ### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/baby.png)    Getting started
-
 - See the [Compilation Guide](docs/Compilation.md) for steps to get started.
 
 ### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/features.png)    Basic Use
@@ -60,7 +58,6 @@ _
 - The result will be displayed on the right side of the screen.
 
 ### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/DemoImages/CSharpWpfChatGPT.png)
-
 - Explain is like a lookup, kind of a shortcut of Send. For example, with input of 'ML.NET', I will automatically send "Explain 'ML.NET'" to the GPT server. 
 - This feature is helpful for finding meaning of a single word or a phrase. Translate to is just simply a Send with selected language (e.g., "Translate to Spanish 'ChatGPT'"). 
 - You would get "'chatgpt' se traduce al español como 'chatgpt'."
@@ -126,12 +123,10 @@ _
 
 
 ### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/DemoImages/CSharpWpfChatGPT2.png)
-
 -  Lastly, you can ask GPT-3.5 Turbo to create an image based on a prompt (seen above)
 
   
 ### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/documentation.png)    Documentation
-
 - [User Guide](docs/Users.md)
 - [Compilation Guide](docs/Compilation.md)
 - [Configuration Guide](docs/Configuration.md)
@@ -139,7 +134,6 @@ _
 
 
 ### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/csharp.png)    Code
-
 - Bobo is built on NET 6
 - Bobo supports AnyCPU as well as x86/x64 specific builds
 - `MainWindow.cs` - main web browser UI and related functionality
