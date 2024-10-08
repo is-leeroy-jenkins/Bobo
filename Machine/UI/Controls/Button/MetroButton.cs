@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Bocefus
+//     Assembly:                Badger
 //     Author:                  Terry D. Eppler
 //     Created:                 08-01-2024
 // 
@@ -7,7 +7,7 @@
 //     Last Modified On:        08-01-2024
 // ******************************************************************************************
 // <copyright file="MetroButton.cs" company="Terry D. Eppler">
-//    Bocefus is data analysis and reporting tool for EPA Analysts
+//    Badger is data analysis and reporting tool for EPA Analysts
 //    based on WPF, NET6.0, and written in C-Sharp.
 // 
 //    Copyright ©  2024  Terry D. Eppler
@@ -67,7 +67,7 @@ namespace Bobo
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Bocefus.Button" /> class.
+        /// <see cref="T:Badger.Button" /> class.
         /// </summary>
         public MetroButton( )
             : base( )

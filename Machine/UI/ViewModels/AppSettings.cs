@@ -30,7 +30,6 @@ namespace Bobo
             if (File.Exists(SETTINGS_PATH))
             {
                 var _settings = ReadFromConfig();
-
                 switch (_settings.SelectedEngine)
                 {
                     case EngineType.SdcaNonCalibrated:
@@ -55,7 +54,6 @@ namespace Bobo
                 }
 
                 viewmodel.TrainingFontSettingList.Clear();
-
                 foreach (var _setting in _settings.SelectedFonts)
                 {
                     viewmodel.TrainingFontSettingList.Add(_setting);

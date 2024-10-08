@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Bocefus
+//     Assembly:                Badger
 //     Author:                  Terry D. Eppler
 //     Created:                 09-07-2020
 // 
@@ -7,7 +7,7 @@
 //     Last Modified On:        09-07-2024
 // ******************************************************************************************
 // <copyright file="MetroTile.cs" company="Terry D. Eppler">
-//    Bocefus is data analysis and reporting tool for EPA Analysts
+//    Badger is data analysis and reporting tool for EPA Analysts
 //    that is based on WPF, NET6.0, and written in C-Sharp.
 // 
 //     Copyright ©  2020, 2022, 2204 Terry D. Eppler
@@ -67,7 +67,7 @@ namespace Bobo
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Bocefus.Tile" /> class.
+        /// <see cref="T:Badger.Tile" /> class.
         /// </summary>
         public MetroTile( )
             : base( )

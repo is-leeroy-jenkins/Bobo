@@ -6,18 +6,31 @@
     public class FontSettingViewModel : INotifyPropertyChanged, IFontSetting
     {
         private bool _useNormalFont = true;
+
         private bool _useBoldFont = true;
+
         private bool _useItalicFont = true;
+
         private bool _useBoldItalicFont = true;
+
         private string _fontName = "Arial";
+
         private bool _useLowerCaseLetters = true;
+
         private bool _useUpperCaseLetters = true;
+
         private bool _useNumbers = true;
+
         private bool _useNormalFontRotation = true;
+
         private double _normalFontMinRotation = -10d;
+
         private double _normalFontMaxRotation = 10d;
+
         private bool _useItalicFontRotation = true;
+
         private double _italicFontMinRotation = -15;
+
         private double _italicFontMaxRotation = 5;
 
         public string FontName

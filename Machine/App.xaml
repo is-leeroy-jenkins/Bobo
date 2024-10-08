@@ -12,17 +12,20 @@
 
     <Application.Resources>
         <ResourceDictionary>
-            
+
             <FontFamily x:Key="RobotoRegular">./Fonts/Roboto-Regular.ttf#Roboto Regular</FontFamily>
 
             <bobo:TrainerViewModel x:Key="ViewModel" />
+
             <bobo:NameToFontConverter x:Key="NameToFontConverter" />
+
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
             <sys:Double x:Key="FontViewerWidth">720</sys:Double>
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/UI/Styles/Resources.xaml" />
-                <ResourceDictionary Source="/UI/Themes/Common/Colors.xaml" />
+                <ResourceDictionary Source="/UI/Themes/Colors.xaml" />
                 <ResourceDictionary Source="/UI/Themes/generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
 

@@ -35,6 +35,12 @@ algorithms written in C#.</Description>
     <WarningLevel>6</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Resources\Assets\BoboImages\**" />
+    <EmbeddedResource Remove="Resources\Assets\BoboImages\**" />
+    <None Remove="Resources\Assets\BoboImages\**" />
+    <Page Remove="Resources\Assets\BoboImages\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Data\Clients\SqlCe\CompactView.exe" />
     <None Remove="Data\Clients\SQLite\DB Browser for SQLite.exe" />
     <None Remove="Data\Clients\SQLite\libcrypto-1_1-x64.dll" />
@@ -48,6 +54,10 @@ algorithms written in C#.</Description>
     <None Remove="Data\Clients\SQLite\Qt5Xml.dll" />
     <None Remove="Data\Clients\SQLite\sqlcipher.dll" />
     <None Remove="Data\Clients\SQLite\sqlite3.dll" />
+    <None Remove="Resources\Assets\ApplicationImage\Bobo.ico" />
+    <None Remove="Resources\Assets\ApplicationImage\Bobo.png" />
+    <None Remove="Resources\Assets\CalculatorImages\Cancel.png" />
+    <None Remove="Resources\Assets\CalculatorImages\Main.png" />
     <None Remove="Resources\Assets\DialogImages\AddColumnButton.png" />
     <None Remove="Resources\Assets\DialogImages\AddRecordButton.png" />
     <None Remove="Resources\Assets\DialogImages\AddTableButton.png" />
@@ -143,7 +153,6 @@ algorithms written in C#.</Description>
     <None Remove="Resources\Assets\FolderImages\Search.png" />
     <None Remove="Resources\Assets\FolderImages\Tree.png" />
     <None Remove="Resources\Assets\FolderImages\ZIP.png" />
-    <None Remove="Resources\Assets\LoaderImages\earth.gif" />
     <None Remove="Resources\Assets\LoaderImages\Loading.gif" />
     <None Remove="Resources\Assets\LoaderImages\Processing.gif" />
     <None Remove="Resources\Assets\LoaderImages\Waiting.gif" />
@@ -165,6 +174,7 @@ algorithms written in C#.</Description>
     <None Remove="Resources\Assets\MenuImages\RefreshItem.png" />
     <None Remove="Resources\Assets\MenuImages\SaveItem.png" />
     <None Remove="Resources\Assets\MenuImages\TaskManagerItem.png" />
+    <None Remove="Resources\Assets\NinjaImages\png\BudExNinja.png" />
     <None Remove="Resources\Assets\ProviderImages\Access.png" />
     <None Remove="Resources\Assets\ProviderImages\Excel.ico" />
     <None Remove="Resources\Assets\ProviderImages\Excel.png" />
@@ -219,7 +229,7 @@ algorithms written in C#.</Description>
     <None Remove="Resources\Fonts\Roboto-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Assets\NinjaImages\BudExNinjaGrey.ico" />
+    <Resource Include="Resources\Assets\NinjaImages\BudExNinjaGrey.ico" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="7.3.2" />
@@ -258,7 +268,6 @@ algorithms written in C#.</Description>
     <PackageReference Include="ToastNotifications.Net6" Version="1.0.4" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Assets\BoboImages\" />
     <Folder Include="Resources\Reports\" />
   </ItemGroup>
   <ItemGroup>
@@ -293,6 +302,10 @@ algorithms written in C#.</Description>
     <Resource Include="Data\Clients\SQLite\Qt5Xml.dll" />
     <Resource Include="Data\Clients\SQLite\sqlcipher.dll" />
     <Resource Include="Data\Clients\SQLite\sqlite3.dll" />
+    <Resource Include="Resources\Assets\ApplicationImage\Bobo.ico" />
+    <Resource Include="Resources\Assets\ApplicationImage\Bobo.png" />
+    <Resource Include="Resources\Assets\CalculatorImages\Cancel.png" />
+    <Resource Include="Resources\Assets\CalculatorImages\Main.png" />
     <Resource Include="Resources\Assets\DialogImages\AddColumnButton.png" />
     <Resource Include="Resources\Assets\DialogImages\AddRecordButton.png" />
     <Resource Include="Resources\Assets\DialogImages\AddTableButton.png" />
@@ -388,7 +401,6 @@ algorithms written in C#.</Description>
     <Resource Include="Resources\Assets\FolderImages\Search.png" />
     <Resource Include="Resources\Assets\FolderImages\Tree.png" />
     <Resource Include="Resources\Assets\FolderImages\ZIP.png" />
-    <Resource Include="Resources\Assets\LoaderImages\earth.gif" />
     <Resource Include="Resources\Assets\LoaderImages\Loading.gif" />
     <Resource Include="Resources\Assets\LoaderImages\Processing.gif" />
     <Resource Include="Resources\Assets\LoaderImages\Waiting.gif" />
@@ -410,6 +422,10 @@ algorithms written in C#.</Description>
     <Resource Include="Resources\Assets\MenuImages\RefreshItem.png" />
     <Resource Include="Resources\Assets\MenuImages\SaveItem.png" />
     <Resource Include="Resources\Assets\MenuImages\TaskManagerItem.png" />
+    <Resource Include="Resources\Assets\NinjaImages\png\BudExNinja.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </Resource>
     <Resource Include="Resources\Assets\ProviderImages\Access.png" />
     <Resource Include="Resources\Assets\ProviderImages\Excel.ico" />
     <Resource Include="Resources\Assets\ProviderImages\Excel.png" />
@@ -458,29 +474,19 @@ algorithms written in C#.</Description>
     <Resource Include="Resources\Assets\ToolStripImages\SunButton.png" />
     <Resource Include="Resources\Assets\ToolStripImages\ToggleButton.png" />
     <Resource Include="Resources\Fonts\Anonymous Pro.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Fonts\Hack-Regular.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Fonts\JetBrainsMono-Regular.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Fonts\Monaco.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Fonts\Roboto-Regular.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Resources\Assets\BoboImages\png\BudExBobo.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Update="Resources\Assets\NinjaImages\png\BudExNinja.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
 </Project>

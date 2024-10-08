@@ -7,8 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sync="http://schemas.syncfusion.com/wpf"
     xmlns:sys="clr-namespace:System;assembly=netstandard"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     Title="Model Trainer"
-    Width="1350"
+    Width="1050"
     Height="800"
     sync:SfSkinManager.Theme="{sync:SkinManagerExtension ThemeName=FluentDark}"
     DataContext="{StaticResource ViewModel}"
@@ -21,7 +22,7 @@
     <Window.Resources>
         <Style TargetType="ToolTip">
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
             <Setter Property="Background" Value="{StaticResource BlackBackground}" />
             <Setter Property="Foreground" Value="{StaticResource LightBlueBrush}" />
         </Style>

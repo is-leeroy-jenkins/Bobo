@@ -14,10 +14,10 @@
     Height="450"
     Padding="1"
     sync:SfSkinManager.Theme="{sync:SkinManagerExtension ThemeName=FluentDark}"
-    Background="#FF141414"
-    BorderBrush="#FF0078D4"
+    Background="{StaticResource FormBackground}"
+    BorderBrush="{StaticResource BlueBorderBrush}"
+    Foreground="{StaticResource LightBlueBrush}"
     BorderThickness="1"
-    Foreground="#FFA0BDFC"
     Icon="/Resources/Assets/DialogImages/FolderBrowse.png"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">

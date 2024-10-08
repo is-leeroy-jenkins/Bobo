@@ -1,16 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Bocefus
+//     Assembly:                Ninja
 //     Author:                  Terry D. Eppler
-//     Created:                 08-01-2024
+//     Created:                 09-25-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        08-01-2024
+//     Last Modified On:        09-25-2024
 // ******************************************************************************************
 // <copyright file="MetroImageEditor.cs" company="Terry D. Eppler">
-//    Bocefus is data analysis and reporting tool for EPA Analysts
-//    based on WPF, NET6.0, and written in C-Sharp.
 // 
-//    Copyright ©  2024  Terry D. Eppler
+//    Ninja is a network toolkit, support iperf, tcp, udp, websocket, mqtt,
+//    sniffer, pcap, port scan, listen, ip scan .etc.
+// 
+//    Copyright ©  2019-2024 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -32,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at: terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   MetroImageEditor.cs
@@ -48,29 +49,29 @@ namespace Bobo
     /// <inheritdoc />
     /// <summary>
     /// </summary>
-    /// <seealso cref="T:Syncfusion.UI.Xaml.ImageEditor.SfImageEditor" />
+    /// <seealso cref="Syncfusion.UI.Xaml.ImageEditor.SfImageEditor" />
     [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
     public class MetroImageEditor : SfImageEditor
     {
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Bobo.MetroImageEditor" /> class.
+        /// <see cref="MetroImageEditor" /> class.
         /// </summary>
         public MetroImageEditor( )
             : base( )
         {
             // Control Properties
-            SetResourceReference( MetroImageEditor.StyleProperty, typeof( SfImageEditor ) );
+            SetResourceReference( StyleProperty, typeof( SfImageEditor ) );
         }
 
         /// <summary>
         /// Fails the specified _ex.
         /// </summary>
-        /// <param name="_ex">The _ex.</param>
-        private protected void Fail( Exception _ex )
+        /// <param name="ex">The _ex.</param>
+        private protected void Fail( Exception ex )
         {
-            var _error = new ErrorWindow( _ex );
+            var _error = new ErrorWindow( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

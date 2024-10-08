@@ -1,16 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Bocefus
+//     Assembly:                Ninja
 //     Author:                  Terry D. Eppler
-//     Created:                 08-01-2024
+//     Created:                 09-25-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        08-01-2024
+//     Last Modified On:        09-25-2024
 // ******************************************************************************************
 // <copyright file="Palette.cs" company="Terry D. Eppler">
-//    Bocefus is data analysis and reporting tool for EPA Analysts
-//    based on WPF, NET6.0, and written in C-Sharp.
 // 
-//    Copyright ©  2020  Terry D. Eppler
+//    Ninja is a network toolkit, support iperf, tcp, udp, websocket, mqtt,
+//    sniffer, pcap, port scan, listen, ip scan .etc.
+// 
+//    Copyright ©  2019-2024 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -32,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at: terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   Palette.cs
@@ -51,7 +52,7 @@ namespace Bobo
     /// <inheritdoc />
     /// <summary>
     /// </summary>
-    /// <seealso cref="T:Bobo.Dimensions" />
+    /// <seealso cref="Dimensions" />
     [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
     [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     [ SuppressMessage( "ReSharper", "UseObjectOrCollectionInitializer" ) ]
@@ -126,9 +127,9 @@ namespace Bobo
         private protected Color _controlInteriorColor = new Color( )
         {
             A = 255,
-            R = 45,
-            G = 45,
-            B = 45
+            R = 61,
+            G = 61,
+            B = 61
         };
 
         /// <summary>
@@ -279,7 +280,7 @@ namespace Bobo
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Bobo.Palette" /> class.
+        /// <see cref="Palette" /> class.
         /// </summary>
         protected Palette( )
             : base( )
