@@ -7,9 +7,9 @@
 
     <sys:Double x:Key="LargeFontSize">16</sys:Double>
     <sys:Double x:Key="TitleFontSize">14</sys:Double>
-    <sys:Double x:Key="DefaultFontSize">11</sys:Double>
-    <sys:Double x:Key="CodeFontSize">10</sys:Double>
-    <sys:Double x:Key="SmallFontSize">9</sys:Double>
+    <sys:Double x:Key="DefaultFontSize">12</sys:Double>
+    <sys:Double x:Key="CodeFontSize">11</sys:Double>
+    <sys:Double x:Key="SmallFontSize">10</sys:Double>
 
 
     <sys:Double x:Key="H1FontSize">36</sys:Double>

@@ -43,9 +43,7 @@ namespace Bobo
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Media;
 
     /// <inheritdoc />
     /// <summary>
@@ -63,7 +61,7 @@ namespace Bobo
         /// <summary>
         /// The theme
         /// </summary>
-        private protected readonly DarkMode _theme = new DarkMode();
+        private protected readonly DarkMode _theme = new DarkMode( );
 
         /// <inheritdoc />
         /// <summary>
@@ -74,12 +72,6 @@ namespace Bobo
             : base( )
         {
             // Control Properties
-            Background = _theme.ControlInterior;
-            Foreground = _theme.LightBlueBrush;
-            BorderBrush = _theme.BorderBrush;
-            SelectionBrush = _theme.SteelBlueBrush;
-            FontFamily = _theme.FontFamily;
-            FontSize = _theme.FontSize;
             Width = 200;
             Height = 24;
         }

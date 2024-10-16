@@ -59,7 +59,7 @@ namespace Bobo
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
-    public class MetroDropDown : DropDownButtonAdv
+    public class MetroDropDown : ComboBoxAdv
     {
         /// <summary>
         /// The theme
@@ -75,10 +75,10 @@ namespace Bobo
             : base( )
         {
             // Control Properties
-            SetResourceReference( MetroDropDown.StyleProperty, typeof( DropDownButtonAdv ) );
+            SetResourceReference( MetroDropDown.StyleProperty, typeof( ComboBoxAdv ) );
             Width = 200;
             Height = 35;
-            FontFamily = new FontFamily( "Segoe UI" );
+            FontFamily = new FontFamily( "Roboto-Regular" );
             FontSize = 12;
             Padding = new Thickness( 1 );
             BorderThickness = new Thickness( 0 );
@@ -86,7 +86,6 @@ namespace Bobo
             VerticalAlignment = VerticalAlignment.Stretch;
             HorizontalContentAlignment = HorizontalAlignment.Left;
             VerticalContentAlignment = VerticalAlignment.Center;
-            DropDirection = DropDirection.BottomLeft;
             Background = _theme.Background;
             Foreground = _theme.Foreground;
             BorderBrush = _theme.BorderBrush;

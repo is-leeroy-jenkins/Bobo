@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="clr-namespace:Bobo">
 
     <!--  ************************************   Main Colors  ***********************************  -->
 
@@ -20,7 +21,7 @@
 
     <!--  ************************************ Primary Colors  ***********************************  -->
 
-    <Color x:Key="PrimaryColor1">#0078D4</Color>
+    <Color x:Key="PrimaryColor1">#FF0078D4</Color>
     <Color x:Key="PrimaryColor2">#FFA0BDFC</Color>
 
     <!--  ************************************ Success Colors ***********************************  -->
@@ -68,7 +69,7 @@
 
     <Color x:Key="ForeColor1">#FFDEDEDE</Color>
     <Color x:Key="ForeColor2">#FFA0BDFC</Color>
-    <Color x:Key="ForeColor3">#0078D4</Color>
+    <Color x:Key="ForeColor3">#FF0078D4</Color>
     <Color x:Key="ForeColor4">#FF4CAE4C</Color>
     <Color x:Key="ForeColor5">#FFAB0202</Color>
 
@@ -110,14 +111,14 @@
 
     <!--  ************************************  Common Colors ***********************************  -->
 
-    <Color x:Key="GlyphColor">#0078D4</Color>
+    <Color x:Key="GlyphColor">#FF0078D4</Color>
     <Color x:Key="MutedBorderColor">#FF555555</Color>
     <Color x:Key="LightBlueForeColor">#FFA0BDFC</Color>
     <Color x:Key="SteelBlueColor">#FF4682B4</Color>
     <Color x:Key="DefaultBackColor">#FF141414</Color>
     <Color x:Key="ControlBackColor">#FF282828</Color>
     <Color x:Key="ControlInteriorColor">#FF2D2D2D</Color>
-    <Color x:Key="BlueBorderColor">#0078D4</Color>
+    <Color x:Key="BlueBorderColor">#FF0078D4</Color>
     <Color x:Key="LightBlueColor">#FFA0BDFC</Color>
     <Color x:Key="ControlHoverColor">#FF0E3C5E</Color>
 

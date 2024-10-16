@@ -43,14 +43,14 @@
                     <ControlTemplate.Triggers>
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource ContentBackgroundHovered}" />
-                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ContentBackgroundHovered}" />
-                            <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource HoveredForeground}" />
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource ControlHoverBrush}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ControlHoverBrush}" />
+                            <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="border" Property="Background" Value="{StaticResource SteelBlueBackground}" />
                             <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource SteelBlueBackground}" />
-                            <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource SelectedForeground}" />
+                            <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="border" Property="Background" Value="{StaticResource ControlInteriorBrush}" />
@@ -415,28 +415,28 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="PART_Button14" Property="IsMouseOver" Value="True">
-                            <Setter TargetName="AddPath" Property="Fill" Value="{StaticResource HoveredForeground}" />
+                            <Setter TargetName="AddPath" Property="Fill" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger SourceName="PART_Button13" Property="IsMouseOver" Value="True">
-                            <Setter TargetName="SubractPath" Property="Fill" Value="{StaticResource HoveredForeground}" />
+                            <Setter TargetName="SubractPath" Property="Fill" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger SourceName="PART_Button12" Property="IsMouseOver" Value="True">
-                            <Setter TargetName="MultiplyPath" Property="Fill" Value="{StaticResource HoveredForeground}" />
+                            <Setter TargetName="MultiplyPath" Property="Fill" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger SourceName="PART_Button6" Property="IsMouseOver" Value="True">
-                            <Setter TargetName="BackPath" Property="Fill" Value="{StaticResource HoveredForeground}" />
+                            <Setter TargetName="BackPath" Property="Fill" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger SourceName="PART_Button14" Property="IsPressed" Value="True">
-                            <Setter TargetName="AddPath" Property="Fill" Value="{StaticResource SelectedForeground}" />
+                            <Setter TargetName="AddPath" Property="Fill" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger SourceName="PART_Button13" Property="IsPressed" Value="True">
-                            <Setter TargetName="SubractPath" Property="Fill" Value="{StaticResource SelectedForeground}" />
+                            <Setter TargetName="SubractPath" Property="Fill" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger SourceName="PART_Button12" Property="IsPressed" Value="True">
-                            <Setter TargetName="MultiplyPath" Property="Fill" Value="{StaticResource SelectedForeground}" />
+                            <Setter TargetName="MultiplyPath" Property="Fill" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger SourceName="PART_Button6" Property="IsPressed" Value="True">
-                            <Setter TargetName="BackPath" Property="Fill" Value="{StaticResource SelectedForeground}" />
+                            <Setter TargetName="BackPath" Property="Fill" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

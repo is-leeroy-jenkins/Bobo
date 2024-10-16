@@ -6,7 +6,7 @@
     xmlns:history="clr-namespace:Bobo.History"
     xmlns:liveChat="clr-namespace:Bobo.LiveChat"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="{Binding AppTitle}"
+    Title="Bobo GPT"
     Width="1600"
     Height="1000"
     MinWidth="500"

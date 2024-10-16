@@ -79,9 +79,6 @@ namespace Bobo
             Background = _theme.ControlBackground;
             Foreground = _theme.LightBlueBrush;
             BorderBrush = _theme.ControlBackground;
-            Margin = _theme.Margin;
-            Padding = _theme.Padding;
-            BorderThickness = _theme.BorderThickness;
 
             // Wire Events
             MouseEnter += OnMouseEnter;
@@ -95,7 +92,7 @@ namespace Bobo
         /// <see cref="EventArgs"/>
         /// instance containing the event data.
         /// </param>
-        private protected virtual void OnMouseEnter( object sender, MouseEventArgs e )
+        private protected virtual void OnMouseEnter(object sender, MouseEventArgs e)
         {
             try
             {
@@ -116,7 +113,7 @@ namespace Bobo
         /// <see cref="EventArgs"/>
         /// instance containing the event data.
         /// </param>
-        private protected virtual void OnMouseLeave( object sender, MouseEventArgs e )
+        private protected virtual void OnMouseLeave(object sender, MouseEventArgs e)
         {
             try
             {
@@ -124,9 +121,9 @@ namespace Bobo
                 BorderBrush = _theme.ControlBackground;
                 Foreground = _theme.LightBlueBrush;
             }
-            catch( Exception ex )
+            catch(Exception ex)
             {
-                Fail( ex );
+                Fail(ex);
             }
         }
 

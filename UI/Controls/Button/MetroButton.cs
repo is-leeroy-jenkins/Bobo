@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Badger
+//     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
 //     Created:                 08-01-2024
 // 
@@ -7,10 +7,9 @@
 //     Last Modified On:        08-01-2024
 // ******************************************************************************************
 // <copyright file="MetroButton.cs" company="Terry D. Eppler">
-//    Badger is data analysis and reporting tool for EPA Analysts
-//    based on WPF, NET6.0, and written in C-Sharp.
+//    C# WPF app that communicates with the Chat GPT-3.5 Turbo API
 // 
-//    Copyright ©  2024  Terry D. Eppler
+//    Copyright ©  2020  Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -46,6 +45,7 @@ namespace Bobo
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
     using System.Windows.Input;
+    using Syncfusion.Windows.Controls.Notification;
 
     /// <inheritdoc />
     /// <summary>
@@ -57,7 +57,7 @@ namespace Bobo
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" ) ]
-    public class MetroButton : ButtonAdv
+    public class MetroButton : SfHubTile
     {
         /// <summary>
         /// The theme
@@ -73,18 +73,14 @@ namespace Bobo
             : base( )
         {
             // Control Properties
-            SetResourceReference( MetroButton.StyleProperty, typeof( ButtonAdv ) );
+            SetResourceReference( StyleProperty, typeof( SfHubTile ) );
             Width = 140;
-            Height = 50;
-            IconHeight = 16;
-            IconWidth = 16;
-            SizeMode = SizeMode.Normal;
+            Height = 60;
             Background = _theme.ControlBackground;
             Foreground = _theme.LightBlueBrush;
             BorderBrush = _theme.ControlBackground;
-            Margin = _theme.Margin;
-            Padding = _theme.Padding;
-            BorderThickness = _theme.BorderThickness;
+            Header = "";
+            Title = "";
 
             // Wire Events
             MouseEnter += OnMouseEnter;
@@ -98,17 +94,17 @@ namespace Bobo
         /// <see cref="EventArgs"/>
         /// instance containing the event data.
         /// </param>
-        private protected virtual void OnMouseEnter( object sender, RoutedEventArgs e )
+        private protected virtual void OnMouseEnter( object sender, MouseEventArgs e )
         {
             try
             {
-                Background = _theme.SteelBlueBrush;
-                BorderBrush = _theme.LightBlueBrush;
+                Background = _theme.DarkBlueBrush;
                 Foreground = _theme.WhiteForeground;
+                BorderBrush = _theme.LightBlueBrush;
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
@@ -119,7 +115,7 @@ namespace Bobo
         /// <see cref="EventArgs"/>
         /// instance containing the event data.
         /// </param>
-        private protected virtual void OnMouseLeave( object sender, RoutedEventArgs e )
+        private protected virtual void OnMouseLeave(object sender, MouseEventArgs e)
         {
             try
             {

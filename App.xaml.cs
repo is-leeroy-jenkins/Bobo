@@ -57,14 +57,14 @@ namespace Bobo
             {
                 _windowPlace?.Save();
             }
-            catch (Exception)
+            catch( Exception )
             {
             }
         }
 
         private void SetupRestoreWindowPlace(MainWindow mainWindow)
         {
-            string windowPlaceConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "BoboGPTWindowPlace.config");
+            string windowPlaceConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "BoboGPT.config");
             _windowPlace = new WindowPlace(windowPlaceConfigFilePath);
             _windowPlace.Register(mainWindow);
 

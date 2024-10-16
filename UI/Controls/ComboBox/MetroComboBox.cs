@@ -73,7 +73,7 @@ namespace Bobo
 
         {
             // Control Properties
-            SetResourceReference( MetroComboBox.StyleProperty, typeof( ComboBoxAdv ) );
+            SetResourceReference( StyleProperty, typeof( ComboBoxAdv ) );
             Width = 150;
             Height = 30;
             AutoCompleteMode = AutoCompleteModes.None;
@@ -81,7 +81,7 @@ namespace Bobo
             IsTextSearchEnabled = false;
             AllowSelectAll = false;
             IsEditable = true;
-            Margin = new Thickness( 1, 1, 1, 1 );
+            Margin = new Thickness( 1 );
             Padding = _theme.Padding;
             Background = _theme.ControlInterior;
             Foreground = _theme.LightBlueBrush;

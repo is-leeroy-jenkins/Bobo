@@ -11,6 +11,9 @@
     xmlns:themelocal="clr-namespace:Syncfusion.Themes.FluentDark.WPF"
     mc:Ignorable="d">
 
+
+    <!--  *********************************************  RESOURCES *********************************************  -->
+
     <ResourceDictionary.MergedDictionaries>
         <sfskin:ResourceDictionaryProvider
             DictionaryName="Common"

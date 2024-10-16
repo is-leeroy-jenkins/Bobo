@@ -409,7 +409,7 @@
                             <Setter Property="Foreground" Value="{StaticResource DisabledForeground}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="true">
-                            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
                             <Setter Property="Background" Value="{StaticResource ControlInteriorBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
