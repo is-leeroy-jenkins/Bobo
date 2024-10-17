@@ -17,6 +17,8 @@
     <ApplicationIcon>Resources\Assets\ApplicationImages\Bobo.ico</ApplicationIcon>
     <StartupObject>Bobo.App</StartupObject>
     <PackageIcon>Bobo.png</PackageIcon>
+    <PlatformTarget>x64</PlatformTarget>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -174,11 +176,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.Common" Version="129.0.110" />
     <PackageReference Include="CefSharp.Common.NETCore" Version="129.0.110" />
-    <PackageReference Include="CefSharp.Wpf" Version="129.0.110" />
+    <PackageReference Include="CefSharp.Wpf.NETCore" Version="129.0.110" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
-    <PackageReference Include="EPPlus" Version="7.4.0" />
+    <PackageReference Include="EPPlus" Version="7.4.1" />
     <PackageReference Include="Microsoft.Office.Interop.Outlook" Version="15.0.4797.1004" />
     <PackageReference Include="ModernWpfUI" Version="0.9.6" />
     <PackageReference Include="RestoreWindowPlace" Version="2.1.0" />
@@ -189,13 +190,13 @@
     <PackageReference Include="Syncfusion.Shared.WPF" Version="24.1.41" />
     <PackageReference Include="Syncfusion.Themes.FluentDark.WPF" Version="24.1.41" />
     <PackageReference Include="Syncfusion.UI.WPF.NET" Version="24.1.41" />
-    <PackageReference Include="System.Data.OleDb" Version="8.0.0" />
+    <PackageReference Include="System.Data.OleDb" Version="8.0.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
     <PackageReference Include="System.Speech" Version="8.0.0" />
     <PackageReference Include="ToastNotifications.Messages.Net6" Version="1.0.4" />
     <PackageReference Include="ToastNotifications.Net6" Version="1.0.4" />
-    <PackageReference Include="Whetstone.ChatGPT" Version="1.8.1" />
+    <PackageReference Include="Whetstone.ChatGPT" Version="1.8.2" />
   </ItemGroup>
 
   <ItemGroup>

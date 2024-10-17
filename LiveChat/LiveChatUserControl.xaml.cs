@@ -1,205 +1,335 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Collections.Specialized;
-using ModernWpf.Controls;
-using Bobo.Models;
+﻿// ******************************************************************************************
+//     Assembly:                Bobo
+//     Author:                  Terry D. Eppler
+//     Created:                 10-16-2024
+// 
+//     Last Modified By:        Terry D. Eppler
+//     Last Modified On:        10-16-2024
+// ******************************************************************************************
+// <copyright file="LiveChatUserControl.xaml.cs" company="Terry D. Eppler">
+//    A windows presentation foundation (WPF) app to communicate with the Chat GPT-3.5 Turbo API
+// 
+//    Copyright ©  2020-2024 Terry D. Eppler
+// 
+//    Permission is hereby granted, free of charge, to any person obtaining a copy
+//    of this software and associated documentation files (the “Software”),
+//    to deal in the Software without restriction,
+//    including without limitation the rights to use,
+//    copy, modify, merge, publish, distribute, sublicense,
+//    and/or sell copies of the Software,
+//    and to permit persons to whom the Software is furnished to do so,
+//    subject to the following conditions:
+// 
+//    The above copyright notice and this permission notice shall be included in all
+//    copies or substantial portions of the Software.
+// 
+//    THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+//    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//    FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+//    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+//    DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+//    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+//    DEALINGS IN THE SOFTWARE.
+// 
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
+// </copyright>
+// <summary>
+//   LiveChatUserControl.xaml.cs
+// </summary>
+// ******************************************************************************************
 
-namespace Bobo.LiveChat
+namespace Bobo
 {
-    using Models;
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Collections.Specialized;
+    using System.Diagnostics.CodeAnalysis;
+    using ModernWpf.Controls;
 
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
+    /// <seealso cref="T:System.Windows.Controls.UserControl" />
+    /// <seealso cref="T:System.Windows.Markup.IComponentConnector" />
+    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantExtendsListEntry" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     public partial class LiveChatUserControl : UserControl
     {
-        private const string _CopyMessage = "Copy";        
+        /// <summary>
+        /// The copy message
+        /// </summary>
+        private const string COPY_MESSAGE = "Copy";
 
+        /// <summary>
+        /// The already loaded
+        /// </summary>
         private bool _alreadyLoaded;
-        private ScrollViewer? _chatListViewScrollViewer;        
-        private ScrollViewer? _messageListViewScrollViewer;
+
+        /// <summary>
+        /// The chat ListView scroll viewer
+        /// </summary>
+        private ScrollViewer _chatListViewScrollViewer;
+
+        /// <summary>
+        /// The message ListView scroll viewer
+        /// </summary>
+        private ScrollViewer _messageListViewScrollViewer;
+
+        /// <summary>
+        /// The message context menu
+        /// </summary>
         private ContextMenu _messageContextMenu;
 
-        public LiveChatUserControl()
+        /// <inheritdoc />
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Bobo.LiveChatUserControl" /> class.
+        /// </summary>
+        public LiveChatUserControl( )
         {
-            InitializeComponent();
-
+            InitializeComponent( );
             Loaded += LiveChatUserControl_Loaded;
-            PreviewKeyDown += LiveChatUserControl_PreviewKeyDown;                        
+            PreviewKeyDown += LiveChatUserControl_PreviewKeyDown;
             MessageListView.PreviewMouseRightButtonUp += MessageListView_PreviewMouseRightButtonUp;
-            _messageContextMenu = new ContextMenu();
-            _messageContextMenu.AddHandler(MenuItem.ClickEvent, new RoutedEventHandler(MessageMenuOnClick));
+            _messageContextMenu = new ContextMenu( );
+            _messageContextMenu.AddHandler( MenuItem.ClickEvent,
+                new RoutedEventHandler( MessageMenuOnClick ) );
         }
 
-        public LiveChatViewModel? LiveChatViewModel { get; set; }
+        /// <summary>
+        /// Gets or sets the live chat view model.
+        /// </summary>
+        /// <value>
+        /// The live chat view model.
+        /// </value>
+        public LiveChatViewModel LiveChatViewModel { get; set; }
 
         // Update UI from ChatViewModel
-        private void UpdateUI(UpdateUIEnum updateUIEnum)
+        /// <summary>
+        /// Updates the UI.
+        /// </summary>
+        /// <param name="interfaceUpdate">The interface update.</param>
+        private void UpdateUI( InterfaceUpdate interfaceUpdate )
         {
-            switch (updateUIEnum)
+            switch( interfaceUpdate )
             {
-                case UpdateUIEnum.SetFocusToChatInput:
-                    ChatInputTextBox.Focus();
+                case InterfaceUpdate.SetFocusToChatInput:
+                    ChatInputTextBox.Focus( );
                     break;
-                case UpdateUIEnum.SetupMessageListViewScrollViewer:
-                    SetupMessageListViewScrollViewer();
+                case InterfaceUpdate.SetupMessageListViewScrollViewer:
+                    SetupMessageListViewScrollViewer( );
                     break;
-                case UpdateUIEnum.MessageListViewScrollToBottom:
-                    _messageListViewScrollViewer?.ScrollToBottom();
+                case InterfaceUpdate.MessageListViewScrollToBottom:
+                    _messageListViewScrollViewer?.ScrollToBottom( );
                     break;
             }
         }
 
-        private void LiveChatUserControl_Loaded(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Handles the Loaded event of the LiveChatUserControl control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void LiveChatUserControl_Loaded( object sender, RoutedEventArgs e )
         {
-            if (!_alreadyLoaded)
+            if( !_alreadyLoaded )
             {
                 _alreadyLoaded = true;
-
-                LiveChatViewModel = (LiveChatViewModel)DataContext;
+                LiveChatViewModel = ( LiveChatViewModel )DataContext;
                 LiveChatViewModel.UpdateUIAction = UpdateUI;
-                SetupChatListViewScrollViewer();
-                _messageListViewScrollViewer = GetScrollViewer(MessageListView);
-                SetupMessageListViewScrollViewer();
+                SetupChatListViewScrollViewer( );
+                _messageListViewScrollViewer = GetScrollViewer( MessageListView );
+                SetupMessageListViewScrollViewer( );
             }
         }
 
-        private void LiveChatUserControl_PreviewKeyDown(object sender, KeyEventArgs e)
+        /// <summary>
+        /// Handles the PreviewKeyDown event of the LiveChatUserControl control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyEventArgs"/> instance containing the event data.</param>
+        private void LiveChatUserControl_PreviewKeyDown( object sender, KeyEventArgs e )
         {
-            if (e.Key == Key.Enter && Keyboard.Modifiers == ModifierKeys.Control)
+            if( e.Key == Key.Enter
+                && Keyboard.Modifiers == ModifierKeys.Control )
             {
                 // Ctrl+Enter for input of multiple lines
-                var liveChatUserControl = sender as LiveChatUserControl;
-                if (liveChatUserControl != null)
+                var _liveChatUserControl = sender as LiveChatUserControl;
+                if( _liveChatUserControl != null )
                 {
                     // ChatGPT mostly answered this!
-                    TextBox textBox = liveChatUserControl.ChatInputTextBox;
-                    int caretIndex = textBox.CaretIndex;
-                    textBox.Text = textBox.Text.Insert(caretIndex, Environment.NewLine);
-                    textBox.CaretIndex = caretIndex + Environment.NewLine.Length;
+                    var _textBox = _liveChatUserControl.ChatInputTextBox;
+                    var _caretIndex = _textBox.CaretIndex;
+                    _textBox.Text = _textBox.Text.Insert( _caretIndex, Environment.NewLine );
+                    _textBox.CaretIndex = _caretIndex + Environment.NewLine.Length;
                     e.Handled = true;
                 }
             }
-            else if ((e.Key == Key.Up || e.Key == Key.Down) && (e.KeyboardDevice.Modifiers & ModifierKeys.Control) != 0)
+            else if( ( e.Key == Key.Up || e.Key == Key.Down )
+                && ( e.KeyboardDevice.Modifiers & ModifierKeys.Control ) != 0 )
             {
                 // Use CTRL+Up/Down to allow Up/Down alone for multiple lines in ChatInputTextBox
-                TextBox? inputTextBox = Keyboard.FocusedElement as TextBox;
-                if (inputTextBox?.Name == "ChatInputTextBox")
+                var _inputTextBox = Keyboard.FocusedElement as TextBox;
+                if( _inputTextBox?.Name == "ChatInputTextBox" )
                 {
-                    LiveChatViewModel?.PrevNextChatInput(isUp: e.Key == Key.Up);
+                    LiveChatViewModel?.PrevNextChatInput( e.Key == Key.Up );
                 }
             }
         }
 
-        private void SetupChatListViewScrollViewer()
+        /// <summary>
+        /// Setups the chat ListView scroll viewer.
+        /// </summary>
+        private void SetupChatListViewScrollViewer( )
         {
             // Get the ScrollViewer from the ListView. We'll need that in order to reliably
             // implement "automatically scroll to the bottom when new items are added" functionality.            
-            _chatListViewScrollViewer = GetScrollViewer(ChatListView);
+            _chatListViewScrollViewer = GetScrollViewer( ChatListView );
 
             // Based on: https://stackoverflow.com/a/1426312	
-            INotifyCollectionChanged? notifyCollectionChanged = ChatListView.ItemsSource as INotifyCollectionChanged;
-            if (notifyCollectionChanged != null)
+            var _notifyCollectionChanged = ChatListView.ItemsSource as INotifyCollectionChanged;
+            if( _notifyCollectionChanged != null )
             {
-                notifyCollectionChanged.CollectionChanged += (sender, e) =>
+                _notifyCollectionChanged.CollectionChanged += ( sender, e ) =>
                 {
-                    _chatListViewScrollViewer?.ScrollToBottom();
+                    _chatListViewScrollViewer?.ScrollToBottom( );
                 };
             }
         }
 
         // Needs to re-setup because MessageListView.ItemsSource resets with SelectedChat.MessageList
         // Note: technically there could be a leak without doing 'CollectionChanged -='
-        private void SetupMessageListViewScrollViewer()
+        /// <summary>
+        /// Setups the message ListView scroll viewer.
+        /// </summary>
+        private void SetupMessageListViewScrollViewer( )
         {
-            INotifyCollectionChanged? notifyCollectionChanged = MessageListView.ItemsSource as INotifyCollectionChanged;
-            if (notifyCollectionChanged != null)
+            var _notifyCollectionChanged = MessageListView.ItemsSource as INotifyCollectionChanged;
+            if( _notifyCollectionChanged != null )
             {
-                notifyCollectionChanged.CollectionChanged += (sender, e) =>
+                _notifyCollectionChanged.CollectionChanged += ( sender, e ) =>
                 {
-                    _messageListViewScrollViewer?.ScrollToBottom();
+                    _messageListViewScrollViewer?.ScrollToBottom( );
                 };
             }
         }
-        
-        private void MessageListView_PreviewMouseRightButtonUp(object sender, MouseButtonEventArgs e)
+
+        /// <summary>
+        /// Handles the PreviewMouseRightButtonUp event of the MessageListView control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseButtonEventArgs"/> instance containing the event data.</param>
+        private void MessageListView_PreviewMouseRightButtonUp( object sender,
+            MouseButtonEventArgs e )
         {
             // Note: target could be System.Windows.Controls.TextBoxView (in .NET 6)
             //          but it's internal (seen in debugger) and not accessible, so use string
-            string? target = e.Device.Target?.ToString();
+            var _target = e.Device.Target?.ToString( );
 
             // Hit test for image, text, blank space below text (Border)
-            if (e.Device.Target is Grid ||
-                target == "System.Windows.Controls.TextBoxView" ||
-                e.Device.Target is TextBlock)
+            if( e.Device.Target is Grid
+                || _target == "System.Windows.Controls.TextBoxView"
+                || e.Device.Target is TextBlock )
             {
-                Message? message = (e.Device.Target as FrameworkElement)?.DataContext as Message;
-                if (message != null)
+                var _message = ( e.Device.Target as FrameworkElement )?.DataContext as Message;
+                if( _message != null )
                 {
-                    ShowMessageContextMenu(message);
+                    ShowMessageContextMenu( _message );
                     e.Handled = true;
                 }
             }
-        }        
+        }
 
-        public void ShowMessageContextMenu(Message message)
+        /// <summary>
+        /// Shows the message context menu.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        public void ShowMessageContextMenu( Message message )
         {
             _messageContextMenu.Tag = message;
-            _messageContextMenu.Items.Clear();
+            _messageContextMenu.Items.Clear( );
 
             // Message header
-            _messageContextMenu.Items.Add(new MenuItem
+            _messageContextMenu.Items.Add( new MenuItem
             {
                 Header = "Message",
                 IsHitTestVisible = false,
                 FontSize = 20,
                 FontWeight = FontWeights.SemiBold
-            }); ;
-            _messageContextMenu.Items.Add(new Separator());
+            } );
+
+            ;
+            _messageContextMenu.Items.Add( new Separator( ) );
+
             // Copy to clipboard
-            _messageContextMenu.Items.Add(new MenuItem
+            _messageContextMenu.Items.Add( new MenuItem
             {
-                Header = _CopyMessage,
+                Header = COPY_MESSAGE,
                 FontSize = 20,
-                Icon = new FontIcon { Glyph = "\uE16F" }
-            });            
+                Icon = new FontIcon
+                {
+                    Glyph = "\uE16F"
+                }
+            } );
+
             _messageContextMenu.IsOpen = true;
         }
-        
-        private void MessageMenuOnClick(object sender, RoutedEventArgs args)
+
+        /// <summary>
+        /// Messages the menu on click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="args">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void MessageMenuOnClick( object sender, RoutedEventArgs args )
         {
-            MenuItem? mi = args.Source as MenuItem;
-            Message? message = _messageContextMenu.Tag as Message;
-            if (mi != null && message != null && LiveChatViewModel != null)
+            var _mi = args.Source as MenuItem;
+            var _message = _messageContextMenu.Tag as Message;
+            if( _mi != null
+                && _message != null
+                && LiveChatViewModel != null )
             {
-                switch (mi.Header as string)
+                switch( _mi.Header as string )
                 {
-                    case _CopyMessage: LiveChatViewModel.CopyMessage(message); break;                    
-                    default: break;
+                    case COPY_MESSAGE:
+                        LiveChatViewModel.CopyMessage( _message );
+                        break;
                 }
             }
         }
 
         // From: https://stackoverflow.com/a/41136328
         // This is part of implementing the "automatically scroll to the bottom" functionality.
-        private ScrollViewer? GetScrollViewer(UIElement? element)
+        /// <summary>
+        /// Gets the scroll viewer.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <returns></returns>
+        private ScrollViewer GetScrollViewer( UIElement element )
         {
-            ScrollViewer? scrollViewer = null;
-            if (element != null)
+            ScrollViewer _scrollViewer = null;
+            if( element != null )
             {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(element) && scrollViewer == null; i++)
+                for( var _i = 0;
+                    _i < VisualTreeHelper.GetChildrenCount( element ) && _scrollViewer == null;
+                    _i++ )
                 {
-                    if (VisualTreeHelper.GetChild(element, i) is ScrollViewer)
+                    if( VisualTreeHelper.GetChild( element, _i ) is ScrollViewer )
                     {
-                        scrollViewer = (ScrollViewer)(VisualTreeHelper.GetChild(element, i));
+                        _scrollViewer = ( ScrollViewer )VisualTreeHelper.GetChild( element, _i );
                     }
                     else
                     {
-                        scrollViewer = GetScrollViewer(VisualTreeHelper.GetChild(element, i) as UIElement);
+                        _scrollViewer =
+                            GetScrollViewer(
+                                VisualTreeHelper.GetChild( element, _i ) as UIElement );
                     }
                 }
             }
-            return scrollViewer;
+
+            return _scrollViewer;
         }
     }
 }

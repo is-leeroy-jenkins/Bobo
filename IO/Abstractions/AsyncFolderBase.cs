@@ -1,17 +1,15 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Ninja
+//     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 09-23-2024
+//     Created:                 10-16-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        09-23-2024
+//     Last Modified On:        10-16-2024
 // ******************************************************************************************
 // <copyright file="AsyncFolderBase.cs" company="Terry D. Eppler">
+//    A windows presentation foundation (WPF) app to communicate with the Chat GPT-3.5 Turbo API
 // 
-//    Ninja is a network toolkit, support iperf, tcp, udp, websocket, mqtt,
-//    sniffer, pcap, port scan, listen, ip scan .etc.
-// 
-//    Copyright ©  2019-2024 Terry D. Eppler
+//    Copyright ©  2020-2024 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -113,7 +111,7 @@ namespace Bobo
             }
             catch( IOException ex )
             {
-                PathBase.Fail( ex );
+                Fail( ex );
                 return default( Task<IList<string>> );
             }
         }
@@ -138,7 +136,7 @@ namespace Bobo
             catch( IOException ex )
             {
                 _async.SetException( ex );
-                PathBase.Fail( ex );
+                Fail( ex );
                 return default( Task<DirectoryInfo> );
             }
         }
@@ -174,7 +172,7 @@ namespace Bobo
                 }
                 catch( IOException ex )
                 {
-                    PathBase.Fail( ex );
+                    Fail( ex );
                     return default( Task<IDictionary<string, FileInfo>> );
                 }
             }
@@ -215,7 +213,7 @@ namespace Bobo
                 }
                 catch( Exception ex )
                 {
-                    PathBase.Fail( ex );
+                    Fail( ex );
                     return default( Task<IDictionary<string, DirectoryInfo>> );
                 }
             }
@@ -275,7 +273,7 @@ namespace Bobo
                 catch( Exception ex )
                 {
                     _async.SetException( ex );
-                    PathBase.Fail( ex );
+                    Fail( ex );
                     return default( Task<IList<string>> );
                 }
             }

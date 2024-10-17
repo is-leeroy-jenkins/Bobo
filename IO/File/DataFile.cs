@@ -1,17 +1,15 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Ninja
+//     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 09-23-2024
+//     Created:                 10-16-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        09-23-2024
+//     Last Modified On:        10-16-2024
 // ******************************************************************************************
 // <copyright file="DataFile.cs" company="Terry D. Eppler">
+//    A windows presentation foundation (WPF) app to communicate with the Chat GPT-3.5 Turbo API
 // 
-//    Ninja is a network toolkit, support iperf, tcp, udp, websocket, mqtt,
-//    sniffer, pcap, port scan, listen, ip scan .etc.
-// 
-//    Copyright ©  2019-2024 Terry D. Eppler
+//    Copyright ©  2020-2024 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -106,7 +104,7 @@ namespace Bobo
                 }
                 catch( IOException ex )
                 {
-                    PathBase.Fail( ex );
+                    Fail( ex );
                     return false;
                 }
             }
@@ -129,7 +127,7 @@ namespace Bobo
             {
                 try
                 {
-                    IEnumerable<string> _enumerable = Directory.GetDirectories( _input, pattern );
+                    IEnumerable<string> _enumerable = GetDirectories( _input, pattern );
                     var _list = new List<FileInfo>( );
                     foreach( var _file in _enumerable )
                     {
@@ -142,7 +140,7 @@ namespace Bobo
                 }
                 catch( IOException ex )
                 {
-                    PathBase.Fail( ex );
+                    Fail( ex );
                     return default( IEnumerable<FileInfo> );
                 }
             }
@@ -176,7 +174,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                PathBase.Fail( ex );
+                Fail( ex );
                 return default( FileInfo );
             }
         }
@@ -204,7 +202,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                PathBase.Fail( ex );
+                Fail( ex );
                 return string.Empty;
             }
         }
@@ -233,7 +231,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                PathBase.Fail( ex );
+                Fail( ex );
                 _stream?.Close( );
             }
             finally
@@ -284,7 +282,7 @@ namespace Bobo
             }
             catch( IOException ex )
             {
-                PathBase.Fail( ex );
+                Fail( ex );
                 return string.Empty;
             }
         }
@@ -317,9 +315,9 @@ namespace Bobo
             _fileAttributes = File.GetAttributes( input );
             _created = File.GetCreationTime( input );
             _modified = File.GetLastWriteTime( input );
-            _hasParent = !string.IsNullOrEmpty( Directory.GetParent( input )?.Name );
+            _hasParent = !string.IsNullOrEmpty( GetParent( input )?.Name );
             _parentName = Path.GetDirectoryName( input );
-            _parentPath = Directory.GetParent( _fullPath )?.FullName;
+            _parentPath = GetParent( _fullPath )?.FullName;
             _size = File.Open( input, FileMode.Open ).Length;
         }
 
@@ -341,7 +339,7 @@ namespace Bobo
             _fileAttributes = file.FileAttributes;
             _created = file.Created;
             _modified = file.Modified;
-            _hasParent = !string.IsNullOrEmpty( Directory.GetParent( file.FullPath )?.Name );
+            _hasParent = !string.IsNullOrEmpty( GetParent( file.FullPath )?.Name );
             _parentName = file.ParentName;
             _parentPath = file.ParentPath;
             _size = file.Size;

@@ -1,17 +1,15 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Ninja
+//     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 09-23-2024
+//     Created:                 10-16-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        09-23-2024
+//     Last Modified On:        10-16-2024
 // ******************************************************************************************
 // <copyright file="DictionaryExtensions.cs" company="Terry D. Eppler">
+//    A windows presentation foundation (WPF) app to communicate with the Chat GPT-3.5 Turbo API
 // 
-//    Ninja is a network toolkit, support iperf, tcp, udp, websocket, mqtt,
-//    sniffer, pcap, port scan, listen, ip scan .etc.
-// 
-//    Copyright ©  2019-2024 Terry D. Eppler
+//    Copyright ©  2020-2024 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -75,8 +73,7 @@ namespace Bobo
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        public static V AddOrUpdate<K, V>( this IDictionary<K, V> dict,
-            K key, V value )
+        public static V AddOrUpdate<K, V>( this IDictionary<K, V> dict, K key, V value )
         {
             try
             {
@@ -93,7 +90,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                DictionaryExtensions.Fail( ex );
+                Fail( ex );
                 return default( V );
             }
         }
@@ -105,7 +102,8 @@ namespace Bobo
         /// <returns>
         /// NameValueCollection
         /// </returns>
-        public static NameValueCollection ToNameValueCollection( this IDictionary<string, object> dict )
+        public static NameValueCollection ToNameValueCollection(
+            this IDictionary<string, object> dict )
         {
             try
             {
@@ -122,7 +120,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                DictionaryExtensions.Fail( ex );
+                Fail( ex );
                 return default( NameValueCollection );
             }
         }
@@ -172,7 +170,7 @@ namespace Bobo
                 }
                 catch( Exception ex )
                 {
-                    DictionaryExtensions.Fail( ex );
+                    Fail( ex );
                     return string.Empty;
                 }
             }
@@ -202,7 +200,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                DictionaryExtensions.Fail( ex );
+                Fail( ex );
                 return default( BindingList<KeyValuePair<string, object>> );
             }
         }
@@ -245,7 +243,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                DictionaryExtensions.Fail( ex );
+                Fail( ex );
                 return default( SortedList<int, KeyValuePair<string, object>> );
             }
         }
@@ -345,7 +343,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                DictionaryExtensions.Fail( ex );
+                Fail( ex );
                 return default( List<DbParameter> );
             }
         }
@@ -380,7 +378,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                DictionaryExtensions.Fail( ex );
+                Fail( ex );
                 return default( bool );
             }
         }
@@ -409,7 +407,7 @@ namespace Bobo
                 }
                 catch( Exception ex )
                 {
-                    DictionaryExtensions.Fail( ex );
+                    Fail( ex );
                     return default( KeyValuePair<string, object> );
                 }
             }
@@ -442,7 +440,7 @@ namespace Bobo
                 }
                 catch( Exception ex )
                 {
-                    DictionaryExtensions.Fail( ex );
+                    Fail( ex );
                     return default( BindingList<string> );
                 }
             }
@@ -475,7 +473,7 @@ namespace Bobo
                 }
                 catch( Exception ex )
                 {
-                    DictionaryExtensions.Fail( ex );
+                    Fail( ex );
                     return default( BindingList<object> );
                 }
             }

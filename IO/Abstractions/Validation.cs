@@ -1,17 +1,15 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Ninja
+//     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 09-23-2024
+//     Created:                 10-16-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        09-23-2024
+//     Last Modified On:        10-16-2024
 // ******************************************************************************************
 // <copyright file="Validation.cs" company="Terry D. Eppler">
+//    A windows presentation foundation (WPF) app to communicate with the Chat GPT-3.5 Turbo API
 // 
-//    Ninja is a network toolkit, support iperf, tcp, udp, websocket, mqtt,
-//    sniffer, pcap, port scan, listen, ip scan .etc.
-// 
-//    Copyright ©  2019-2024 Terry D. Eppler
+//    Copyright ©  2020-2024 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -141,7 +139,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return default( int );
             }
         }
@@ -175,7 +173,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -197,7 +195,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -214,11 +212,11 @@ namespace Bobo
             {
                 var _test = c.ToString( );
                 ThrowIf.Null( _test, nameof( c ) );
-                return Validation.IsLetter( c ) || Validation.IsDigit( c );
+                return IsLetter( c ) || IsDigit( c );
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -236,18 +234,18 @@ namespace Bobo
             {
                 var _test = c.ToString( );
                 ThrowIf.Null( _test, nameof( c ) );
-                if( Validation.IsControl( c ) )
+                if( IsControl( c ) )
                 {
                     return false;
                 }
 
                 return c < 128
-                    ? Validation.IsLetterOrDigit( c ) || AtomCharacters.Contains( c.ToString( ) )
+                    ? IsLetterOrDigit( c ) || AtomCharacters.Contains( c.ToString( ) )
                     : allowInternational && !char.IsWhiteSpace( c );
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -268,14 +266,14 @@ namespace Bobo
                 ThrowIf.Null( _test, nameof( c ) );
                 if( c < 128 )
                 {
-                    if( Validation.IsLetter( c )
+                    if( IsLetter( c )
                         || c == '-' )
                     {
                         type |= SubDomainType.Alphabetic;
                         return true;
                     }
 
-                    if( Validation.IsDigit( c ) )
+                    if( IsDigit( c ) )
                     {
                         type |= SubDomainType.Numeric;
                         return true;
@@ -294,7 +292,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -314,13 +312,13 @@ namespace Bobo
                 ThrowIf.Null( _test, nameof( c ) );
                 if( c < 128 )
                 {
-                    if( Validation.IsLetter( c ) )
+                    if( IsLetter( c ) )
                     {
                         type = SubDomainType.Alphabetic;
                         return true;
                     }
 
-                    if( Validation.IsDigit( c ) )
+                    if( IsDigit( c ) )
                     {
                         type = SubDomainType.Numeric;
                         return true;
@@ -341,7 +339,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 type = SubDomainType.None;
             }
 
@@ -364,7 +362,7 @@ namespace Bobo
                 ThrowIf.NegativeOrZero( index, nameof( index ) );
                 var startIndex = index;
                 while( index < text.Length
-                    && Validation.IsAtom( text[ index ], allowInternational ) )
+                    && IsAtom( text[ index ], allowInternational ) )
                 {
                     index++;
                 }
@@ -373,7 +371,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
             }
 
             return false;
@@ -392,19 +390,19 @@ namespace Bobo
             bool allowInternational, out SubDomainType type )
         {
             var startIndex = index;
-            if( !Validation.IsDomainStart( text[ index ], allowInternational, out type ) )
+            if( !IsDomainStart( text[ index ], allowInternational, out type ) )
             {
                 return false;
             }
 
             index++;
             while( index < text.Length
-                && Validation.IsDomain( text[ index ], allowInternational, ref type ) )
+                && IsDomain( text[ index ], allowInternational, ref type ) )
             {
                 index++;
             }
 
-            var length = Validation.Measure( text, startIndex, index, allowInternational );
+            var length = Measure( text, startIndex, index, allowInternational );
             if( index == text.Length
                 && length == 1 )
             {

@@ -21,7 +21,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="richtextboxadv:TableDialog">
-                    <Grid Background="{StaticResource PopupBackground}">
+                    <Grid Background="{StaticResource ControlInteriorBrush}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="16" />
@@ -641,7 +641,7 @@
                             Grid.Row="2"
                             Grid.ColumnSpan="3"
                             Width="Auto"
-                            Background="{StaticResource PopupBackground}"
+                            Background="{StaticResource ControlInteriorBrush}"
                             BorderBrush="{StaticResource BlueBorderBrush}"
                             BorderThickness="0,1,0,0">
                             <StackPanel
@@ -688,7 +688,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="richtextboxadv:CellOptionsDialog">
-                    <Grid Background="{StaticResource PopupBackground}">
+                    <Grid Background="{StaticResource ControlInteriorBrush}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="20" />
                             <ColumnDefinition Width="*" />
@@ -811,7 +811,7 @@
                             Grid.Row="2"
                             Grid.ColumnSpan="3"
                             Width="Auto"
-                            Background="{StaticResource PopupBackground}"
+                            Background="{StaticResource ControlInteriorBrush}"
                             BorderBrush="{StaticResource BlueBorderBrush}"
                             BorderThickness="0,1,0,0">
                             <StackPanel
@@ -861,7 +861,7 @@
                 <ControlTemplate TargetType="richtextboxadv:TableOptionsDialog">
                     <Grid
                         x:Name="PART_Root"
-                        Background="{StaticResource PopupBackground}">
+                        Background="{StaticResource ControlInteriorBrush}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="12" />
                             <ColumnDefinition Width="*" />
@@ -1075,7 +1075,7 @@
                             Grid.Column="0"
                             Grid.ColumnSpan="3"
                             Width="Auto"
-                            Background="{StaticResource PopupBackground}"
+                            Background="{StaticResource ControlInteriorBrush}"
                             BorderBrush="{StaticResource BlueBorderBrush}"
                             BorderThickness="0,1,0,0">
                             <StackPanel
@@ -1126,7 +1126,7 @@
                 <ControlTemplate TargetType="richtextboxadv:BordersAndShadingDialog">
                     <Grid
                         x:Name="PART_Root"
-                        Background="{StaticResource PopupBackground}">
+                        Background="{StaticResource ControlInteriorBrush}">
                         <Grid.Resources>
                             <richtextboxadv:BrushOpacityConverter x:Key="BrushOpacityConverter" />
                         </Grid.Resources>
@@ -1696,7 +1696,7 @@
                             Grid.Row="8"
                             Grid.ColumnSpan="3"
                             Width="Auto"
-                            Background="{StaticResource PopupBackground}"
+                            Background="{StaticResource ControlInteriorBrush}"
                             BorderBrush="{StaticResource BlueBorderBrush}"
                             BorderThickness="0,1,0,0">
                             <StackPanel
@@ -1744,7 +1744,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="richtextboxadv:InsertTableDialog">
-                    <Grid Background="{StaticResource PopupBackground}">
+                    <Grid Background="{StaticResource ControlInteriorBrush}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="12" />
                             <RowDefinition Height="Auto" />
@@ -1815,7 +1815,7 @@
                             Grid.Row="2"
                             Grid.ColumnSpan="3"
                             Width="Auto"
-                            Background="{StaticResource PopupBackground}"
+                            Background="{StaticResource ControlInteriorBrush}"
                             BorderBrush="{StaticResource BlueBorderBrush}"
                             BorderThickness="0,1,0,0">
                             <StackPanel

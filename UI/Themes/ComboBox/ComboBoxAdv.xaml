@@ -466,7 +466,7 @@
                                 x:Name="DropDownBorder"
                                 MinWidth="{TemplateBinding ActualWidth}"
                                 MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                Background="{StaticResource PopupBackground}"
+                                Background="{StaticResource ControlInteriorBrush}"
                                 BorderBrush="{StaticResource BlueBorderBrush}"
                                 BorderThickness="1"
                                 CornerRadius="4"
@@ -711,7 +711,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Background" Value="{StaticResource PopupBackground}" />
+        <Setter Property="Background" Value="{StaticResource ControlInteriorBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
         <Setter Property="Foreground" Value="{StaticResource WhiteForeground}" />
         <Setter Property="FontFamily" Value="Roboto-Regular" />

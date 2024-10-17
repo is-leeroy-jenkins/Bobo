@@ -1,17 +1,15 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Ninja
+//     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 09-23-2024
+//     Created:                 10-16-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        09-23-2024
+//     Last Modified On:        10-16-2024
 // ******************************************************************************************
 // <copyright file="CollectionExtensions.cs" company="Terry D. Eppler">
+//    A windows presentation foundation (WPF) app to communicate with the Chat GPT-3.5 Turbo API
 // 
-//    Ninja is a network toolkit, support iperf, tcp, udp, websocket, mqtt,
-//    sniffer, pcap, port scan, listen, ip scan .etc.
-// 
-//    Copyright ©  2019-2024 Terry D. Eppler
+//    Copyright ©  2020-2024 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -78,7 +76,7 @@ namespace Bobo
                 }
                 catch( Exception ex )
                 {
-                    CollectionExtensions.Fail( ex );
+                    Fail( ex );
                     return false;
                 }
             }
@@ -110,7 +108,7 @@ namespace Bobo
                 }
                 catch( Exception ex )
                 {
-                    CollectionExtensions.Fail( ex );
+                    Fail( ex );
                 }
             }
         }
@@ -134,7 +132,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                CollectionExtensions.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -155,7 +153,7 @@ namespace Bobo
                 }
                 catch( Exception ex )
                 {
-                    CollectionExtensions.Fail( ex );
+                    Fail( ex );
                 }
             }
         }
@@ -179,7 +177,7 @@ namespace Bobo
                 }
                 catch( Exception ex )
                 {
-                    CollectionExtensions.Fail( ex );
+                    Fail( ex );
                 }
             }
         }
@@ -202,30 +200,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                CollectionExtensions.Fail( ex );
-            }
-        }
-
-        /// <summary>
-        /// Determines whether this instance is empty.
-        /// </summary>
-        /// <param name="collection">The collection.</param>
-        /// <returns>
-        /// <c> true </c>
-        /// if the specified collection is empty; otherwise,
-        /// <c> false </c>
-        /// .
-        /// </returns>
-        public static bool IsEmpty( this ICollection collection )
-        {
-            try
-            {
-                return !( collection?.Count > 0 );
-            }
-            catch( Exception ex )
-            {
-                CollectionExtensions.Fail( ex );
-                return true;
+                Fail( ex );
             }
         }
 
@@ -251,7 +226,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                CollectionExtensions.Fail( ex );
+                Fail( ex );
                 return default( BindingList<T> );
             }
         }

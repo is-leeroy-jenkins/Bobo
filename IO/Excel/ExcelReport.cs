@@ -1,17 +1,15 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Ninja
+//     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 09-23-2024
+//     Created:                 10-16-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        09-23-2024
+//     Last Modified On:        10-16-2024
 // ******************************************************************************************
 // <copyright file="ExcelReport.cs" company="Terry D. Eppler">
+//    A windows presentation foundation (WPF) app to communicate with the Chat GPT-3.5 Turbo API
 // 
-//    Ninja is a network toolkit, support iperf, tcp, udp, websocket, mqtt,
-//    sniffer, pcap, port scan, listen, ip scan .etc.
-// 
-//    Copyright ©  2019-2024 Terry D. Eppler
+//    Copyright ©  2020-2024 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -246,8 +244,8 @@ namespace Bobo
             _secondaryBackColor = Color.FromArgb( 220, 220, 220 );
             _rowCount = 55;
             _columnCount = 11;
-            _internalPath = ConfigurationManager.AppSettings[ "Reports" ];
-            _savePath = ConfigurationManager.AppSettings[ "Desktop" ] + _fileName;
+            _internalPath = AppSettings[ "Reports" ];
+            _savePath = AppSettings[ "Desktop" ] + _fileName;
             _fileInfo = new FileInfo( _internalPath );
             _excelPackage = new ExcelPackage( _fileInfo );
             _excelPackage.Settings.TextSettings.PrimaryTextMeasurer = new TextSize( );
@@ -289,8 +287,8 @@ namespace Bobo
             _zoomLevel = 100;
             _primaryBackColor = Color.White;
             _secondaryBackColor = Color.FromArgb( 220, 220, 220 );
-            _internalPath = ConfigurationManager.AppSettings[ "Reports" ];
-            _savePath = ConfigurationManager.AppSettings[ "Desktop" ] + _fileName + ".xlsx";
+            _internalPath = AppSettings[ "Reports" ];
+            _savePath = AppSettings[ "Desktop" ] + _fileName + ".xlsx";
             _filePath = filePath;
             _fileName = Path.GetFileNameWithoutExtension( filePath );
             _fileInfo = new FileInfo( filePath );
@@ -336,12 +334,12 @@ namespace Bobo
             _zoomLevel = 100;
             _primaryBackColor = Color.White;
             _secondaryBackColor = Color.FromArgb( 220, 220, 220 );
-            _internalPath = ConfigurationManager.AppSettings[ "Reports" ];
+            _internalPath = AppSettings[ "Reports" ];
             _dataTable = dataTable;
             _columnCount = dataTable.Columns.Count;
             _rowCount = dataTable.Rows.Count;
             _fileName = dataTable.TableName + ".xlsx";
-            _savePath = ConfigurationManager.AppSettings[ "Desktop" ] + dataTable.TableName + ".xlsx";
+            _savePath = AppSettings[ "Desktop" ] + dataTable.TableName + ".xlsx";
             DataMeasure = new DataMeasure( dataTable );
             _fileInfo = new FileInfo( _internalPath );
             _excelPackage = new ExcelPackage( _fileInfo );

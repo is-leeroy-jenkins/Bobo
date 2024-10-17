@@ -7,8 +7,8 @@
     <!--  *********************************************** MetroDropDown *****************************************************  -->
 
     <Style TargetType="{x:Type b:ToolStripDropDown}">
-        <Setter Property="Background" Value="{DynamicResource ControlInterior}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ControlInterior}" />
+        <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlInteriorBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource LightBlueBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -27,8 +27,8 @@
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="False">
-                <Setter Property="Background" Value="{DynamicResource ControlInterior}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ControlInterior}" />
+                <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlInteriorBrush}" />
                 <Setter Property="Foreground" Value="{DynamicResource LightBlueBrush}" />
             </Trigger>
 
@@ -42,8 +42,8 @@
     <!--  *********************************************** MetroDropDown *****************************************************  -->
 
     <Style TargetType="{x:Type b:MetroDropDownItem}">
-        <Setter Property="Background" Value="{DynamicResource ControlInterior}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ControlInterior}" />
+        <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlInteriorBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource LightBlueBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -62,8 +62,8 @@
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="False">
-                <Setter Property="Background" Value="{DynamicResource ControlInterior}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ControlInterior}" />
+                <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlInteriorBrush}" />
                 <Setter Property="Foreground" Value="{DynamicResource LightBlueBrush}" />
             </Trigger>
 

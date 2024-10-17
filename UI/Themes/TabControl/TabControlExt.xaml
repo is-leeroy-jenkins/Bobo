@@ -124,10 +124,10 @@
                             <Setter Property="MinWidth" Value="{StaticResource TouchMode.MinSize}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{StaticResource SecondaryForegroundHovered}" />
+                            <Setter Property="Foreground" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="{StaticResource SecondaryForegroundSelected}" />
+                            <Setter Property="Foreground" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="NewButtonBorder" Property="BorderBrush" Value="Transparent" />

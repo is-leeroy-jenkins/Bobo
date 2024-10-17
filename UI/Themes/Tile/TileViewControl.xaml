@@ -92,16 +92,16 @@
                             <Setter TargetName="Maximize" Property="Stroke" Value="{StaticResource WhiteForeground}" />
                         </DataTrigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Minimize" Property="Stroke" Value="{StaticResource SecondaryForegroundHovered}" />
-                            <Setter TargetName="Maximize" Property="Stroke" Value="{StaticResource SecondaryForegroundHovered}" />
-                            <Setter TargetName="outerBorder" Property="Background" Value="{StaticResource SecondaryBackgroundHovered}" />
-                            <Setter TargetName="outerBorder" Property="BorderBrush" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="Minimize" Property="Stroke" Value="{StaticResource WhiteForeground}" />
+                            <Setter TargetName="Maximize" Property="Stroke" Value="{StaticResource WhiteForeground}" />
+                            <Setter TargetName="outerBorder" Property="Background" Value="{StaticResource ControlHoverBrush}" />
+                            <Setter TargetName="outerBorder" Property="BorderBrush" Value="{StaticResource ControlHoverBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Minimize" Property="Stroke" Value="{StaticResource SecondaryForegroundSelected}" />
-                            <Setter TargetName="Maximize" Property="Stroke" Value="{StaticResource SecondaryForegroundSelected}" />
-                            <Setter TargetName="outerBorder" Property="Background" Value="{StaticResource SecondaryBackgroundSelected}" />
-                            <Setter TargetName="outerBorder" Property="BorderBrush" Value="{StaticResource SecondaryBackgroundSelected}" />
+                            <Setter TargetName="Minimize" Property="Stroke" Value="{StaticResource WhiteForeground}" />
+                            <Setter TargetName="Maximize" Property="Stroke" Value="{StaticResource WhiteForeground}" />
+                            <Setter TargetName="outerBorder" Property="Background" Value="{StaticResource GreenBackground}" />
+                            <Setter TargetName="outerBorder" Property="BorderBrush" Value="{StaticResource GreenBackground}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Minimize" Property="Stroke" Value="{StaticResource FormBackground}" />
@@ -174,16 +174,16 @@
                                     <Setter TargetName="maxButton" Property="Visibility" Value="Visible" />
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Minimize" Property="Stroke" Value="{StaticResource SecondaryForegroundHovered}" />
-                                    <Setter TargetName="Maximize" Property="Stroke" Value="{StaticResource SecondaryForegroundHovered}" />
-                                    <Setter TargetName="outerBorder" Property="Background" Value="{StaticResource SecondaryBackgroundHovered}" />
-                                    <Setter TargetName="outerBorder" Property="BorderBrush" Value="{StaticResource SecondaryBackgroundHovered}" />
+                                    <Setter TargetName="Minimize" Property="Stroke" Value="{StaticResource WhiteForeground}" />
+                                    <Setter TargetName="Maximize" Property="Stroke" Value="{StaticResource WhiteForeground}" />
+                                    <Setter TargetName="outerBorder" Property="Background" Value="{StaticResource ControlHoverBrush}" />
+                                    <Setter TargetName="outerBorder" Property="BorderBrush" Value="{StaticResource ControlHoverBrush}" />
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Minimize" Property="Stroke" Value="{StaticResource SecondaryForegroundSelected}" />
-                                    <Setter TargetName="Maximize" Property="Stroke" Value="{StaticResource SecondaryForegroundSelected}" />
-                                    <Setter TargetName="outerBorder" Property="Background" Value="{StaticResource SecondaryBackgroundSelected}" />
-                                    <Setter TargetName="outerBorder" Property="BorderBrush" Value="{StaticResource SecondaryBackgroundSelected}" />
+                                    <Setter TargetName="Minimize" Property="Stroke" Value="{StaticResource WhiteForeground}" />
+                                    <Setter TargetName="Maximize" Property="Stroke" Value="{StaticResource WhiteForeground}" />
+                                    <Setter TargetName="outerBorder" Property="Background" Value="{StaticResource GreenBackground}" />
+                                    <Setter TargetName="outerBorder" Property="BorderBrush" Value="{StaticResource GreenBackground}" />
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter TargetName="Minimize" Property="Stroke" Value="{StaticResource FormBackground}" />
@@ -370,14 +370,14 @@
                             <Setter TargetName="headercontent" Property="TextElement.Foreground" Value="{StaticResource DisabledForeground}" />
                         </Trigger>
                         <Trigger SourceName="CloseButton" Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Close_Big" Property="Fill" Value="{StaticResource SecondaryForegroundHovered}" />
-                            <Setter TargetName="CloseButton" Property="Background" Value="{StaticResource SecondaryBackgroundHovered}" />
-                            <Setter TargetName="CloseButton" Property="BorderBrush" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="Close_Big" Property="Fill" Value="{StaticResource WhiteForeground}" />
+                            <Setter TargetName="CloseButton" Property="Background" Value="{StaticResource ControlHoverBrush}" />
+                            <Setter TargetName="CloseButton" Property="BorderBrush" Value="{StaticResource ControlHoverBrush}" />
                         </Trigger>
                         <Trigger SourceName="CloseButton" Property="IsPressed" Value="True">
-                            <Setter TargetName="Close_Big" Property="Fill" Value="{StaticResource SecondaryForegroundSelected}" />
-                            <Setter TargetName="CloseButton" Property="Background" Value="{StaticResource SecondaryBackgroundSelected}" />
-                            <Setter TargetName="CloseButton" Property="BorderBrush" Value="{StaticResource SecondaryBackgroundSelected}" />
+                            <Setter TargetName="Close_Big" Property="Fill" Value="{StaticResource WhiteForeground}" />
+                            <Setter TargetName="CloseButton" Property="Background" Value="{StaticResource GreenBackground}" />
+                            <Setter TargetName="CloseButton" Property="BorderBrush" Value="{StaticResource GreenBackground}" />
                         </Trigger>
                         <Trigger SourceName="CloseButton" Property="IsEnabled" Value="False">
                             <Setter TargetName="Close_Big" Property="Fill" Value="{StaticResource FormBackground}" />

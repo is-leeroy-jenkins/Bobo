@@ -23,7 +23,7 @@
                 <ControlTemplate TargetType="richtextboxadv:StylesDialog">
                     <Grid
                         x:Name="PART_Root"
-                        Background="{StaticResource PopupBackground}">
+                        Background="{StaticResource ControlInteriorBrush}">
                         <StackPanel>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -101,7 +101,7 @@
                 <ControlTemplate TargetType="richtextboxadv:StyleDialog">
                     <Grid
                         x:Name="PART_Root"
-                        Background="{StaticResource PopupBackground}">
+                        Background="{StaticResource ControlInteriorBrush}">
                         <Grid.Resources>
                             <richtextboxadv:StringFontFamilyConverter x:Key="StringFontFamilyConverter" />
                             <richtextboxadv:LeftAlignmentToggleConverter x:Key="LeftAlignmentToggleConverter" />
@@ -762,7 +762,7 @@
                                 Grid.Row="7"
                                 Grid.ColumnSpan="3"
                                 Width="Auto"
-                                Background="{StaticResource PopupBackground}"
+                                Background="{StaticResource ControlInteriorBrush}"
                                 BorderBrush="{StaticResource BlueBorderBrush}"
                                 BorderThickness="0,1,0,0">
                                 <Grid

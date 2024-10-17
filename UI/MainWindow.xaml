@@ -3,9 +3,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:history="clr-namespace:Bobo.History"
-    xmlns:liveChat="clr-namespace:Bobo.LiveChat"
+    xmlns:history="clr-namespace:Bobo"
+    xmlns:liveChat="clr-namespace:Bobo"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:skin="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+    xmlns:sync="http://schemas.syncfusion.com/wpf"
     Title="Bobo GPT"
     Width="1600"
     Height="1000"
@@ -15,27 +17,27 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
-    <TabControl Background="LightGray">
+    <TabControl Background="{StaticResource FormBackground}">
         <TabItem
             x:Name="LiveChatTabItem"
-            BorderBrush="Black"
+            BorderBrush="{StaticResource FormBackground}"
             BorderThickness="1,1,1,0">
             <TabItem.Header>
                 <TextBlock
                     Margin="6,2"
-                    Foreground="#FF0078D4"
+                    Foreground="{StaticResource BlueBorderBrush}"
                     Text="Live Chat" />
             </TabItem.Header>
             <liveChat:LiveChatUserControl DataContext="{Binding LiveChatViewModel}" />
         </TabItem>
         <TabItem
             x:Name="HistoryTabItem"
-            BorderBrush="Black"
+            BorderBrush="{StaticResource FormBackground}"
             BorderThickness="1,1,1,0">
             <TabItem.Header>
                 <TextBlock
                     Margin="6,2"
-                    Foreground="Black"
+                    Foreground="{StaticResource FormForeground}"
                     Text="History" />
             </TabItem.Header>
             <history:HistoryUserControl DataContext="{Binding HistoryViewModel}" />

@@ -7,7 +7,7 @@
     <!--  *********************************************** MetroCheckList *****************************************************  -->
 
     <Style TargetType="{x:Type bdgr:MetroCheckList}">
-        <Setter Property="Background" Value="{DynamicResource ControlInterior}" />
+        <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource LightBlueBrush}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -24,7 +24,7 @@
 
     <Style TargetType="{x:Type bdgr:MetroCheckListItem}">
 
-        <Setter Property="Background" Value="{DynamicResource ControlInterior}" />
+        <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource LightBlueBrush}" />
         <Setter Property="Height" Value="40" />
@@ -46,8 +46,8 @@
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="False">
-                <Setter Property="Background" Value="{DynamicResource ControlInterior}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ControlInterior}" />
+                <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlInteriorBrush}" />
                 <Setter Property="Foreground" Value="{DynamicResource LightBlueBrush}" />
             </Trigger>
 

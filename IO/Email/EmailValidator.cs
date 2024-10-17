@@ -1,17 +1,15 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Ninja
+//     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 09-23-2024
+//     Created:                 10-16-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        09-23-2024
+//     Last Modified On:        10-16-2024
 // ******************************************************************************************
 // <copyright file="EmailValidator.cs" company="Terry D. Eppler">
+//    A windows presentation foundation (WPF) app to communicate with the Chat GPT-3.5 Turbo API
 // 
-//    Ninja is a network toolkit, support iperf, tcp, udp, websocket, mqtt,
-//    sniffer, pcap, port scan, listen, ip scan .etc.
-// 
-//    Copyright ©  2019-2024 Terry D. Eppler
+//    Copyright ©  2020-2024 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -69,8 +67,7 @@ namespace Bobo
             {
                 ThrowIf.Null( text, nameof( text ) );
                 ThrowIf.NegativeOrZero( index, nameof( index ) );
-                if( !Validation.SkipSubDomain( text, ref index, allowInternational,
-                    out var _type ) )
+                if( !SkipSubDomain( text, ref index, allowInternational, out var _type ) )
                 {
                     return false;
                 }
@@ -86,8 +83,7 @@ namespace Bobo
                             return false;
                         }
 
-                        if( !Validation.SkipSubDomain( text, ref index, allowInternational,
-                            out _type ) )
+                        if( !SkipSubDomain( text, ref index, allowInternational, out _type ) )
                         {
                             return false;
                         }
@@ -104,7 +100,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -126,7 +122,7 @@ namespace Bobo
                 index++;
                 while( index < text.Length )
                 {
-                    if( Validation.IsControl( text[ index ] )
+                    if( IsControl( text[ index ] )
                         || ( text[ index ] >= 128 && !allowInternational ) )
                     {
                         return false;
@@ -162,7 +158,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -186,7 +182,7 @@ namespace Bobo
                     var _startIndex = index;
                     var _value = 0;
                     while( index < text.Length
-                        && Validation.IsDigit( text[ index ] ) )
+                        && IsDigit( text[ index ] ) )
                     {
                         _value = _value * 10 + ( text[ index ] - '0' );
                         index++;
@@ -212,7 +208,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -233,7 +229,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -257,7 +253,7 @@ namespace Bobo
                 {
                     var _startIndex = index;
                     while( index < text.Length
-                        && EmailValidator.IsHexDigit( text[ index ] ) )
+                        && IsHexDigit( text[ index ] ) )
                     {
                         index++;
                     }
@@ -272,7 +268,7 @@ namespace Bobo
                         && ( _compact || _groups == 6 ) )
                     {
                         index = _startIndex;
-                        if( !EmailValidator.SkipIPv4Literal( text, ref index ) )
+                        if( !SkipIPv4Literal( text, ref index ) )
                         {
                             return false;
                         }
@@ -346,7 +342,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }
@@ -372,7 +368,7 @@ namespace Bobo
                 }
 
                 if( email.Length == 0
-                    || Validation.Measure( email, 0, email.Length, allowInternational )
+                    || Measure( email, 0, email.Length, allowInternational )
                     > MaxEmailAddressLength )
                 {
                     return false;
@@ -380,7 +376,7 @@ namespace Bobo
 
                 if( email[ _index ] == '"' )
                 {
-                    if( !EmailValidator.SkipQuoted( email, ref _index, allowInternational )
+                    if( !SkipQuoted( email, ref _index, allowInternational )
                         || _index >= email.Length )
                     {
                         return false;
@@ -388,7 +384,7 @@ namespace Bobo
                 }
                 else
                 {
-                    if( !Validation.SkipAtom( email, ref _index, allowInternational )
+                    if( !SkipAtom( email, ref _index, allowInternational )
                         || _index >= email.Length )
                     {
                         return false;
@@ -402,7 +398,7 @@ namespace Bobo
                             return false;
                         }
 
-                        if( !Validation.SkipAtom( email, ref _index, allowInternational ) )
+                        if( !SkipAtom( email, ref _index, allowInternational ) )
                         {
                             return false;
                         }
@@ -414,7 +410,7 @@ namespace Bobo
                     }
                 }
 
-                var _localPartLength = Validation.Measure( email, 0, _index, allowInternational );
+                var _localPartLength = Measure( email, 0, _index, allowInternational );
                 if( _index + 1 >= email.Length
                     || _localPartLength > MaxLocalPartLength
                     || email[ _index++ ] != '@' )
@@ -424,8 +420,7 @@ namespace Bobo
 
                 if( email[ _index ] != '[' )
                 {
-                    if( !EmailValidator.SkipDomain( email, ref _index, allowTopLevelDomains,
-                        allowInternational ) )
+                    if( !SkipDomain( email, ref _index, allowTopLevelDomains, allowInternational ) )
                     {
                         return false;
                     }
@@ -443,14 +438,14 @@ namespace Bobo
                     5, StringComparison.OrdinalIgnoreCase ) == 0 )
                 {
                     _index += "IPv6:".Length;
-                    if( !EmailValidator.SkipIPv6Literal( email, ref _index ) )
+                    if( !SkipIPv6Literal( email, ref _index ) )
                     {
                         return false;
                     }
                 }
                 else
                 {
-                    if( !EmailValidator.SkipIPv4Literal( email, ref _index ) )
+                    if( !SkipIPv4Literal( email, ref _index ) )
                     {
                         return false;
                     }
@@ -466,7 +461,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Validation.Fail( ex );
+                Fail( ex );
                 return false;
             }
         }

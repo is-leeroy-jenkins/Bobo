@@ -103,7 +103,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="richtextboxadv:MiniToolBar">
                     <Border
-                        Background="{StaticResource PopupBackground}"
+                        Background="{StaticResource ControlInteriorBrush}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         SnapsToDevicePixels="True">
@@ -115,7 +115,7 @@
                             <Grid>
                                 <Grid
                                     x:Name="PART_ToolBarGrid"
-                                    Background="{StaticResource PopupBackground}">
+                                    Background="{StaticResource ControlInteriorBrush}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
@@ -934,12 +934,12 @@
                                                 Style="{StaticResource SyncfusionFlatSplitButtonAdvStyle}"
                                                 ToolTip="{resources:RichTextBoxAdvLocalizationResourceExtension ResourceName=MiniToolBarNumberingToolTip}">
                                                 <Border
-                                                    Background="{StaticResource PopupBackground}"
+                                                    Background="{StaticResource ControlInteriorBrush}"
                                                     BorderBrush="{TemplateBinding BorderBrush}"
                                                     BorderThickness="{TemplateBinding BorderThickness}"
                                                     CornerRadius="{StaticResource FluentDark.ThemeCornerRadiusVariant1}"
                                                     SnapsToDevicePixels="True">
-                                                    <Grid Background="{StaticResource PopupBackground}">
+                                                    <Grid Background="{StaticResource ControlInteriorBrush}">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="12" />
                                                             <RowDefinition Height="Auto" />
@@ -1350,7 +1350,7 @@
                                     IsOpen="False"
                                     PlacementTarget="{Binding ElementName=PART_ToolBarGrid}">
                                     <Border
-                                        Background="{StaticResource PopupBackground}"
+                                        Background="{StaticResource ControlInteriorBrush}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         CornerRadius="{StaticResource FluentDark.ThemeCornerRadiusVariant1}"
@@ -1503,7 +1503,7 @@
                                     IsOpen="False"
                                     PlacementTarget="{Binding ElementName=PART_ToolBarGrid}">
                                     <Border
-                                        Background="{StaticResource PopupBackground}"
+                                        Background="{StaticResource ControlInteriorBrush}"
                                         BorderBrush="{StaticResource BlueBorderBrush}"
                                         BorderThickness="1">
                                         <StackPanel Orientation="Horizontal">
@@ -1754,7 +1754,7 @@
                                     IsOpen="False"
                                     PlacementTarget="{Binding ElementName=PART_ToolBarGrid}">
                                     <Border
-                                        Background="{StaticResource PopupBackground}"
+                                        Background="{StaticResource ControlInteriorBrush}"
                                         BorderBrush="LightGray"
                                         BorderThickness="1">
                                         <StackPanel Orientation="Horizontal">

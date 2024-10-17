@@ -4,7 +4,7 @@
     xmlns:b="clr-namespace:Bobo">
 
 
-    <!--*********************************************** MetroTextBox*****************************************************-->
+    <!--  *********************************************** MetroTextBox*****************************************************  -->
 
     <Style
         x:Key="MetroTextBoxStyle"
@@ -33,7 +33,7 @@
             <Trigger Property="IsMouseOver" Value="False">
                 <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource BlueBorderBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WhiteForeground}"  />
+                <Setter Property="Foreground" Value="{DynamicResource WhiteForeground}" />
             </Trigger>
 
 

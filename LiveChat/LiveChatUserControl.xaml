@@ -1,13 +1,22 @@
 ﻿<UserControl
-    x:Class="Bobo.LiveChat.LiveChatUserControl"
+    x:Class="Bobo.LiveChatUserControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:skin="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+    xmlns:sync="http://schemas.syncfusion.com/wpf"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+
+    <!--  *************************************  RESOURCES  *******************************************  -->
+
+    <UserControl.Resources />
+
+    <!--  *************************************  RESOURCES  *******************************************  -->
+
     <Grid FocusManager.FocusedElement="{Binding ElementName=ChatInputTextBox}">
         <!--  Header section  -->
         <Grid.RowDefinitions>
@@ -36,7 +45,7 @@
             BorderThickness="0"
             IsEnabled="{Binding IsCommandNotBusy}">
             <ui:SimpleStackPanel
-                Background="#19000000"
+                Background="{StaticResource TransparentBrush}"
                 Orientation="Horizontal">
                 <ui:CommandBar
                     HorizontalAlignment="Left"
@@ -439,6 +448,7 @@
                             Margin="10,0,0,0"
                             Content="Female voice"
                             FontWeight="SemiBold"
+                            Foreground="{StaticResource FormForeground}"
                             IsChecked="{Binding IsFemaleVoice}" />
                     </StackPanel>
                 </Expander>
@@ -451,7 +461,7 @@
             Grid.ColumnSpan="4"
             Margin="0,5,0,0"
             Background="#19000000"
-            BorderBrush="Gray"
+            BorderBrush="Gray             "
             BorderThickness="0,1,0,0">
             <TextBlock
                 Margin="10,5,0,0"
