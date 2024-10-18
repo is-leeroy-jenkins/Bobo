@@ -17,7 +17,7 @@
     ResizeMode="NoResize"
     SnapsToDevicePixels="True"
     WindowStartupLocation="CenterScreen"
-    WindowStyle="None"
+    WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
 
     <!-- ************************************************* RESOURCES  ***************************************-->
@@ -27,6 +27,7 @@
 
         <Style TargetType="ToolTip">
             <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Margin" Value="10" />
             <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
             <Setter Property="Background" Value="{StaticResource BlackBackground}" />
             <Setter Property="Foreground" Value="{StaticResource LightBlueBrush}" />
@@ -46,6 +47,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Source="/Resources/Assets/DialogImages/SplashNotification.png" />
+        
         <b:MetroLabel
             x:Name="Header"
             Canvas.Left="35"
@@ -55,6 +57,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Foreground="{StaticResource WhiteForeground}" />
+        
         <b:MetroLabel
             x:Name="StatusLabel"
             Canvas.Left="523"
@@ -68,6 +71,7 @@
             Content="MetroLabel"
             FontSize="9"
             Foreground="{StaticResource WhiteForeground}" />
+        
         <b:MetroTextBox
             x:Name="MessageText"
             Canvas.Left="60"

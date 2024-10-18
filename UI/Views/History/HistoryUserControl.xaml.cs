@@ -11,6 +11,11 @@ namespace Bobo
     using ToastNotifications.Lifetime;
     using ToastNotifications.Position;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Controls.UserControl" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class HistoryUserControl : UserControl
     {
         /// <summary>

@@ -113,22 +113,6 @@ namespace Bobo
         };
 
         /// <summary>
-        /// Handles the exception.
-        /// </summary>
-        /// <param name="e">The e.</param>
-        private void HandleException( Exception e )
-        {
-            if( e == null )
-            {
-            }
-            else
-            {
-                Fail( e );
-                Environment.Exit( 1 );
-            }
-        }
-
-        /// <summary>
         /// Registers the theme.
         /// </summary>
         private void RegisterTheme( )
@@ -254,6 +238,22 @@ namespace Bobo
             catch( Exception )
             {
                 // Do Nothing
+            }
+        }
+
+        /// <summary>
+        /// Handles the exception.
+        /// </summary>
+        /// <param name="e">The e.</param>
+        private void HandleException( Exception e )
+        {
+            if( e == null )
+            {
+            }
+            else
+            {
+                Fail( e );
+                Environment.Exit( 1 );
             }
         }
 

@@ -60,6 +60,16 @@ namespace Bobo
         private protected string _appTitle;
 
         /// <summary>
+        /// The application version
+        /// </summary>
+        private protected Version _appVersion;
+
+        /// <summary>
+        /// The dot net version
+        /// </summary>
+        private protected Version _dotNetVersion;
+
+        /// <summary>
         /// The live chat view model
         /// </summary>
         private protected LiveChatViewModel _liveChatViewModel;
@@ -73,21 +83,23 @@ namespace Bobo
         /// Initializes a new instance of the
         /// <see cref="MainViewModel"/> class.
         /// </summary>
+        public MainViewModel( )
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="MainViewModel"/> class.
+        /// </summary>
         /// <param name="historyRepo">The history repo.</param>
         /// <param name="chatGptService">The chat GPT service.</param>
         public MainViewModel( IHistoryRepo historyRepo, ChatGptService chatGptService )
         {
             _historyViewModel = new HistoryViewModel( historyRepo );
             _liveChatViewModel = new LiveChatViewModel( historyRepo, chatGptService );
-
-            // <Version>1.3</Version> in .csproj
-            var _appVer = Assembly.GetExecutingAssembly( ).GetName( ).Version!;
-            var _dotnetVer = Environment.Version;
-            _appTitle =
-                $"C# WPF ChatGPT v{_appVer.Major}.{_appVer.Minor} (.NET {_dotnetVer.Major}.{_dotnetVer.Minor}.{_dotnetVer.Build} runtime) by Terry Eppler";
-#if DEBUG
-            AppTitle += " - DEBUG";
-#endif
+            _appVersion = Assembly.GetExecutingAssembly( ).GetName( ).Version;
+            _dotNetVersion = Environment.Version;
+            _appTitle = CreateVersion( );
         }
 
         /// <summary>
@@ -108,6 +120,50 @@ namespace Bobo
                 {
                     _appTitle = value;
                     OnPropertyChanged( nameof( AppTitle ) );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the application version.
+        /// </summary>
+        /// <value>
+        /// The application version.
+        /// </value>
+        public Version AppVersion
+        {
+            get
+            {
+                return _appVersion;
+            }
+            set
+            {
+                if( _appVersion != value )
+                {
+                    _appVersion = value;
+                    OnPropertyChanged( nameof( AppVersion ) );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the dot net version.
+        /// </summary>
+        /// <value>
+        /// The dot net version.
+        /// </value>
+        public Version DotNetVersion
+        {
+            get
+            {
+                return _dotNetVersion;
+            }
+            set
+            {
+                if( _dotNetVersion != value )
+                {
+                    _dotNetVersion = value;
+                    OnPropertyChanged( nameof( DotNetVersion ) );
                 }
             }
         }
@@ -156,6 +212,52 @@ namespace Bobo
                     OnPropertyChanged( nameof( HistoryViewModel ) );
                 }
             }
+        }
+
+        /// <summary>
+        /// Creates the version.
+        /// </summary>
+        /// <returns></returns>
+        private protected string CreateVersion( )
+        {
+            try
+            {
+                var _msg = $"{_appVersion.Major}.{_appVersion.Minor} (.NET {_dotNetVersion.Major}";
+                var _suff = $".{_dotNetVersion.Minor}.{_dotNetVersion.Build} runtime) by Terry Eppler";
+                return _msg + _suff;
+            }
+            catch( Exception ex )
+            {
+                Fail( ex );
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Handles the exception.
+        /// </summary>
+        /// <param name="e">The e.</param>
+        private void HandleException( Exception e )
+        {
+            if( e == null )
+            {
+            }
+            else
+            {
+                Fail( e );
+                Environment.Exit( 1 );
+            }
+        }
+
+        /// <summary>
+        /// Fails the specified ex.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
+        private static void Fail( Exception ex )
+        {
+            var _error = new ErrorWindow( ex );
+            _error?.SetText( );
+            _error?.ShowDialog( );
         }
     }
 }
