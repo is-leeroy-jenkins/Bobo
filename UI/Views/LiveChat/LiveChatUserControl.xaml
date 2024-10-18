@@ -194,7 +194,7 @@
                     VerticalAlignment="Top"
                     Content="Streaming Mode"
                     FontWeight="SemiBold"
-                    Foreground="{StaticResource WhiteForeground}"
+                    Foreground="{StaticResource LightBlueBrush}"
                     IsChecked="{Binding IsStreamingMode}"
                     Style="{DynamicResource CheckBoxStyle}"
                     ToolTip="Streaming Mode: return a piece at a time" />
@@ -221,13 +221,14 @@
             Grid.Column="0"
             Margin="0,0,0,2"
             Background="{StaticResource ControlBackground}"
-            BorderBrush="LightGray"
+            BorderBrush="{StaticResource BlueBorderBrush}"
             BorderThickness="0,1"
             IsEnabled="{Binding IsCommandNotBusy}"
             ItemsSource="{Binding ChatList}"
             ScrollViewer.CanContentScroll="True"
             ScrollViewer.IsDeferredScrollingEnabled="False"
             SelectedItem="{Binding SelectedChat}"
+
             SelectionMode="Single">
             <ui:ListView.ItemContainerStyle>
                 <Style TargetType="ui:ListViewItem">
@@ -355,6 +356,7 @@
                 VerticalAlignment="Center"
                 ui:ControlHelper.PlaceholderText="A place name, etc."
                 Background="{StaticResource ControlInteriorBrush}"
+                BorderBrush="{StaticResource BlueBorderBrush}"
                 FontSize="20"
                 Foreground="{StaticResource FormForeground}"
                 IsEnabled="{Binding IsCommandNotBusy}"
@@ -384,9 +386,10 @@
                 Grid.Column="1"
                 Height="40"
                 Margin="2,8,10,5"
-                Padding="10,0,10,3"
+                Padding="30,1,1,3"
                 Command="{Binding CreateImageCommand}"
                 Content="Image"
+                Header="Image"
                 FontSize="20"
                 IsEnabled="{Binding IsCommandNotBusy}"
                 ToolTip="Create an image by a name" />
@@ -484,7 +487,7 @@
 
             <!--  #08000000 ligher than #19000000  -->
             <!--  AcceptsReturn="True" needed for Paste from clipboard, MaxHeight for height limit  -->
-            <TextBox
+            <b:MetroTextBox
                 x:Name="ChatInputTextBox"
                 MaxHeight="170"
                 Margin="12,10,10,7"
@@ -492,6 +495,7 @@
                 VerticalAlignment="Stretch"
                 AcceptsReturn="False"
                 Background="{StaticResource ControlInteriorBrush}"
+                BorderBrush="{StaticResource BlueBorderBrush}"
                 FontSize="20"
                 IsEnabled="{Binding IsCommandNotBusy}"
                 SpellCheck.IsEnabled="True"
@@ -517,14 +521,18 @@
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
                 </TextBox.CaretBrush>
-            </TextBox>
+            </b:MetroTextBox>
 
             <StackPanel
                 Grid.Column="1"
                 Orientation="Horizontal">
                 <b:MetroButton
+                    x:Name="SendButton"
                     Height="32"
                     Margin="3,2,0,0"
+                    Padding="30,1,1,1"
+                    Header="Send"
+                    Foreground="{StaticResource LightBlueBrush}"
                     Command="{Binding SendCommand}"
                     Content="Send"
                     ToolTip="Enter is the same as Send" />
@@ -533,37 +541,49 @@
                     VerticalAlignment="Bottom"
                     ExpandDirection="Right"
                     IsExpanded="True">
+
                     <StackPanel
                         Margin="0,0,0,8"
                         Orientation="Horizontal">
+                        
                         <b:MetroButton
                             Margin="5,0,0,0"
                             Command="{Binding ExplainCommand}"
                             Content="Explain"
+                            Padding="30,1,1,1"
+                            Header="Explain"
                             IsEnabled="{Binding IsCommandNotBusy}"
                             ToolTip="Explain input (usually short like ML.NET)" />
+                        
                         <b:MetroButton
                             Margin="15,0,0,0"
+                            Padding="15,1,1,1"
                             Command="{Binding TranslateToCommand}"
                             Content="Translate to"
+                            Header="Translate to"
                             IsEnabled="{Binding IsCommandNotBusy}"
                             ToolTip="Translate input to selected language" />
-                        <b:MetroComboBox
+                        
+                        <b:MetroDropDown
                             Grid.Column="1"
                             Width="100"
                             Height="32"
                             Margin="10,0,0,0"
                             FontWeight="SemiBold"
+                            IsEditable="True"
                             IsEnabled="{Binding IsCommandNotBusy}"
                             ItemsSource="{Binding LangList}"
                             SelectedItem="{Binding SelectedLang}"
                             Style="{DynamicResource MetroComboBoxStyle}" />
+                        
                         <b:MetroButton
                             Margin="15,0,0,0"
                             Command="{Binding SpeakCommand}"
                             Content="Speak"
+                            Header="Speak"
                             IsEnabled="{Binding IsCommandNotBusy}"
                             ToolTip="Speak input (English only)" />
+                        
                         <CheckBox
                             Margin="10,0,0,0"
                             Content="Female voice"

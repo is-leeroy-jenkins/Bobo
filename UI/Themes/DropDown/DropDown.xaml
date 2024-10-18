@@ -8,8 +8,7 @@
     xmlns:theme="clr-namespace:Syncfusion.Themes.FluentDark.WPF"
     xmlns:wpf="clr-namespace:Syncfusion.Themes.FluentDark.WPF;assembly=Syncfusion.Themes.FluentDark.WPF">
 
-
-    <!--  *********************************************** MetroDropDown *****************************************************  -->
+    <!--*********************************************** MetroDropDown *****************************************************-->
 
     <Style
         x:Key="DropDownStyle"
@@ -49,7 +48,7 @@
     <!--  *********************************************** MetroDropDown *****************************************************  -->
 
     <Style
-        x:Key="DropDoownItemStyle"
+        x:Key="DropDownItemStyle"
         TargetType="{x:Type b:MetroDropDownItem}">
         <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ControlInteriorBrush}" />
@@ -59,7 +58,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="1" />
         <Setter Property="Margin" Value="1" />
-        <Setter Property="FontFamily" Value="Roboto-Regular" />
+        <Setter Property="FontFamily" Value="Roboto" />
         <Setter Property="FontSize" Value="11" />
 
         <Style.Triggers>

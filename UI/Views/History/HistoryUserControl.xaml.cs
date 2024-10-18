@@ -2,6 +2,7 @@
 namespace Bobo
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading;
     using System.Threading.Tasks;
     using System.Windows;
@@ -11,11 +12,14 @@ namespace Bobo
     using ToastNotifications.Lifetime;
     using ToastNotifications.Position;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    /// <seealso cref="System.Windows.Controls.UserControl" />
-    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
+    /// <seealso cref="T:System.Windows.Controls.UserControl" />
+    /// <seealso cref="T:System.Windows.Markup.IComponentConnector" />
+    [ SuppressMessage( "ReSharper", "RedundantExtendsListEntry" ) ]
+    [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public partial class HistoryUserControl : UserControl
     {
         /// <summary>
@@ -53,7 +57,11 @@ namespace Bobo
         /// </summary>
         private protected Action _statusUpdate;
 
-        public HistoryUserControl()
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="HistoryUserControl"/> class.
+        /// </summary>
+        public HistoryUserControl( )
         {
             InitializeComponent( );
         }
@@ -70,7 +78,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Fail( ex) ;
+                Fail( ex );
             }
         }
 
@@ -145,7 +153,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
                 return default( Notifier );
             }
         }
@@ -203,7 +211,7 @@ namespace Bobo
                     Dispatcher.BeginInvoke( action );
                 }
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
                 Fail(ex);
             }

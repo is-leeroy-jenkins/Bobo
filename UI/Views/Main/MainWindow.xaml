@@ -134,23 +134,28 @@
     <!--  ****************************************  LAYOUT *******************************************  -->
 
     <TabControl Background="{StaticResource FormBackground}">
+
         <TabItem
             x:Name="LiveChatTabItem"
             BorderBrush="{StaticResource FormBackground}"
             BorderThickness="1,1,1,0">
+
             <TabItem.Header>
                 <TextBlock
                     Margin="6,2"
-                    Foreground="{StaticResource BlueBorderBrush}"
+                    Foreground="{StaticResource FormForeground}"
                     Text="Live Chat" />
             </TabItem.Header>
+
             <views:LiveChatUserControl DataContext="{Binding LiveChatViewModel}" />
+
         </TabItem>
 
         <TabItem
             x:Name="HistoryTabItem"
             BorderBrush="{StaticResource FormBackground}"
             BorderThickness="1,1,1,0">
+
             <TabItem.Header>
                 <TextBlock
                     Margin="6,2"
