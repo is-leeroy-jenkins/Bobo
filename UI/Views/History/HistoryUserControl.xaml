@@ -9,7 +9,25 @@
     xmlns:ui="http://schemas.modernwpf.com/2019"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    sync:SfSkinManager.Theme="{skin:SkinManagerExtension ThemeName=FluentDark}"
     mc:Ignorable="d">
+
+    <!--  *************************************  RESOURCES  *******************************************  -->
+
+    <UserControl.Resources>
+
+        <Style TargetType="ToolTip">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
+            <Setter Property="Background" Value="{StaticResource BlackBackground}" />
+            <Setter Property="Foreground" Value="{StaticResource LightBlueBrush}" />
+        </Style>
+
+    </UserControl.Resources>
+
+    <!--  *********************************************  CONTEXT MENU *********************************************  -->
+
     <Grid>
         <!--  Header section  -->
         <Grid.RowDefinitions>
@@ -42,7 +60,7 @@
                     VerticalAlignment="Center"
                     FontSize="20"
                     Foreground="#FF0078D4"
-                    Text="{Binding DBConfigInfo, Mode=OneWay}" />
+                    Text="{Binding DbConfigInfo, Mode=OneWay}" />
             </ui:SimpleStackPanel>
         </Border>
 

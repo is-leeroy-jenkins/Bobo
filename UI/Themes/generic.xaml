@@ -1,6 +1,10 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="clr-namespace:Bobo">
+
+    <!--  ****************************************  STYLES  *******************************************  -->
+
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/UI/Themes/Colors.xaml" />
@@ -10,39 +14,23 @@
         <ResourceDictionary Source="/UI/Themes/Button/Button.xaml" />
         <ResourceDictionary Source="/UI/Themes/Button/ButtonAdv.xaml" />
         <ResourceDictionary Source="/UI/Themes/Button/MetroButton.xaml" />
-        <ResourceDictionary Source="/UI/Themes/Calculator/" />
         <ResourceDictionary Source="/UI/Themes/ComboBox/ComboBox.xaml" />
-        <ResourceDictionary Source="/UI/Themes/ComboBox/ComboBoxAdv.xaml" />
         <ResourceDictionary Source="/UI/Themes/ComboBox/MetroComboBox.xaml" />
         <ResourceDictionary Source="/UI/Themes/ListBox/ListBox.xaml" />
         <ResourceDictionary Source="/UI/Themes/ListView/ListView.xaml" />
         <ResourceDictionary Source="/UI/Themes/DropDown/DropDown.xaml" />
-        <ResourceDictionary Source="/UI/Themes/DropDown/DropDownButtonAdv.xaml" />
-        <ResourceDictionary Source="/UI/Themes/RichTextBox/ContextMenu.xaml" />
-        <ResourceDictionary Source="/UI/Themes/RichTextBox/Dialogs.xaml" />
-        <ResourceDictionary Source="/UI/Themes/RichTextBox/FormatDialogs.xaml" />
-        <ResourceDictionary Source="/UI/Themes/RichTextBox/MiniToolBar.xaml" />
-        <ResourceDictionary Source="/UI/Themes/RichTextBox/SfRichTextBoxCommon.xaml" />
-        <ResourceDictionary Source="/UI/Themes/RichTextBox/SfRichTextBoxAdv.xaml" />
-        <ResourceDictionary Source="/UI/Themes/RichTextBox/SfRichTextRibbon.xaml" />
-        <ResourceDictionary Source="/UI/Themes/RichTextBox/StyleDialogs.xaml" />
         <ResourceDictionary Source="/UI/Themes/TabControl/TabControl.xaml" />
         <ResourceDictionary Source="/UI/Themes/TabControl/BrowserTabItem.xaml" />
-        <ResourceDictionary Source="/UI/Themes/TabControl/TabControlExt.xaml" />
         <ResourceDictionary Source="/UI/Themes/TextBlock/TextBlock.xaml" />
         <ResourceDictionary Source="/UI/Themes/TextBox/TextBox.xaml" />
         <ResourceDictionary Source="/UI/Themes/TextBox/MetroTextBox.xaml" />
-        <ResourceDictionary Source="/UI/Themes/TextBox/MetroRichTextBox.xaml" />
-        <ResourceDictionary Source="/UI/Themes/TextBox/SfTextBoxExt.xaml" />
+        <ResourceDictionary Source="/UI/Themes/RichTextBox/MetroRichTextBox.xaml" />
         <ResourceDictionary Source="/UI/Themes/Tile/Tile.xaml" />
-        <ResourceDictionary Source="/UI/Themes/Tile/SfHubTile.xaml" />
-        <ResourceDictionary Source="/UI/Themes/Tile/SfPulsingTile.xaml" />
-        <ResourceDictionary Source="/UI/Themes/Tile/TileViewControl.xaml" />
         <ResourceDictionary Source="/UI/Themes/ToolStrip/MetroToolStrip.xaml" />
         <ResourceDictionary Source="/UI/Themes/ToolStrip/ToolStripButton.xaml" />
         <ResourceDictionary Source="/UI/Themes/ToolStrip/ToolStripDropDown.xaml" />
         <ResourceDictionary Source="/UI/Themes/ToolStrip/ToolStripTextBox.xaml" />
-        <ResourceDictionary Source="/UI/Themes/ToolTip/ToolTip.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

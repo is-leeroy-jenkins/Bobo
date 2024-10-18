@@ -60,6 +60,7 @@ namespace Bobo
     /// <seealso cref="T:System.Windows.Application" />
     [ SuppressMessage( "ReSharper", "RedundantExtendsListEntry" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public partial class App : Application
     {
         /// <summary>
@@ -128,27 +129,6 @@ namespace Bobo
         }
 
         /// <summary>
-        /// Setups the restore window place.
-        /// </summary>
-        /// <param name="mainWindow">
-        /// The main window.
-        /// </param>
-        private void SetupRestoreWindowPlace( MainWindow mainWindow )
-        {
-            var _config = Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "Bobo.config" );
-            _windowPlace = new WindowPlace( _config );
-            _windowPlace.Register( mainWindow );
-
-            // This logic works but I don't like the window being maximized
-            //if (!File.Exists(windowPlaceConfigFilePath))
-            //{
-            //    // For the first time, maximize the window, so it won't go off the screen on laptop
-            //    // WindowPlacement will take care of future runs
-            //    mainWindow.WindowState = WindowState.Maximized;
-            //}
-        }
-
-        /// <summary>
         /// Registers the theme.
         /// </summary>
         private void RegisterTheme( )
@@ -164,22 +144,55 @@ namespace Bobo
                 TitleFontSize = 14,
                 SubTitleFontSize = 16,
                 BodyAltFontSize = 11,
-                FontFamily = new FontFamily( "Roboto-Regular" )
+                FontFamily = new FontFamily( "Roboto" )
             };
 
             SfSkinManager.RegisterThemeSettings( "FluentDark", _theme );
             SfSkinManager.ApplyStylesOnApplication = true;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="App"/> class.
+        /// </summary>
+        public App( )
+        {
+            RegisterTheme( );
+            Startup += OnStartup;
+            Exit += OnExit;
+        }
+
+        /// <summary>
+        /// Setups the restore window place.
+        /// </summary>
+        /// <param name="mainWindow">
+        /// The main window.
+        /// </param>
+        private void SetupRestoreWindowPlace(MainWindow mainWindow)
+        {
+            var _config = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Bobo.config");
+            _windowPlace = new WindowPlace(_config);
+            _windowPlace.Register(mainWindow);
+
+            // This logic works but I don't like the window being maximized
+            //if (!File.Exists(windowPlaceConfigFilePath))
+            //{
+            //    // For the first time, maximize the window, so it won't go off the screen on laptop
+            //    // WindowPlacement will take care of future runs
+            //    mainWindow.WindowState = WindowState.Maximized;
+            //}
+        }
+
         /// <inheritdoc />
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Application.Startup" /> event.
         /// </summary>
-        /// <param name="e">A <see cref="T:System.Windows.StartupEventArgs" />
-        /// that contains the event data.</param>
-        protected override void OnStartup( StartupEventArgs e )
+        /// <param name="e">A
+        /// <see cref="T:System.Windows.StartupEventArgs" />
+        /// that contains the event data.
+        /// </param>
+        protected void OnStartup( object sender, StartupEventArgs e )
         {
-            base.OnStartup( e );
             try
             {
                 var _key = ConfigurationManager.AppSettings[ "UI" ];
@@ -192,11 +205,9 @@ namespace Bobo
                 AppDomain.CurrentDomain.UnhandledException += ( s, args ) =>
                     HandleException( args.ExceptionObject as Exception );
 
-                RegisterTheme( );
-
-                // TODO 1: See README.md and get your OpenAI API key: https://platform.openai.com/account/api-keys
+                // TODO 1: Get your OpenAI API key: https://platform.openai.com/account/api-keys
                 string _openaiApiKey;
-                if( e.Args?.Length > 0
+                if(e.Args?.Length > 0
                     && e.Args[ 0 ].StartsWith( '/' ) )
                 {
                     // OpenAI API key from command line parameter
@@ -212,13 +223,12 @@ namespace Bobo
 
                 // Programmatically switch between SqlHistoryRepo and EmptyHistoryRepo
                 // If you have configured SQL Server, try SqlHistoryRepo
-                //IHistoryRepo historyRepo = new SqlHistoryRepo();
+                // IHistoryRepo historyRepo = new SqlHistoryRepo();
                 IHistoryRepo _historyRepo = new EmptyHistoryRepo( );
                 var _chatGptService = new ChatGptService( _openaiApiKey );
                 var _mainViewModel = new MainViewModel( _historyRepo, _chatGptService );
                 var _mainWindow = new MainWindow( _mainViewModel );
                 SetupRestoreWindowPlace( _mainWindow );
-                _mainWindow.Show( );
             }
             catch( Exception ex )
             {
@@ -231,11 +241,11 @@ namespace Bobo
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Application.Exit" /> event.
         /// </summary>
+        /// <param name = "sender" > </param>
         /// <param name="e">An <see cref="T:System.Windows.ExitEventArgs" />
         /// that contains the event data.</param>
-        protected override void OnExit( ExitEventArgs e )
+        private protected void OnExit( object sender, ExitEventArgs e )
         {
-            base.OnExit( e );
             try
             {
                 _windowPlace?.Save( );
@@ -243,6 +253,7 @@ namespace Bobo
             }
             catch( Exception )
             {
+                // Do Nothing
             }
         }
 

@@ -1,13 +1,14 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 10-16-2024
+//     Created:                 10-18-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        10-16-2024
+//     Last Modified On:        10-18-2024
 // ******************************************************************************************
-// <copyright file="UpdateUIEnum.cs" company="Terry D. Eppler">
-//    A windows presentation foundation (WPF) app to communicate with the Chat GPT-3.5 Turbo API
+// <copyright file="ViewModelBase.cs" company="Terry D. Eppler">
+//    A windows presentation foundation (WPF) application for communication
+//    with the Chat GPT-3.5 Turbo API and Chat GPT-4
 // 
 //    Copyright ©  2020-2024 Terry D. Eppler
 // 
@@ -34,30 +35,36 @@
 //    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   UpdateUIEnum.cs
+//   ViewModelBase.cs
 // </summary>
 // ******************************************************************************************
 
 namespace Bobo
 {
+    using System.ComponentModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Runtime.CompilerServices;
+
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    public enum InterfaceUpdate
+    /// <seealso cref="T:System.ComponentModel.INotifyPropertyChanged" />
+    [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
+        /// <inheritdoc />
         /// <summary>
-        /// The set focus to chat input
+        /// Occurs when a property value changes.
         /// </summary>
-        SetFocusToChatInput,
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// The setup message ListView scroll viewer
+        /// Called when [property changed].
         /// </summary>
-        SetupMessageListViewScrollViewer,
-
-        /// <summary>
-        /// The message ListView scroll to bottom
-        /// </summary>
-        MessageListViewScrollToBottom
+        /// <param name="propertyName">Name of the property.</param>
+        protected void OnPropertyChanged( [ CallerMemberName ] string propertyName = null )
+        {
+            PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
+        }
     }
 }

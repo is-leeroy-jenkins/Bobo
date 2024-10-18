@@ -41,19 +41,21 @@
 namespace Bobo
 {
     using System;
+    using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Net;
     using System.Net.NetworkInformation;
     using System.Net.Sockets;
+    using System.Runtime.CompilerServices;
     using System.Text;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
     [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
-    public abstract class ClientBase
+    public abstract class ClientBase : INotifyPropertyChanged
     {
         /// <summary>
         /// The busy
@@ -93,7 +95,7 @@ namespace Bobo
         /// <summary>
         /// The locked object
         /// </summary>
-        private protected object _path;
+        private protected object _entry = new object( );
 
         /// <summary>
         /// The port
@@ -104,6 +106,12 @@ namespace Bobo
         /// The socket
         /// </summary>
         private protected Socket _socket;
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Pings the network.
@@ -158,24 +166,13 @@ namespace Bobo
         /// <summary>
         /// Begins the initialize.
         /// </summary>
-        private protected void BeginInit( )
+        private protected void Busy( )
         {
             try
             {
-                if( _path == null )
+                lock( _entry )
                 {
-                    _path = new object( );
-                    lock( _path )
-                    {
-                        _busy = true;
-                    }
-                }
-                else
-                {
-                    lock( _path )
-                    {
-                        _busy = true;
-                    }
+                    _busy = true;
                 }
             }
             catch( Exception ex )
@@ -187,24 +184,13 @@ namespace Bobo
         /// <summary>
         /// Ends the initialize.
         /// </summary>
-        private protected void EndInit( )
+        private protected void Chill( )
         {
             try
             {
-                if( _path == null )
+                lock( _entry )
                 {
-                    _path = new object( );
-                    lock( _path )
-                    {
-                        _busy = false;
-                    }
-                }
-                else
-                {
-                    lock( _path )
-                    {
-                        _busy = false;
-                    }
+                    _busy = false;
                 }
             }
             catch( Exception ex )
@@ -236,7 +222,7 @@ namespace Bobo
         {
             get
             {
-                lock( _path )
+                lock( _entry )
                 {
                     return _busy;
                 }
@@ -261,6 +247,15 @@ namespace Bobo
             {
                 _connected = value;
             }
+        }
+
+        /// <summary>
+        /// Called when [property changed].
+        /// </summary>
+        /// <param name="propertyName">Name of the property.</param>
+        protected void OnPropertyChanged( [ CallerMemberName ] string propertyName = null )
+        {
+            PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
         }
     }
 }

@@ -3,6 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:progressbar="clr-namespace:Syncfusion.UI.Xaml.ProgressBar;assembly=Syncfusion.SfProgressBar.WPF"
     xmlns:sfskin="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF">
+
+    <!--  ****************************************  RESOURCES  *******************************************  -->
+
     <ResourceDictionary.MergedDictionaries>
         <sfskin:ResourceDictionaryProvider
             DictionaryName="Common"
@@ -15,17 +18,17 @@
     <Style
         x:Key="SyncfusionSfCircularProgressBarStyle"
         TargetType="{x:Type progressbar:SfCircularProgressBar}">
-        <Setter Property="ProgressColor" Value="{StaticResource PrimaryBackground}" />
-        <Setter Property="SecondaryProgressColor" Value="{StaticResource ContentForeground}" />
-        <Setter Property="TrackColor" Value="{StaticResource BorderAlt}" />
-        <Setter Property="FontFamily" Value="{StaticResource FluentDark.ThemeFontFamily}" />
-        <Setter Property="FontWeight" Value="{StaticResource FluentDark.FontWeightNormal}" />
+        <Setter Property="ProgressColor" Value="{StaticResource BrightGreenForeground}" />
+        <Setter Property="SecondaryProgressColor" Value="{StaticResource BlueBorderBrush}" />
+        <Setter Property="TrackColor" Value="{StaticResource BlueBorderBrush}" />
+        <Setter Property="FontFamily" Value="Roboto" />
+        <Setter Property="FontWeight" Value="12" />
         <Setter Property="IndicatorCornerRadius" Value="0" />
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="ProgressColor" Value="{StaticResource BorderAlt}" />
-                <Setter Property="SecondaryProgressColor" Value="{StaticResource BorderAlt}" />
-                <Setter Property="TrackColor" Value="{StaticResource BorderAlt}" />
+                <Setter Property="ProgressColor" Value="{StaticResource BlueBorderBrush}" />
+                <Setter Property="SecondaryProgressColor" Value="{StaticResource BlueBorderBrush}" />
+                <Setter Property="TrackColor" Value="{StaticResource BlueBorderBrush}" />
                 <Setter Property="IndicatorCornerRadius" Value="0" />
             </Trigger>
         </Style.Triggers>

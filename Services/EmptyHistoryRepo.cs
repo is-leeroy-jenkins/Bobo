@@ -42,11 +42,14 @@
 namespace Bobo
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    /// <seealso cref="Bobo.IHistoryRepo" />
+    /// <seealso cref="T:Bobo.IHistoryRepo" />
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
     public class EmptyHistoryRepo : IHistoryRepo
     {
         /// <summary>
@@ -55,20 +58,22 @@ namespace Bobo
         private List<Chat> _chatList;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmptyHistoryRepo"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="EmptyHistoryRepo"/> class.
         /// </summary>
         public EmptyHistoryRepo( )
         {
             _chatList = new List<Chat>( );
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Gets the database configuration information.
         /// </summary>
         /// <value>
         /// The database configuration information.
         /// </value>
-        public string DBConfigInfo
+        public string DbConfigInfo
         {
             get
             {
@@ -76,6 +81,7 @@ namespace Bobo
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Loads the chat list.
         /// </summary>
@@ -88,6 +94,7 @@ namespace Bobo
         }
 
         // chat.Id remains as 0
+        /// <inheritdoc />
         /// <summary>
         /// Adds the chat.
         /// </summary>
@@ -96,6 +103,7 @@ namespace Bobo
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Deletes the chat.
         /// </summary>
@@ -109,24 +117,24 @@ namespace Bobo
         /// </summary>
         private void DevDebugInitializeChatList( )
         {
-            var prompt = "TestPrompt1";
-            var promptDisplay = prompt;
-            var newMessage = new Message( "Me", promptDisplay );
-            var chat = new Chat( prompt );
-            chat.AddMessage( newMessage );
+            var _prompt = "TestPrompt1";
+            var _promptDisplay = _prompt;
+            var _newMessage = new Message( "Me", _promptDisplay );
+            var _chat = new Chat( _prompt );
+            _chat.AddMessage( _newMessage );
 
             //string result = "TestPrompt1 result";
-            chat.AddMessage( "Bot",
+            _chat.AddMessage( "Bot",
                 "TestPrompt1 result" );//.Replace("Bot: ", string.Empty));            
 
-            _chatList.Add( chat );
-            prompt = "TestPrompt2";
-            promptDisplay = prompt;
-            newMessage = new Message( "Me", promptDisplay );
-            chat = new Chat( prompt );
-            chat.AddMessage( newMessage );
-            chat.AddMessage( "Bot", "TestPrompt2 result" );
-            _chatList.Add( chat );
+            _chatList.Add( _chat );
+            _prompt = "TestPrompt2";
+            _promptDisplay = _prompt;
+            _newMessage = new Message( "Me", _promptDisplay );
+            _chat = new Chat( _prompt );
+            _chat.AddMessage( _newMessage );
+            _chat.AddMessage( "Bot", "TestPrompt2 result" );
+            _chatList.Add( _chat );
         }
     }
 }

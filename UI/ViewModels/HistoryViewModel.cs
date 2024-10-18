@@ -48,10 +48,10 @@ namespace Bobo
     using CommunityToolkit.Mvvm.Input;
     using CommunityToolkit.Mvvm.Messaging;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    /// <seealso cref="CommunityToolkit.Mvvm.ComponentModel.ObservableObject" />
+    /// <seealso cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservableObject" />
     public partial class HistoryViewModel : ObservableObject
     {
         /// <summary>
@@ -80,7 +80,7 @@ namespace Bobo
         {
             get
             {
-                return _historyRepo.DBConfigInfo;
+                return _historyRepo.DbConfigInfo;
             }
         }
 
@@ -160,12 +160,11 @@ namespace Bobo
         {
             if( SelectedChat != null )
             {
-                var meIndex = SelectedChat.MessageList.IndexOf( message ) - 1;
-                if( meIndex >= 0 )
+                var _meIndex = SelectedChat.MessageList.IndexOf( message ) - 1;
+                if( _meIndex >= 0 )
                 {
-                    Clipboard.SetText(
-                        $"Me: {SelectedChat.MessageList[ meIndex ].Text}\n\n{message.Text}" );
-
+                    var _msg = $"Me: {SelectedChat.MessageList[ _meIndex ].Text}\n\n{message.Text}";
+                    Clipboard.SetText( _msg );
                     StatusMessage = "Both Me and Bot messages copied to clipboard";
                 }
             }
@@ -178,10 +177,9 @@ namespace Bobo
         /// <returns></returns>
         private bool ConfirmDelete( Chat chat )
         {
-            return MessageBox.Show(
-                    $"Are you sure you want to delete '{chat.Name}' (PK: {chat.Id})",
-                    "Confirm Delete",
-                    MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No )
+            var _msg = $"Are you sure you want to delete '{chat.Name}' (PK: {chat.Id})";
+            return MessageBox.Show( _msg, "Confirm Delete", MessageBoxButton.YesNo, 
+                    MessageBoxImage.Question, MessageBoxResult.No )
                 == MessageBoxResult.Yes;
         }
     }

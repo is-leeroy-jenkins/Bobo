@@ -56,38 +56,117 @@ namespace Bobo
     using Whetstone.ChatGPT;
 
     // C# .NET 6 / 8 WPF, Whetstone ChatGPT, CommunityToolkit MVVM, ModernWpfUI, RestoreWindowPlace
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    /// <seealso cref="CommunityToolkit.Mvvm.ComponentModel.ObservableObject" />
+    /// <seealso cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservableObject" />
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     public partial class LiveChatViewModel : ObservableObject
     {
         /// <summary>
         /// The history repo
         /// </summary>
-        private IHistoryRepo _historyRepo;
+        private protected IHistoryRepo _historyRepo;
 
         /// <summary>
         /// The chat GPT service
         /// </summary>
-        private ChatGptService _chatGptService;
+        private protected ChatGptService _chatGptService;
 
         /// <summary>
         /// The live chat manager
         /// </summary>
-        private LiveChatManager _liveChatManager = new LiveChatManager( );
+        private protected LiveChatManager _liveChatManager = new LiveChatManager( );
 
         /// <summary>
         /// The chat input list
         /// </summary>
-        private List<string> _chatInputList = new List<string>( );
+        private protected List<string> _chatInputList = new List<string>( );
 
         /// <summary>
         /// The chat input list index
         /// </summary>
-        private int _chatInputListIndex = -1;
+        private protected int _chatInputListIndex = -1;
+
+        /// <summary>
+        /// The chat list
+        /// </summary>
+        private protected ObservableCollection<Chat> _chatList;
+
+        /// <summary>
+        /// The is command busy
+        /// </summary>
+        [ObservableProperty]
+        private protected bool _isCommandBusy;
+
+        /// <summary>
+        /// The selected chat
+        /// </summary>
+        [ObservableProperty]
+        private protected Chat _selectedChat;
+
+        /// <summary>
+        /// The selected language
+        /// </summary>
+        private protected string _selectedLang;
+
+        /// <summary>
+        /// The chat input
+        /// </summary>
+        [ObservableProperty]
+        private protected string _chatInput;
+
+        /// <summary>
+        /// The image pane visibility
+        /// </summary>
+        [ObservableProperty]
+        private protected Visibility _imagePaneVisibility = Visibility.Collapsed;
+
+        /// <summary>
+        /// The image input
+        /// </summary>
+        [ObservableProperty]
+        private protected string _imageInput = "A tennis court";
+
+        /// <summary>
+        /// The is streaming mode
+        /// </summary>
+        [ ObservableProperty ]
+        private protected bool _isStreamingMode = true;
+
+        /// <summary>
+        /// The is female voice
+        /// </summary>
+        [ ObservableProperty ]
+        private protected bool _isFemaleVoice = true;
+
+        /// <summary>
+        /// The status message
+        /// </summary>
+        [ ObservableProperty ]
+        private protected string _statusMessage =
+            "Ctrl+Enter for input of multiple lines. Enter-Key to send."
+            + " Ctrl+UpArrow | DownArrow to navigate previous input lines";
+
+        /// <summary>
+        /// The result image
+        /// </summary>
+        private protected byte[ ] _resultImage;
+
+        /// <summary>
+        /// The add to history button enabled
+        /// </summary>
+        private protected bool _addToHistoryButtonEnabled;
+
+        /// <summary>
+        /// The update delegate
+        /// </summary>
+        private protected Action<InterfaceUpdate> _updateDelegate;
 
         /// <summary>
         /// Initializes a new instance of the
@@ -99,12 +178,26 @@ namespace Bobo
         {
             _historyRepo = historyRepo;
             _chatGptService = chatGptService;
-            SelectedChat = _liveChatManager.AddNewChat( );
-            ChatList = new ObservableCollection<Chat>( _liveChatManager.ChatList );
-            ChatInput = "Please list top 5 ChatGPT prompts";
+            _selectedChat = _liveChatManager.AddNewChat( );
+            _chatList = new ObservableCollection<Chat>( _liveChatManager.ChatList );
+            _chatInput = "Please list top 5 ChatGPT prompts";
 
             // Uncomment this to insert testing data
             // DevDebugInitialize();
+        }
+
+        /// <summary>
+        /// Initializes the delegates.
+        /// </summary>
+        private protected void InitializeDelegates( )
+        {
+            try
+            {
+            }
+            catch( Exception ex )
+            {
+                Fail( ex );
+            }
         }
 
         /// <summary>
@@ -113,7 +206,17 @@ namespace Bobo
         /// <value>
         /// The update UI action.
         /// </value>
-        public Action<InterfaceUpdate> UpdateUIAction { get; set; }
+        public Action<InterfaceUpdate> UpdateDelegate
+        {
+            get
+            {
+                return _updateDelegate;
+            }
+            set
+            {
+                _updateDelegate = value;
+            }
+        }
 
         /// <summary>
         /// Gets a value indicating whether this instance is command not busy.
@@ -131,60 +234,52 @@ namespace Bobo
         }
 
         /// <summary>
-        /// The is command busy
-        /// </summary>
-        [ ObservableProperty ]
-        private bool _isCommandBusy;
-
-        /// <summary>
         /// Gets the chat list.
         /// </summary>
         /// <value>
         /// The chat list.
         /// </value>
-        public ObservableCollection<Chat> ChatList { get; }
-
-        /// <summary>
-        /// The selected chat
-        /// </summary>
-        [ ObservableProperty ]
-        private Chat _selectedChat;
-
-        /// <summary>
-        /// The chat input
-        /// </summary>
-        [ ObservableProperty ]
-        private string _chatInput;
-
-        /// <summary>
-        /// The image pane visibility
-        /// </summary>
-        [ ObservableProperty ]
-        private Visibility _imagePaneVisibility = Visibility.Collapsed;
-
-        /// <summary>
-        /// The image input
-        /// </summary>
-        [ ObservableProperty ]
-        private string _imageInput = "A tennis court";
+        public ObservableCollection<Chat> ChatList
+        {
+            get
+            {
+                return _chatList;
+            }
+            set
+            {
+                _chatList = value;
+            }
+        }
 
         /// <summary>
         /// The result image
         /// </summary>
-        [ ObservableProperty ]
-        public byte[ ] ResultImage;
+        public byte[ ] ResultImage
+        {
+            get
+            {
+                return _resultImage;
+            }
+            set
+            {
+                _resultImage = value;
+            }
+        }
 
         /// <summary>
         /// The add to history button enabled
         /// </summary>
-        [ ObservableProperty ]
-        public bool AddToHistoryButtonEnabled;
-
-        /// <summary>
-        /// The is streaming mode
-        /// </summary>
-        [ ObservableProperty ]
-        private bool _isStreamingMode = true;
+        public bool AddToHistoryButtonEnabled
+        {
+            get
+            {
+                return _addToHistoryButtonEnabled;
+            }
+            set
+            {
+                _addToHistoryButtonEnabled = value;
+            }
+        }
 
         /// <summary>
         /// Gets the language list.
@@ -203,21 +298,17 @@ namespace Bobo
         /// <summary>
         /// The selected language
         /// </summary>
-        [ ObservableProperty ]
-        public string SelectedLang = "Spanish";
-
-        /// <summary>
-        /// The is female voice
-        /// </summary>
-        [ ObservableProperty ]
-        private bool _isFemaleVoice = true;
-
-        /// <summary>
-        /// The status message
-        /// </summary>
-        [ ObservableProperty ]
-        private string _statusMessage =
-            "Ctrl+Enter for input of multiple lines. Enter-Key to send. Ctrl+UpArrow | DownArrow to navigate previous input lines";
+        public string SelectedLang
+        {
+            get
+            {
+                return _selectedLang;
+            }
+            set
+            {
+                _selectedLang = value;
+            }
+        }
 
         // Also RelayCommand from AppBar
         /// <summary>
@@ -230,16 +321,16 @@ namespace Bobo
             {
                 if( !AddNewChatIfNotExists( ) )
                 {
-                    StatusMessage = "'New Chat' already exists";
+                    _statusMessage = "'New Chat' already exists";
                     return;
                 }
 
-                UpdateUIAction?.Invoke( InterfaceUpdate.SetFocusToChatInput );
-                StatusMessage = "'New Chat' has been added and selected";
+                _updateDelegate?.Invoke( InterfaceUpdate.SetFocusToChatInput );
+                _statusMessage = "'New Chat' has been added and selected";
             }
             catch( Exception ex )
             {
-                StatusMessage = ex.Message;
+                _statusMessage = ex.Message;
             }
         }
 
@@ -251,19 +342,19 @@ namespace Bobo
             var _prompt = "TestPrompt1";
             var _promptDisplay = _prompt;
             var _newMessage = new Message( "Me", _promptDisplay );
-            SelectedChat.AddMessage( _newMessage );
+            _selectedChat.AddMessage( _newMessage );
             var _result = "TestPrompt1 result";
-            SelectedChat.AddMessage( "Bot", _result.Replace( "Bot: ", string.Empty ) );
+            _selectedChat.AddMessage( "Bot", _result.Replace( "Bot: ", string.Empty ) );
             PostProcessOnSend( _prompt );
             var _newChat = _liveChatManager.AddNewChat( );
-            ChatList.Add( _newChat );
-            SelectedChat = _newChat;
+            _chatList.Add( _newChat );
+            _selectedChat = _newChat;
             _prompt = "TestPrompt2";
             _promptDisplay = _prompt;
             _newMessage = new Message( "Me", _promptDisplay );
-            SelectedChat.AddMessage( _newMessage );
+            _selectedChat.AddMessage( _newMessage );
             _result = "TestPrompt2 result";
-            SelectedChat.AddMessage( "Bot", _result.Replace( "Bot: ", string.Empty ) );
+            _selectedChat.AddMessage( "Bot", _result.Replace( "Bot: ", string.Empty ) );
             PostProcessOnSend( _prompt );
         }
 
@@ -280,8 +371,8 @@ namespace Bobo
 
             // Note: 'New Chat' will be renamed after it's used
             var _newChat = _liveChatManager.AddNewChat( );
-            ChatList.Add( _newChat );
-            SelectedChat = _newChat;
+            _chatList.Add( _newChat );
+            _selectedChat = _newChat;
             return true;
         }
 
@@ -294,10 +385,10 @@ namespace Bobo
         {
             if( _chatInputList.IsNotEmpty( ) )
             {
-                if( ChatInput.IsBlank( ) )
+                if( _chatInput.IsBlank( ) )
                 {
                     // Pick the just used last one
-                    ChatInput = _chatInputList[ _chatInputList.Count - 1 ];
+                    _chatInput = _chatInputList[ _chatInputList.Count - 1 ];
                     _chatInputListIndex = _chatInputList.Count - 1;
                 }
                 else
@@ -327,9 +418,9 @@ namespace Bobo
                 }
 
                 // Bind ChatInput
-                if( !ChatInput.Equals( _chatInputList[ _chatInputListIndex ] ) )
+                if( !_chatInput.Equals( _chatInputList[ _chatInputListIndex ] ) )
                 {
-                    ChatInput = _chatInputList[ _chatInputListIndex ];
+                    _chatInput = _chatInputList[ _chatInputListIndex ];
                 }
             }
         }
@@ -346,7 +437,7 @@ namespace Bobo
 
             // Add chat to HistoryViewModel
             WeakReferenceMessenger.Default.Send( new AddChatMessage( chat ) );
-            StatusMessage = $"'{chat.Name}' (PK: {chat.Id}) added to History tab";
+            _statusMessage = $"'{chat.Name}' (PK: {chat.Id}) added to History tab";
         }
 
         // If DB is configured, chat.Id will be PK (i.e. DB insert already called)    
@@ -359,13 +450,14 @@ namespace Bobo
             if( chat.Id == 0 )
             {
                 // DB not configured, assign a max + 1
-                chat.Id = ChatList.Count == 0
+                chat.Id = _chatList.Count == 0
                     ? 1
-                    : ChatList.Max( x => x.Id ) + 1;
+                    : _chatList.Max( x => x.Id ) + 1;
             }
         }
 
-        // Both XAML (important DataContext in DataContext.CopyMessageCommand) binding and menu item
+        // Both XAML (important DataContext in DataContext.CopyMessageCommand)
+        //  binding and menu item
         /// <summary>
         /// Copies the message.
         /// </summary>
@@ -373,18 +465,17 @@ namespace Bobo
         [ RelayCommand ]
         public void CopyMessage( Message message )
         {
-            var _meIndex = SelectedChat.MessageList.IndexOf( message ) - 1;
+            var _meIndex = _selectedChat.MessageList.IndexOf( message ) - 1;
             if( _meIndex >= 0 )
             {
-                Clipboard.SetText(
-                    $"Me: {SelectedChat.MessageList[ _meIndex ].Text}\n\n{message.Text}" );
-
-                StatusMessage = "Both Me and Bot messages copied to clipboard";
+                var _msg = $"Me: {_selectedChat.MessageList[ _meIndex ].Text}\n\n{message.Text}";
+                Clipboard.SetText( _msg );
+                _statusMessage = "Both Me and Bot messages copied to clipboard";
             }
             else
             {
                 Clipboard.SetText( $"Me: {message.Text}" );
-                StatusMessage = "Me message copied to clipboard";
+                _statusMessage = "Me message copied to clipboard";
             }
         }
 
@@ -394,12 +485,12 @@ namespace Bobo
         [ RelayCommand ]
         private async Task Send( )
         {
-            if( IsCommandBusy )
+            if( _isCommandBusy )
             {
                 return;
             }
 
-            if( !ValidateInput( ChatInput, out var _prompt ) )
+            if( !ValidateInput( _chatInput, out var _prompt ) )
             {
                 return;
             }
@@ -418,20 +509,20 @@ namespace Bobo
                 }
 
                 PostProcessOnSend( _prompt );
-                StatusMessage = "Ready";
+                _statusMessage = "Ready";
             }
             catch( Exception ex )
             {
-                StatusMessage = ex.Message;
+                _statusMessage = ex.Message;
             }
 
             SetCommandBusy( false, true );
 
             // Always set focus to ChatInput after Send()
-            UpdateUIAction?.Invoke( InterfaceUpdate.SetFocusToChatInput );
+            _updateDelegate?.Invoke( InterfaceUpdate.SetFocusToChatInput );
 
             // Always ScrollToBottom
-            UpdateUIAction?.Invoke( InterfaceUpdate.MessageListViewScrollToBottom );
+            _updateDelegate?.Invoke( InterfaceUpdate.MessageListViewScrollToBottom );
         }
 
         /// <summary>
@@ -449,7 +540,7 @@ namespace Bobo
         [ RelayCommand ]
         private async Task TranslateTo( )
         {
-            await ExecutePost( $"Translate to {SelectedLang}" );
+            await ExecutePost( $"Translate to {_selectedLang}" );
         }
 
         /// <summary>
@@ -458,12 +549,12 @@ namespace Bobo
         /// <param name="prefix">The prefix.</param>
         private async Task ExecutePost( string prefix )
         {
-            if( IsCommandBusy )
+            if( _isCommandBusy )
             {
                 return;
             }
 
-            if( !ValidateInput( ChatInput, out var _prompt ) )
+            if( !ValidateInput( _chatInput, out var _prompt ) )
             {
                 return;
             }
@@ -479,21 +570,21 @@ namespace Bobo
                 PostProcessOnSend( _prompt );
 
                 // Ensure this is marked for logic in BuildPreviousPrompts()
-                SelectedChat.IsSend = false;
-                StatusMessage = "Ready";
+                _selectedChat.IsSend = false;
+                _statusMessage = "Ready";
             }
             catch( Exception ex )
             {
-                StatusMessage = ex.Message;
+                _statusMessage = ex.Message;
             }
 
             SetCommandBusy( false );
 
             // Always set focus to ChatInput after Send()
-            UpdateUIAction?.Invoke( InterfaceUpdate.SetFocusToChatInput );
+            _updateDelegate?.Invoke( InterfaceUpdate.SetFocusToChatInput );
 
             // Always ScrollToBottom
-            UpdateUIAction?.Invoke( InterfaceUpdate.MessageListViewScrollToBottom );
+            _updateDelegate?.Invoke( InterfaceUpdate.MessageListViewScrollToBottom );
         }
 
         /// <summary>
@@ -518,20 +609,20 @@ namespace Bobo
                     : VoiceGender.Male, VoiceAge.Adult );
 
                 // Asynchronous / Synchronous
-                _synthesizer.SpeakAsync( ChatInput );
+                _synthesizer.SpeakAsync( _chatInput );
 
                 //synthesizer.Speak(ChatInput);
-                StatusMessage = "Done";
+                _statusMessage = "Done";
             }
             catch( Exception ex )
             {
-                StatusMessage = ex.Message;
+                _statusMessage = ex.Message;
             }
 
             SetCommandBusy( false );
 
             // Always set focus to ChatInput
-            UpdateUIAction?.Invoke( InterfaceUpdate.SetFocusToChatInput );
+            _updateDelegate?.Invoke( InterfaceUpdate.SetFocusToChatInput );
         }
 
         /// <summary>
@@ -545,7 +636,7 @@ namespace Bobo
             prompt = input.Trim( );
             if( prompt.Length < 2 )
             {
-                StatusMessage = "Prompt must be at least 2 characters";
+                _statusMessage = "Prompt must be at least 2 characters";
                 return false;
             }
 
@@ -560,15 +651,15 @@ namespace Bobo
         private string BuildPreviousPrompts( )
         {
             var _previousPrompts = string.Empty;
-            if( !SelectedChat.IsSend )
+            if( !_selectedChat.IsSend )
             {
                 // We are on 'Explain' or 'Translate to', so auto-create a new chat
                 AddNewChatIfNotExists( );
             }
-            else if( SelectedChat.MessageList.IsNotEmpty( ) )
+            else if( _selectedChat.MessageList.IsNotEmpty( ) )
             {
                 // Continue with previous chat by sending previousPrompts
-                foreach( var _message in SelectedChat.MessageList )
+                foreach( var _message in _selectedChat.MessageList )
                 {
                     _previousPrompts += $"{_message.Sender}: {_message.Text}";
                 }
@@ -585,8 +676,8 @@ namespace Bobo
         private async Task Send( string prompt, string promptDisplay )
         {
             var _newMessage = new Message( "Me", promptDisplay );
-            SelectedChat.AddMessage( _newMessage );
-            StatusMessage = "Talking to ChatGPT API...please wait";
+            _selectedChat.AddMessage( _newMessage );
+            _statusMessage = "Talking to ChatGPT API...please wait";
             if( IsStreamingMode )
             {
                 await SendStreamingMode( prompt );
@@ -594,11 +685,11 @@ namespace Bobo
             else
             {
                 var _result = await DoSend( prompt );
-                SelectedChat.AddMessage( "Bot", _result.Replace( "Bot: ", string.Empty ) );
+                _selectedChat.AddMessage( "Bot", _result.Replace( "Bot: ", string.Empty ) );
             }
 
             // Clear the ChatInput field
-            ChatInput = string.Empty;
+            _chatInput = string.Empty;
         }
 
         /// <summary>
@@ -621,7 +712,7 @@ namespace Bobo
         private async Task SendStreamingMode( string prompt )
         {
             // Append with message.Text below
-            var _message = SelectedChat.AddMessage( "Bot", string.Empty );
+            var _message = _selectedChat.AddMessage( "Bot", string.Empty );
 
             // GPT-3.5
             await foreach( var _response in _chatGptService.StreamChatCompletionAsync( prompt )
@@ -642,11 +733,12 @@ namespace Bobo
         private void PostProcessOnSend( string prompt )
         {
             // Handle new chat
-            if( _liveChatManager.IsNewChat( SelectedChat.Name ) )
+            if( _liveChatManager.IsNewChat( _selectedChat.Name ) )
             {
-                // After this call, SelectedChat.Name updated on the left panel because SelectedChat is/wraps the new chat                
+                // After this call, SelectedChat.Name updated on the
+                // left panel because SelectedChat is/wraps the new chat                
                 _liveChatManager.RenameNewChat( prompt );
-                UpdateAddToHistoryButton( SelectedChat );
+                UpdateAddToHistoryButton( _selectedChat );
             }
 
             // Handle chat input list
@@ -681,7 +773,7 @@ namespace Bobo
         [ RelayCommand ]
         private async Task CreateImage( )
         {
-            if( !ValidateInput( ImageInput, out var _prompt ) )
+            if( !ValidateInput( _imageInput, out var _prompt ) )
             {
                 return;
             }
@@ -689,15 +781,15 @@ namespace Bobo
             try
             {
                 SetCommandBusy( true );
-                StatusMessage = "Creating an image...please wait";
+                _statusMessage = "Creating an image...please wait";
 
                 // Will reject query of an image of a real person
-                ResultImage = await _chatGptService.CreateImageAsync( _prompt );
-                StatusMessage = $"Processed image request for '{_prompt}'";
+                _resultImage = await _chatGptService.CreateImageAsync( _prompt );
+                _statusMessage = $"Processed image request for '{_prompt}'";
             }
             catch( Exception ex )
             {
-                StatusMessage = ex.Message;
+                _statusMessage = ex.Message;
             }
 
             SetCommandBusy( false );
@@ -710,7 +802,7 @@ namespace Bobo
         [ RelayCommand ]
         private void ClearChatInput( )
         {
-            ChatInput = string.Empty;
+            _chatInput = string.Empty;
         }
 
         // ESC key maps to ClearImageInputCommand
@@ -720,7 +812,7 @@ namespace Bobo
         [ RelayCommand ]
         private void ClearImageInput( )
         {
-            ImageInput = string.Empty;
+            _imageInput = string.Empty;
         }
 
         /// <summary>
@@ -730,11 +822,11 @@ namespace Bobo
         /// <param name="isSendCommand">if set to <c>true</c> [is send command].</param>
         private void SetCommandBusy( bool isCommandBusy, bool isSendCommand = false )
         {
-            IsCommandBusy = isCommandBusy;
+            _isCommandBusy = isCommandBusy;
             OnPropertyChanged( nameof( IsCommandNotBusy ) );
             if( !isSendCommand )
             {
-                Mouse.OverrideCursor = IsCommandBusy
+                Mouse.OverrideCursor = _isCommandBusy
                     ? Cursors.Wait
                     : null;
             }
@@ -751,7 +843,7 @@ namespace Bobo
             if( value != null )
             {
                 // Re-setup on selected chat changed
-                UpdateUIAction?.Invoke( InterfaceUpdate.SetupMessageListViewScrollViewer );
+                _updateDelegate?.Invoke( InterfaceUpdate.SetupMessageListViewScrollViewer );
             }
         }
 
@@ -761,7 +853,18 @@ namespace Bobo
         /// <param name="value">The value.</param>
         private void UpdateAddToHistoryButton( Chat value )
         {
-            AddToHistoryButtonEnabled = value != null && !_liveChatManager.IsNewChat( value.Name );
+            _addToHistoryButtonEnabled = value != null && !_liveChatManager.IsNewChat( value.Name );
+        }
+
+        /// <summary>
+        /// Fails the specified ex.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
+        private protected static void Fail( Exception ex )
+        {
+            using var _error = new ErrorWindow( ex );
+            _error?.SetText( );
+            _error?.ShowDialog( );
         }
     }
 }

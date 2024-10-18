@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Badger
+//     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
 //     Created:                 07-28-2024
 // 
@@ -186,7 +186,7 @@ namespace Bobo
         /// </summary>
         public BabyBoy( )
         {
-            _path = new object( );
+            _entry = new object( );
             _count = 1024;
             _port = 5000;
             _data = new byte[ _count ];

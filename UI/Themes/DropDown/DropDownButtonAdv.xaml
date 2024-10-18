@@ -19,7 +19,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <SolidColorBrush
-        x:Key="DropDownMenuItem.Selection.Background"
+        x:Key="SteelBlueBrush"
         Color="#FFFFFF" />
 
     <local:SizeToDoubleConverter x:Key="sizeToDoubleConverter" />
@@ -29,7 +29,7 @@
         CornerRadius="2"
         HoverBackground="{StaticResource ControlHoverBrush}"
         HoverBorder="{StaticResource LightBlueBrush}"
-        PressedBackground="{StaticResource RevealBackground}" />
+        PressedBackground="{StaticResource SteelBlueBackground}" />
 
     <DataTemplate x:Key="LargeIconTemplate">
         <Image
@@ -112,8 +112,8 @@
                     Background="{StaticResource ControlInteriorBrush}"
                     BorderBrush="{StaticResource BlueBorderBrush}"
                     BorderThickness="1"
-                    CornerRadius="{StaticResource FluentDark.CornerRadius4}"
-                    Effect="{StaticResource Default.ShadowDepth3}">
+                    CornerRadius="4"
+                    Effect="3">
                     <Border.Margin>
                         <Thickness>6,1,6,6</Thickness>
                     </Border.Margin>
@@ -184,7 +184,7 @@
         <Setter Property="Background" Value="{StaticResource ControlInteriorBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource LightBlueBrush}" />
         <Setter Property="Foreground" Value="{StaticResource FormForeground}" />
-        <Setter Property="FontFamily" Value="Roboto-Regular" />
+        <Setter Property="FontFamily" Value="Roboto" />
         <Setter Property="FontSize" Value="11" />
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -268,8 +268,8 @@
                                 Background="{StaticResource ControlInteriorBrush}"
                                 BorderBrush="{StaticResource BlueBorderBrush}"
                                 BorderThickness="1"
-                                CornerRadius="{StaticResource FluentDark.CornerRadius4}"
-                                Effect="{StaticResource Default.ShadowDepth3}">
+                                CornerRadius="4"
+                                Effect="3">
                                 <Border.Margin>
                                     <Thickness>6,1,6,6</Thickness>
                                 </Border.Margin>
@@ -308,15 +308,15 @@
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="ItemBorder" Property="Border.Background" Value="{StaticResource GreenBackground}" />
-                            <Setter TargetName="ItemBorder" Property="Border.BorderBrush" Value="{StaticResource SecondaryBorderSelected}" />
+                            <Setter TargetName="ItemBorder" Property="Border.BorderBrush" Value="{StaticResource LightBlueBrush}" />
                             <Setter TargetName="PART_Text" Property="TextBlock.Foreground" Value="{StaticResource WhiteForeground}" />
                             <Setter Property="Foreground" Value="{StaticResource WhiteForeground}" />
                             <Setter TargetName="Arrow" Property="Path.Fill" Value="{StaticResource GreenBackground}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="SmallIconContent" Property="Border.Opacity" Value="0.38" />
-                            <Setter TargetName="ItemBorder" Property="Border.Background" Value="{StaticResource SecondaryBackgroundDisabled}" />
-                            <Setter TargetName="ItemBorder" Property="Border.BorderBrush" Value="{StaticResource SecondaryBorderDisabled}" />
+                            <Setter TargetName="ItemBorder" Property="Border.Background" Value="{StaticResource ControlBackground}" />
+                            <Setter TargetName="ItemBorder" Property="Border.BorderBrush" Value="{StaticResource ControlBackground}" />
                             <Setter TargetName="PART_Text" Property="TextBlock.Foreground" Value="{StaticResource FormBackground}" />
                             <Setter Property="Foreground" Value="{StaticResource FormBackground}" />
                             <Setter TargetName="Arrow" Property="Path.Fill" Value="{StaticResource FormBackground}" />
@@ -352,7 +352,7 @@
         TargetType="{x:Type local:DropDownMenuGroup}">
         <Setter Property="Background" Value="{StaticResource ControlInteriorBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
-        <Setter Property="Foreground" Value="{StaticResource SecondaryForeground}" />
+        <Setter Property="Foreground" Value="{StaticResource LightBlueBrush}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
@@ -501,7 +501,7 @@
         <Setter Property="Background" Value="{StaticResource ControlInteriorBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
         <Setter Property="Foreground" Value="{StaticResource FormForeground}" />
-        <Setter Property="FontFamily" Value="Roboto-Regular" />
+        <Setter Property="FontFamily" Value="Roboto" />
         <Setter Property="FontSize" Value="{StaticResource FluentDark.BodyTextStyle}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="MinHeight" Value="24" />
@@ -524,7 +524,7 @@
                             Width="2"
                             Height="12"
                             HorizontalAlignment="Left"
-                            Background="{StaticResource DropDownMenuItem.Selection.Background}"
+                            Background="{StaticResource SteelBlueBrush}"
                             CornerRadius="1.5"
                             Visibility="Collapsed" />
                         <Border
@@ -618,7 +618,7 @@
                                             Background="{StaticResource ControlInteriorBrush}"
                                             BorderBrush="{StaticResource BlueBorderBrush}"
                                             BorderThickness="1"
-                                            CornerRadius="{StaticResource FluentDark.CornerRadius4}"
+                                            CornerRadius="4"
                                             SnapsToDevicePixels="True">
                                             <Border.Padding>
                                                 <Thickness>0,4,0,4</Thickness>
@@ -663,9 +663,9 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Bd" Property="Border.Background" Value="{StaticResource ControlInteriorBrush}" />
                             <Setter TargetName="Bd" Property="Border.BorderBrush" Value="{StaticResource BlueBorderBrush}" />
-                            <Setter TargetName="content" Property="Foreground" Value="{StaticResource DisabledForeground}" />
+                            <Setter TargetName="content" Property="Foreground" Value="{StaticResource FormBackground}" />
                             <Setter TargetName="path" Property="Fill" Value="{StaticResource FormBackground}" />
-                            <Setter Property="Foreground" Value="{StaticResource DisabledForeground}" />
+                            <Setter Property="Foreground" Value="{StaticResource FormBackground}" />
                             <Setter Property="Background" Value="{StaticResource ControlInteriorBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

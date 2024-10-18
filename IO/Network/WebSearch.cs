@@ -40,21 +40,23 @@
 namespace Bobo
 {
     using System;
+    using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Net.NetworkInformation;
+    using System.Runtime.CompilerServices;
     using System.Text;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
     [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
-    public abstract class WebSearch
+    public abstract class WebSearch : INotifyPropertyChanged
     {
         /// <summary>
         /// The locked object
         /// </summary>
-        private protected object _path;
+        private protected object _entry;
 
         /// <summary>
         /// The busy
@@ -98,23 +100,18 @@ namespace Bobo
         {
             get
             {
-                if( _path == null )
+                lock( _entry )
                 {
-                    _path = new object( );
-                    lock( _path )
-                    {
-                        return _busy;
-                    }
-                }
-                else
-                {
-                    lock( _path )
-                    {
-                        return _busy;
-                    }
+                    return _busy;
                 }
             }
         }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Initializes a new instance of the
@@ -181,20 +178,9 @@ namespace Bobo
         {
             try
             {
-                if( _path == null )
+                lock( _entry )
                 {
-                    _path = new object( );
-                    lock( _path )
-                    {
-                        _busy = true;
-                    }
-                }
-                else
-                {
-                    lock( _path )
-                    {
-                        _busy = true;
-                    }
+                    _busy = true;
                 }
             }
             catch( Exception ex )
@@ -210,26 +196,24 @@ namespace Bobo
         {
             try
             {
-                if( _path == null )
+                lock( _entry )
                 {
-                    _path = new object( );
-                    lock( _path )
-                    {
-                        _busy = false;
-                    }
-                }
-                else
-                {
-                    lock( _path )
-                    {
-                        _busy = false;
-                    }
+                    _busy = false;
                 }
             }
             catch( Exception ex )
             {
                 Fail( ex );
             }
+        }
+
+        /// <summary>
+        /// Called when [property changed].
+        /// </summary>
+        /// <param name="propertyName">Name of the property.</param>
+        private protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         /// <summary>

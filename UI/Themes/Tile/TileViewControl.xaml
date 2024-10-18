@@ -206,16 +206,16 @@
     <Style
         x:Key="SyncfusionTileViewItemStyle"
         TargetType="{x:Type shared:TileViewItem}">
-        <Setter Property="Background" Value="{StaticResource ContentBackground}" />
+        <Setter Property="Background" Value="{StaticResource ControlBackground}" />
         <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
         <Setter Property="Foreground" Value="{StaticResource FormForeground}" />
         <Setter Property="HeaderForeground" Value="{StaticResource FormForeground}" />
-        <Setter Property="HeaderBackground" Value="{StaticResource ContentBackgroundAlt1}" />
+        <Setter Property="HeaderBackground" Value="{StaticResource DarkBlueBackground}" />
         <Setter Property="HeaderBorderBrush" Value="{StaticResource BlueBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="{StaticResource FluentDark.ThemeCornerRadiusVariant1}" />
+        <Setter Property="CornerRadius" Value="1" />
         <Setter Property="HeaderHeight" Value="32" />
-        <Setter Property="HeaderBorderThickness" Value="{StaticResource FluentDark.BorderThickness0001}" />
+        <Setter Property="HeaderBorderThickness" Value="1" />
         <Setter Property="HeaderCornerRadius" Value="0" />
         <Setter Property="MinMaxButtonStyle" Value="{StaticResource minMaxButtonStyle}" />
         <Setter Property="MinMaxButtonMargin" Value="8,0,0,0" />
@@ -272,7 +272,7 @@
                                                 VerticalAlignment="Center"
                                                 Content="{TemplateBinding Header}"
                                                 ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                                TextElement.FontSize="{StaticResource FluentDark.BodyTextStyle}">
+                                                TextElement.FontSize="12">
                                                 <ContentPresenter.Resources>
                                                     <Style
                                                         BasedOn="{x:Null}"
@@ -345,7 +345,7 @@
                             <Setter Property="TextBlock.FontSize" Value="18" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="TileViewItemBorder" Property="BorderBrush" Value="{StaticResource BorderAlt2}" />
+                            <Setter TargetName="TileViewItemBorder" Property="BorderBrush" Value="{StaticResource LightBlueBrush}" />
                             <Setter TargetName="tileviewcontent" Property="TextElement.Foreground" Value="{StaticResource WhiteForeground}" />
                             <Setter TargetName="FloatPanelArea" Property="Background" Value="{StaticResource ControlHoverBrush}" />
                             <Setter TargetName="FloatPanelArea" Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
@@ -364,10 +364,10 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="TileViewItemBorder" Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
-                            <Setter TargetName="tileviewcontent" Property="TextElement.Foreground" Value="{StaticResource DisabledForeground}" />
-                            <Setter TargetName="FloatPanelArea" Property="Background" Value="{StaticResource ContentBackgroundAlt1}" />
+                            <Setter TargetName="tileviewcontent" Property="TextElement.Foreground" Value="{StaticResource FormBackground}" />
+                            <Setter TargetName="FloatPanelArea" Property="Background" Value="{StaticResource DarkBlueBackground}" />
                             <Setter TargetName="FloatPanelArea" Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
-                            <Setter TargetName="headercontent" Property="TextElement.Foreground" Value="{StaticResource DisabledForeground}" />
+                            <Setter TargetName="headercontent" Property="TextElement.Foreground" Value="{StaticResource FormBackground}" />
                         </Trigger>
                         <Trigger SourceName="CloseButton" Property="IsMouseOver" Value="True">
                             <Setter TargetName="Close_Big" Property="Fill" Value="{StaticResource WhiteForeground}" />
@@ -444,15 +444,15 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="{StaticResource ContentBackground}" />
+                            <Setter Property="Background" Value="{StaticResource ControlBackground}" />
                             <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
-                            <Setter Property="Foreground" Value="{StaticResource DisabledForeground}" />
+                            <Setter Property="Foreground" Value="{StaticResource FormBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Background" Value="{StaticResource ContentBackground}" />
+        <Setter Property="Background" Value="{StaticResource ControlBackground}" />
         <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
         <Setter Property="Foreground" Value="{StaticResource FormForeground}" />
         <Setter Property="FontSize" Value="{StaticResource FluentDark.BodyTextStyle}" />

@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Microsoft_Windows_Aero="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
     xmlns:Microsoft_Windows_Luna="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna"
+    xmlns:b="clr-namespace:Bobo"
     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
     xmlns:sfskin="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -119,10 +120,6 @@
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="sfskin:SfSkinManager.SizeMode" Value="Touch">
-                            <Setter Property="MinHeight" Value="{StaticResource FluentDark.MinHeight}" />
-                            <Setter Property="MinWidth" Value="{StaticResource TouchMode.MinSize}" />
-                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Foreground" Value="{StaticResource WhiteForeground}" />
                         </Trigger>
@@ -132,17 +129,12 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="NewButtonBorder" Property="BorderBrush" Value="Transparent" />
                             <Setter TargetName="NewButtonBorder" Property="Background" Value="Transparent" />
-                            <Setter Property="Foreground" Value="{StaticResource IconColorDisabled}" />
+                            <Setter Property="Foreground" Value="Transparent" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Triggers>
-            <Trigger Property="sfskin:SkinManagerHelper.FocusVisualKind" Value="HighVisibility">
-                <Setter Property="FocusVisualStyle" Value="{StaticResource FlatKeyboardFocusVisualStyle}" />
-            </Trigger>
-        </Style.Triggers>
     </Style>
     <Style
         x:Key="TabItemCaptionButtonsStyle"
@@ -1284,8 +1276,8 @@
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="BorderBrush" Value="{StaticResource ContentBackground}" />
-                <Setter Property="Foreground" Value="{StaticResource DisabledForeground}" />
+                <Setter Property="BorderBrush" Value="{StaticResource ControlBackground}" />
+                <Setter Property="Foreground" Value="{StaticResource FormBackground}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -1663,7 +1655,7 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" Value="Transparent" />
                             <Setter Property="BorderBrush" Value="{StaticResource BorderAlt}" />
-                            <Setter Property="Foreground" Value="{StaticResource DisabledForeground}" />
+                            <Setter Property="Foreground" Value="{StaticResource FormBackground}" />
                         </Trigger>
                         <Trigger Property="IsNewTab" Value="True">
                             <Setter TargetName="Content" Property="ContentTemplate" Value="{Binding Path=NewTabButtonTemplate, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type tools_controls:TabControlExt}}}" />
@@ -1707,7 +1699,7 @@
         x:Key="SyncfusionTabControlExtStyle"
         TargetType="{x:Type tools_controls:TabControlExt}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Background" Value="{StaticResource ContentBackground}" />
+        <Setter Property="Background" Value="{StaticResource ControlBackground}" />
         <Setter Property="BorderBrush" Value="{StaticResource BorderAlt}" />
         <Setter Property="Foreground" Value="{StaticResource ContentForeground}" />
         <Setter Property="FontFamily" Value="{StaticResource FluentDark.ThemeFontFamily}" />
@@ -1728,7 +1720,7 @@
         <Setter Property="TabListContextMenuStyle" Value="{StaticResource WPFContextMenuStyle}" />
         <Setter Property="TabListContextMenuItemStyle" Value="{StaticResource SyncfusionMenuItemStyle}" />
         <Setter Property="AllowDrop" Value="True" />
-        <Setter Property="Panel.Background" Value="{StaticResource ContentBackground}" />
+        <Setter Property="Panel.Background" Value="{StaticResource ControlBackground}" />
         <Setter Property="DragMarkerStyle" Value="{StaticResource SyncfusionDragMarkerTemplatedAdornerInternalControlStyle}" />
         <Setter Property="NewTabButtonTemplate" Value="{StaticResource SyncfusionTabNewButtonDataTemplate}" />
         <Setter Property="NewButtonStyle" Value="{StaticResource SyncfusionNewButtonStyle}" />
@@ -1879,7 +1871,7 @@
                         </Trigger>
                         <Trigger Property="UIElement.IsEnabled" Value="False">
                             <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="Foreground" Value="{StaticResource DisabledForeground}" />
+                            <Setter Property="Foreground" Value="{StaticResource FormBackground}" />
                             <Setter Property="BorderBrush" Value="{StaticResource BorderAlt}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

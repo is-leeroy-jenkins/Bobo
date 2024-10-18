@@ -3,14 +3,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="clr-namespace:Bobo">
 
-    <!--  *********************************************** TOOLTIP *****************************************************  -->
+    <!-- *********************************************** TOOLTIP *****************************************************-->
 
     <Style
         x:Key="ToolTipStyle"
         TargetType="ToolTip">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="10,10,10,10" />
-        <Setter Property="Background" Value="{DynamicResource BlackBackground}" />
+        <Setter Property="Background" Value="{StaticResource BlackBackground}" />
         <Setter Property="BorderBrush" Value="{StaticResource BlueBorderBrush}" />
         <Setter Property="Foreground" Value="{StaticResource LightBlueBrush}" />
         <Setter Property="Template">

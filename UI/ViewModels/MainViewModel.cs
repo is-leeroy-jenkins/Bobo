@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 10-16-2024
+//     Created:                 10-18-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        10-16-2024
+//     Last Modified On:        10-18-2024
 // ******************************************************************************************
 // <copyright file="MainViewModel.cs" company="Terry D. Eppler">
 //    A windows presentation foundation (WPF) application for communication
@@ -42,27 +42,48 @@
 namespace Bobo
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
+    using RestoreWindowPlace;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    public class MainViewModel
+    [ SuppressMessage( "ReSharper", "ValueParameterNotUsed" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    public class MainViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MainViewModel"/> class.
+        /// The application title
+        /// </summary>
+        private protected string _appTitle;
+
+        /// <summary>
+        /// The live chat view model
+        /// </summary>
+        private protected LiveChatViewModel _liveChatViewModel;
+
+        /// <summary>
+        /// The history view model
+        /// </summary>
+        private protected HistoryViewModel _historyViewModel;
+
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="MainViewModel"/> class.
         /// </summary>
         /// <param name="historyRepo">The history repo.</param>
         /// <param name="chatGptService">The chat GPT service.</param>
         public MainViewModel( IHistoryRepo historyRepo, ChatGptService chatGptService )
         {
-            HistoryViewModel = new HistoryViewModel( historyRepo );
-            LiveChatViewModel = new LiveChatViewModel( historyRepo, chatGptService );
+            _historyViewModel = new HistoryViewModel( historyRepo );
+            _liveChatViewModel = new LiveChatViewModel( historyRepo, chatGptService );
 
             // <Version>1.3</Version> in .csproj
             var _appVer = Assembly.GetExecutingAssembly( ).GetName( ).Version!;
             var _dotnetVer = Environment.Version;
-            AppTitle =
+            _appTitle =
                 $"C# WPF ChatGPT v{_appVer.Major}.{_appVer.Minor} (.NET {_dotnetVer.Major}.{_dotnetVer.Minor}.{_dotnetVer.Build} runtime) by Terry Eppler";
 #if DEBUG
             AppTitle += " - DEBUG";
@@ -75,7 +96,21 @@ namespace Bobo
         /// <value>
         /// The application title.
         /// </value>
-        public string AppTitle { get; }
+        public string AppTitle
+        {
+            get
+            {
+                return _appTitle;
+            }
+            set
+            {
+                if( _appTitle != value )
+                {
+                    _appTitle = value;
+                    OnPropertyChanged( nameof( AppTitle ) );
+                }
+            }
+        }
 
         // Bind to LiveChat tab item
         /// <summary>
@@ -84,7 +119,21 @@ namespace Bobo
         /// <value>
         /// The live chat view model.
         /// </value>
-        public LiveChatViewModel LiveChatViewModel { get; }
+        public LiveChatViewModel LiveChatViewModel
+        {
+            get
+            {
+                return _liveChatViewModel;
+            }
+            set
+            {
+                if( _liveChatViewModel != value )
+                {
+                    _liveChatViewModel = value;
+                    OnPropertyChanged( nameof( LiveChatViewModel ) );
+                }
+            }
+        }
 
         // Bind to History tab item
         /// <summary>
@@ -93,6 +142,20 @@ namespace Bobo
         /// <value>
         /// The history view model.
         /// </value>
-        public HistoryViewModel HistoryViewModel { get; }
+        public HistoryViewModel HistoryViewModel
+        {
+            get
+            {
+                return _historyViewModel;
+            }
+            set
+            {
+                if( _historyViewModel != value )
+                {
+                    _historyViewModel = value;
+                    OnPropertyChanged( nameof( HistoryViewModel ) );
+                }
+            }
+        }
     }
 }
