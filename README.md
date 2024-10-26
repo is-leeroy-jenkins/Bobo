@@ -1,4 +1,4 @@
-_
+#### _
 ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/ProjectTemplate.png)
 ## C# WPF app that communicates with OpenAI GPT-3.5 Turbo API 
 
@@ -60,7 +60,7 @@ _
 ### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/DemoImages/CSharpWpfChatGPT.png)
 - Explain is like a lookup, kind of a shortcut of Send. For example, with input of 'ML.NET', I will automatically send "Explain 'ML.NET'" to the GPT server. 
 - This feature is helpful for finding meaning of a single word or a phrase. Translate to is just simply a Send with selected language (e.g., "Translate to Spanish 'ChatGPT'"). 
-- You would get "'chatgpt' se traduce al español como 'chatgpt'."
+- You would get "'chatgpt' se traduce al espaÃ±ol como 'chatgpt'."
 
 ```
         [RelayCommand]
