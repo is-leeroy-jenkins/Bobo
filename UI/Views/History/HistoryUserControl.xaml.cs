@@ -20,6 +20,7 @@ namespace Bobo
     [ SuppressMessage( "ReSharper", "RedundantExtendsListEntry" ) ]
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
     public partial class HistoryUserControl : UserControl
     {
         /// <summary>
@@ -57,9 +58,10 @@ namespace Bobo
         /// </summary>
         private protected Action _statusUpdate;
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="HistoryUserControl"/> class.
+        /// <see cref="T:Bobo.HistoryUserControl" /> class.
         /// </summary>
         public HistoryUserControl( )
         {
@@ -124,9 +126,9 @@ namespace Bobo
 
                 form.Opacity = 0;
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 

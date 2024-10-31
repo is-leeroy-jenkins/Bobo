@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Bocifus
+//     Assembly:                Booger
 //     Author:                  Terry D. Eppler
 //     Created:                 09-07-2020
 // 
@@ -41,10 +41,10 @@
 
 namespace Bobo
 {
-    using Syncfusion.Windows.Tools.Controls;
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
+    using Syncfusion.Windows.Tools.Controls;
 
     /// <inheritdoc />
     /// <summary>

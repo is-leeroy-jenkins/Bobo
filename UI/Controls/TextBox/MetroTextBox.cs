@@ -1,14 +1,14 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Badger
+//     Assembly:                Booger
 //     Author:                  Terry D. Eppler
-//     Created:                 08-01-2024
+//     Created:                 08-08-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        08-01-2024
+//     Last Modified On:        08-08-2024
 // ******************************************************************************************
 // <copyright file="MetroTextBox.cs" company="Terry D. Eppler">
-//    Badger is data analysis and reporting tool for EPA Analysts
-//    based on WPF, NET6.0, and written in C-Sharp.
+//    Booger is a quick & dirty WPF application that interacts with OpenAI GPT-3.5 Turbo API
+//    based on NET6 and written in C-Sharp.
 // 
 //    Copyright ©  2024  Terry D. Eppler
 // 
@@ -43,12 +43,11 @@ namespace Bobo
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using System.Windows.Controls;
+    using Syncfusion.Windows.Controls.Input;
 
     /// <inheritdoc />
     /// <summary>
     /// </summary>
-    /// <seealso cref="T:System.Windows.Controls.TextBox" />
     [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
@@ -56,24 +55,26 @@ namespace Bobo
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class MetroTextBox : TextBox
+    public class MetroTextBox : SfTextBoxExt
     {
         /// <summary>
-        /// The theme
+        /// The dark
         /// </summary>
         private protected readonly DarkMode _theme = new DarkMode( );
 
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Badger.TextBox" /> class.
+        /// <see cref="T:Booger.TextBox" /> class.
         /// </summary>
         public MetroTextBox( )
             : base( )
         {
-            // Control Properties
             Width = 200;
             Height = 24;
+            Background = _theme.Background;
+            Foreground = _theme.Foreground;
+            BorderBrush = _theme.BorderBrush;
         }
 
         /// <summary>

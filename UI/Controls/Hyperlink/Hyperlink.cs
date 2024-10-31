@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        08-08-2024
 // ******************************************************************************************
-// <copyright file="MetroCheckList.cs" company="Terry D. Eppler">
+// <copyright file="MetroHyperlink.cs" company="Terry D. Eppler">
 //    Booger is a quick & dirty WPF application that interacts with OpenAI GPT-3.5 Turbo API
 //    based on NET6 and written in C-Sharp.
 // 
@@ -35,60 +35,72 @@
 //    You can contact me at: terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   MetroCheckList.cs
+//   MetroHyperlink.cs
 // </summary>
 // ******************************************************************************************
 
+// ReSharper disable All
+
 namespace Bobo
 {
+    using ModernWpf.Controls;
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using System.Windows;
-    using Syncfusion.Windows.Tools.Controls;
+    using System.Windows.Media;
 
     /// <inheritdoc />
     /// <summary>
     /// </summary>
-    /// <seealso cref="T:Syncfusion.Windows.Tools.Controls.CheckListBox" />
+    /// <seealso cref="T:Wpf.Ui.Controls.HyperlinkButton" />
     [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
-    [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
-    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class MetroCheckList : CheckListBox
+    public class Hyperlink : HyperlinkButton
     {
         /// <summary>
         /// The theme
         /// </summary>
         private protected readonly DarkMode _theme = new DarkMode( );
 
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Booger.MetroCheckList" /> class.
+        /// <see cref="Hyperlink"/> class.
         /// </summary>
-        /// <remarks>
-        /// The <see cref="T:Syncfusion.Windows.Tools.Controls.CheckListBox" />
-        /// displays items with a checkbox to enable multiple selection of items.
-        /// </remarks>
-        public MetroCheckList( )
+        public Hyperlink( )
             : base( )
         {
-            // Control Properties
-            SetResourceReference( StyleProperty, typeof( CheckListBox ) );
-            Width = 225.0;
-            Height = 200.0;
-            Background = _theme.ControlInterior;
-            Foreground = _theme.Foreground;
-            BorderBrush = _theme.BorderBrush;
-            Padding = new Thickness( 10, 1, 1, 1 );
-            BorderThickness = new Thickness( 1 );
-            VerticalAlignment = VerticalAlignment.Stretch;
-            HorizontalAlignment = HorizontalAlignment.Center;
-            HorizontalContentAlignment = HorizontalAlignment.Left;
-            VerticalContentAlignment = VerticalAlignment.Bottom;
+            // Basic Settings
+            Height = 22;
+            FontFamily = new FontFamily( "Roboto" );
+            FontSize = 12;
+            Background = _theme.TransparentBrush;
+            Foreground = _theme.BorderBrush;
+            BorderBrush = _theme.TransparentBrush;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="Hyperlink"/> class.
+        /// </summary>
+        /// <param name = "text" > </param>
+        /// <param name="uri">The URI.</param>
+        public Hyperlink( string text, string uri )
+            : this( )
+        {
+            Content = text;
+            NavigateUri = new Uri( uri );
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="Hyperlink"/> class.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="uri">The URI.</param>
+        public Hyperlink(string text, Uri uri)
+            : this()
+        {
+            Content = text;
+            NavigateUri = uri;
+        }
         /// <summary>
         /// Fails the specified _ex.
         /// </summary>

@@ -63,7 +63,7 @@ namespace Bobo
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Bobo.MetroListView" /> class.
+        /// <see cref="T:Booger.MetroListView" /> class.
         /// </summary>
         public MetroListView( )
             : base( )

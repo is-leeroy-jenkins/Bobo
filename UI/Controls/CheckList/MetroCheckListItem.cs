@@ -1,14 +1,14 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Badger
+//     Assembly:                Booger
 //     Author:                  Terry D. Eppler
-//     Created:                 08-01-2024
+//     Created:                 08-08-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        08-01-2024
+//     Last Modified On:        08-08-2024
 // ******************************************************************************************
 // <copyright file="MetroCheckListItem.cs" company="Terry D. Eppler">
-//    Badger is data analysis and reporting tool for EPA Analysts
-//    based on WPF, NET6.0, and written in C-Sharp.
+//    Booger is a quick & dirty WPF application that interacts with OpenAI GPT-3.5 Turbo API
+//    based on NET6 and written in C-Sharp.
 // 
 //    Copyright ©  2024  Terry D. Eppler
 // 
@@ -41,10 +41,10 @@
 
 namespace Bobo
 {
-    using Syncfusion.Windows.Tools.Controls;
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
+    using Syncfusion.Windows.Tools.Controls;
 
     /// <inheritdoc />
     /// <summary>
@@ -70,17 +70,17 @@ namespace Bobo
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Bobo.MetroCheckListItem" /> class.
+        /// <see cref="T:Booger.MetroCheckListItem" /> class.
         /// </summary>
         public MetroCheckListItem( )
         {
             // Control Properties
-            SetResourceReference( MetroCheckListItem.StyleProperty, typeof( CheckListBoxItem ) );
+            SetResourceReference( StyleProperty, typeof( CheckListBoxItem ) );
             Width = 225;
             Height = 24;
-            Background = _theme.ControlBackground;
+            Background = _theme.ControlInterior;
             Foreground = _theme.Foreground;
-            BorderBrush = _theme.ControlBackground;
+            BorderBrush = _theme.ControlInterior;
             Padding = new Thickness( 10, 1, 1, 1 );
             BorderThickness = new Thickness( 1 );
             VerticalAlignment = VerticalAlignment.Stretch;
@@ -106,8 +106,8 @@ namespace Bobo
                 if( sender is MetroCheckListItem _item )
                 {
                     _item.Foreground = _theme.Foreground;
-                    _item.Background = _theme.ControlBackground;
-                    _item.BorderBrush = _theme.ControlBackground;
+                    _item.Background = _theme.ControlInterior;
+                    _item.BorderBrush = _theme.ControlInterior;
                 }
             }
             catch( Exception ex )

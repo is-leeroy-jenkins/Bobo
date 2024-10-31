@@ -1,14 +1,14 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Badger
+//     Assembly:                Booger
 //     Author:                  Terry D. Eppler
-//     Created:                 08-01-2024
+//     Created:                 08-08-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        08-01-2024
+//     Last Modified On:        08-08-2024
 // ******************************************************************************************
 // <copyright file="MetroTabControl.cs" company="Terry D. Eppler">
-//    Badger is data analysis and reporting tool for EPA Analysts
-//    based on WPF, NET6.0, and written in C-Sharp.
+//    Booger is a quick & dirty WPF application that interacts with OpenAI GPT-3.5 Turbo API
+//    based on NET6 and written in C-Sharp.
 // 
 //    Copyright ©  2024  Terry D. Eppler
 // 
@@ -43,20 +43,20 @@ namespace Bobo
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Media;
-    using Syncfusion.Windows.Tools.Controls;
 
-    /// <inheritdoc />
     /// <summary>
+    /// 
     /// </summary>
-    /// <seealso cref="T:System.Windows.Controls.TabControl" />
+    /// <seealso cref="System.Windows.Controls.TabControl" />
     [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
     [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
-    public class MetroTabControl : TabControlExt
+    public class MetroTabControl : TabControl
     {
         /// <summary>
         /// The theme
@@ -66,14 +66,20 @@ namespace Bobo
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Bobo.MetroTabControl" /> class.
+        /// <see cref="T:Booger.MetroTabControl" /> class.
         /// </summary>
         public MetroTabControl( )
             : base( )
         {
             // Control Properties
             FontFamily = new FontFamily( "Roboto" );
-            FontSize = 11;
+            FontSize = 12;
+            Width = 460;
+            Height = 400;
+            HorizontalAlignment = HorizontalAlignment.Center;
+            VerticalAlignment = VerticalAlignment.Stretch;
+            HorizontalContentAlignment = HorizontalAlignment.Center;
+            VerticalContentAlignment = VerticalAlignment.Stretch;
             Margin = _theme.Margin;
             Padding = _theme.Padding;
             BorderThickness = _theme.BorderThickness;

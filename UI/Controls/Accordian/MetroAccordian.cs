@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        08-08-2024
 // ******************************************************************************************
-// <copyright file="MetroComboBoxItem.cs" company="Terry D. Eppler">
+// <copyright file="MetroAccordian.cs" company="Terry D. Eppler">
 //    Booger is a quick & dirty WPF application that interacts with OpenAI GPT-3.5 Turbo API
 //    based on NET6 and written in C-Sharp.
 // 
@@ -35,7 +35,7 @@
 //    You can contact me at: terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   MetroComboBoxItem.cs
+//   MetroAccordian.cs
 // </summary>
 // ******************************************************************************************
 
@@ -43,21 +43,19 @@ namespace Bobo
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using System.Windows;
-    using Syncfusion.Windows.Tools.Controls;
+    using System.Windows.Media;
+    using Syncfusion.Windows.Controls.Layout;
 
     /// <inheritdoc />
     /// <summary>
     /// </summary>
-    /// <seealso cref="T:Syncfusion.Windows.Tools.Controls.ComboBoxItemAdv" />
-    [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
+    /// <seealso cref="T:Syncfusion.Windows.Controls.Layout.SfAccordion" />
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class MetroComboBoxItem : ComboBoxItemAdv
+    public class MetroAccordian : SfAccordion
     {
         /// <summary>
         /// The theme
@@ -67,77 +65,30 @@ namespace Bobo
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Booger.MetroComboBoxItem" /> class.
+        /// <see cref="T:Badger.MetroAccordian" /> class.
         /// </summary>
-        public MetroComboBoxItem( )
+        public MetroAccordian( )
             : base( )
         {
             // Control Properties
-            SetResourceReference( StyleProperty, typeof( ComboBoxItemAdv ) );
-            Height = 22;
-            Padding = new Thickness( 10, 1, 1, 1 );
-            Background = _theme.ControlInterior;
-            BorderBrush = _theme.ControlInterior;
+            SetResourceReference( StyleProperty, typeof( SfAccordion ) );
+            FontSize = 12;
+            FontFamily = new FontFamily( "Roboto" );
+            Width = 250;
+            Height = 250;
+            AccentBrush = _theme.SteelBlueBrush;
+            Background = _theme.Background;
+            BorderBrush = _theme.BorderBrush;
             Foreground = _theme.Foreground;
-
-            // Event Wiring
-            MouseEnter += OnItemMouseEnter;
-            MouseLeave += OnItemMouseLeave;
         }
 
         /// <summary>
-        /// Called when [item mouse enter].
+        /// Fails the specified _ex.
         /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/>
-        /// instance containing the event data.</param>
-        private protected void OnItemMouseEnter( object sender, EventArgs e )
+        /// <param name="_ex">The _ex.</param>
+        private protected void Fail( Exception _ex )
         {
-            try
-            {
-                if( sender is MetroComboBoxItem _item )
-                {
-                    _item.Foreground = _theme.WhiteForeground;
-                    _item.Background = _theme.SteelBlueBrush;
-                    _item.BorderBrush = _theme.SteelBlueBrush;
-                }
-            }
-            catch( Exception ex )
-            {
-                Fail( ex );
-            }
-        }
-
-        /// <summary>
-        /// Called when [item mouse leave].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/>
-        /// instance containing the event data.</param>
-        private protected void OnItemMouseLeave( object sender, EventArgs e )
-        {
-            try
-            {
-                if( sender is MetroComboBoxItem _item )
-                {
-                    _item.Foreground = _theme.Foreground;
-                    _item.Background = _theme.ControlInterior;
-                    _item.BorderBrush = _theme.ControlInterior;
-                }
-            }
-            catch( Exception ex )
-            {
-                Fail( ex );
-            }
-        }
-
-        /// <summary>
-        /// Fails the specified ex.
-        /// </summary>
-        /// <param name="ex">The ex.</param>
-        private protected void Fail( Exception ex )
-        {
-            var _error = new ErrorWindow( ex );
+            var _error = new ErrorWindow( _ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

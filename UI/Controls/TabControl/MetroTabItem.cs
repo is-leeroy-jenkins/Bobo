@@ -1,16 +1,16 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Booger
 //     Author:                  Terry D. Eppler
-//     Created:                 08-08-2024
+//     Created:                 10-19-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        08-08-2024
+//     Last Modified On:        10-19-2024
 // ******************************************************************************************
-// <copyright file="MetroRichText.cs" company="Terry D. Eppler">
-//    Booger is a quick & dirty WPF application that interacts with OpenAI GPT-3.5 Turbo API
-//    based on NET6 and written in C-Sharp.
+// <copyright file="MetroTabItem.cs" company="Terry D. Eppler">
+//   An open source data analysis application for EPA Analysts developed
+//   in C-Sharp using WPF and released under the MIT license
 // 
-//    Copyright ©  2024  Terry D. Eppler
+//    Copyright ©  2020-2024 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -32,10 +32,10 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at: terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   MetroRichText.cs
+//   MetroTabItem.cs
 // </summary>
 // ******************************************************************************************
 
@@ -43,54 +43,30 @@ namespace Bobo
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using Syncfusion.Windows.Controls.RichTextBoxAdv;
+    using System.Windows;
+    using System.Windows.Controls;
 
-    /// <inheritdoc />
-    /// <summary>
-    /// </summary>
-    /// <seealso cref="T:System.Windows.Controls.RichTextBox" />
     [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
-    [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
-    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
-    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
-    public class MetroRichText : SfRichTextBoxAdv
+    public class MetroTabItem : TabItem
     {
         /// <summary>
         /// The theme
         /// </summary>
-        private protected readonly DarkMode _theme = new DarkMode( );
+        private protected DarkMode _theme = new DarkMode( );
 
-        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="T:Booger.RichTextBox" /> class.
+        /// Initializes a new instance of the <see cref="MetroTabItem"/> class.
         /// </summary>
-        public MetroRichText( )
+        public MetroTabItem( )
             : base( )
         {
-            // Basic Properties
-            FontFamily = _theme.FontFamily;
-            FontSize = _theme.FontSize;
-            Width = 330;
-            Height = 150;
-            BorderThickness = _theme.BorderThickness;
-            Padding = _theme.Padding;
-            Background = _theme.ControlInterior;
+            Width = 100;
+            Height = 24;
+            Margin = new Thickness( 0 );
+            Padding = new Thickness( 6, 2, 6, 5 );
+            Background = _theme.TransparentBrush;
+            BorderBrush = _theme.TransparentBrush;
             Foreground = _theme.Foreground;
-            BorderBrush = _theme.ControlInterior;
-            SelectionBrush = _theme.SteelBlueBrush;
-        }
-
-        /// <summary>
-        /// Fails the specified _ex.
-        /// </summary>
-        /// <param name="_ex">The _ex.</param>
-        private protected void Fail( Exception _ex )
-        {
-            var _error = new ErrorWindow( _ex );
-            _error?.SetText( );
-            _error?.ShowDialog( );
         }
     }
 }

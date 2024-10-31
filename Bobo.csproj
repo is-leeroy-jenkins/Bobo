@@ -189,6 +189,7 @@
     <PackageReference Include="FluentWPF" Version="0.10.2" />
     <PackageReference Include="Google.Apis.CustomSearchAPI.v1" Version="1.68.0.3520" />
     <PackageReference Include="log4net" Version="3.0.1" />
+    <PackageReference Include="Markdig" Version="0.38.0" />
     <PackageReference Include="Microsoft.Office.Interop.Outlook" Version="15.0.4797.1004" />
     <PackageReference Include="ModernWpfUI" Version="0.9.6" />
     <PackageReference Include="RestoreWindowPlace" Version="2.1.0" />

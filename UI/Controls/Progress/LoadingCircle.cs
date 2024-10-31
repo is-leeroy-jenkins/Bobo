@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        08-08-2024
 // ******************************************************************************************
-// <copyright file="MetroRichText.cs" company="Terry D. Eppler">
+// <copyright file="LoadingCircle.cs" company="Terry D. Eppler">
 //    Booger is a quick & dirty WPF application that interacts with OpenAI GPT-3.5 Turbo API
 //    based on NET6 and written in C-Sharp.
 // 
@@ -35,62 +35,62 @@
 //    You can contact me at: terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   MetroRichText.cs
+//   LoadingCircle.cs
 // </summary>
 // ******************************************************************************************
 
 namespace Bobo
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
-    using Syncfusion.Windows.Controls.RichTextBoxAdv;
+    using System.Windows;
+    using System.Windows.Controls;
 
-    /// <inheritdoc />
     /// <summary>
+    /// Follow steps 1a or 1b and then 2 to use this custom control in a XAML file.
+    ///
+    /// Step 1a) Using this custom control in a XAML file that exists in the current project.
+    /// Add this XmlNamespace attribute to the root element of the markup file where it is 
+    /// to be used:
+    ///
+    ///     xmlns:MyNamespace="clr-namespace:OpenGptChat.Controls"
+    ///
+    ///
+    /// Step 1b) Using this custom control in a XAML file that exists in a different project.
+    /// Add this XmlNamespace attribute to the root element of the markup file where it is 
+    /// to be used:
+    ///
+    ///     xmlns:MyNamespace="clr-namespace:OpenGptChat.Controls;assembly=OpenGptChat.Controls"
+    ///
+    /// You will also need to add a project reference from the project where the XAML file lives
+    /// to this project and Rebuild to avoid compilation errors:
+    ///
+    ///     Right click on the target project in the Solution Explorer and
+    ///     "Add Reference"->"Projects"->[Browse to and select this project]
+    ///
+    ///
+    /// Step 2)
+    /// Go ahead and use your control in the XAML file.
+    ///
+    ///     <MyNamespace:LoadingCircle/>
+    ///
     /// </summary>
-    /// <seealso cref="T:System.Windows.Controls.RichTextBox" />
-    [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
-    [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
-    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
-    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
-    public class MetroRichText : SfRichTextBoxAdv
+    public class LoadingCircle : Control
     {
-        /// <summary>
-        /// The theme
-        /// </summary>
-        private protected readonly DarkMode _theme = new DarkMode( );
-
-        /// <inheritdoc />
-        /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="T:Booger.RichTextBox" /> class.
-        /// </summary>
-        public MetroRichText( )
-            : base( )
+        static LoadingCircle( )
         {
-            // Basic Properties
-            FontFamily = _theme.FontFamily;
-            FontSize = _theme.FontSize;
-            Width = 330;
-            Height = 150;
-            BorderThickness = _theme.BorderThickness;
-            Padding = _theme.Padding;
-            Background = _theme.ControlInterior;
-            Foreground = _theme.Foreground;
-            BorderBrush = _theme.ControlInterior;
-            SelectionBrush = _theme.SteelBlueBrush;
+            DefaultStyleKeyProperty.OverrideMetadata( typeof( LoadingCircle ),
+                new FrameworkPropertyMetadata( typeof( LoadingCircle ) ) );
         }
 
-        /// <summary>
-        /// Fails the specified _ex.
-        /// </summary>
-        /// <param name="_ex">The _ex.</param>
-        private protected void Fail( Exception _ex )
+        public bool _isLoading
         {
-            var _error = new ErrorWindow( _ex );
-            _error?.SetText( );
-            _error?.ShowDialog( );
+            get { return (bool)GetValue( _isLoadingProperty ); }
+            set { SetValue( _isLoadingProperty, value ); }
         }
+
+        // Using a DependencyProperty as the backing store for IsLoading.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty _isLoadingProperty =
+            DependencyProperty.Register( nameof( _isLoading ), typeof( bool ),
+                typeof( LoadingCircle ), new PropertyMetadata( true ) );
     }
 }

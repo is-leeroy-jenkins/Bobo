@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        08-08-2024
 // ******************************************************************************************
-// <copyright file="MetroCheckList.cs" company="Terry D. Eppler">
+// <copyright file="MetroStepProgress.cs" company="Terry D. Eppler">
 //    Booger is a quick & dirty WPF application that interacts with OpenAI GPT-3.5 Turbo API
 //    based on NET6 and written in C-Sharp.
 // 
@@ -35,7 +35,7 @@
 //    You can contact me at: terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   MetroCheckList.cs
+//   MetroStepProgress.cs
 // </summary>
 // ******************************************************************************************
 
@@ -43,19 +43,17 @@ namespace Bobo
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using System.Windows;
-    using Syncfusion.Windows.Tools.Controls;
+    using System.Windows.Media;
+    using Syncfusion.UI.Xaml.ProgressBar;
 
-    /// <inheritdoc />
     /// <summary>
+    /// 
     /// </summary>
-    /// <seealso cref="T:Syncfusion.Windows.Tools.Controls.CheckListBox" />
+    /// <seealso cref="Syncfusion.UI.Xaml.ProgressBar.SfStepProgressBar" />
     [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
-    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class MetroCheckList : CheckListBox
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    public class StepProgress : SfStepProgressBar
     {
         /// <summary>
         /// The theme
@@ -65,28 +63,18 @@ namespace Bobo
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Booger.MetroCheckList" /> class.
+        /// <see cref="T:Booger.MetroStepProgress" /> class.
         /// </summary>
-        /// <remarks>
-        /// The <see cref="T:Syncfusion.Windows.Tools.Controls.CheckListBox" />
-        /// displays items with a checkbox to enable multiple selection of items.
-        /// </remarks>
-        public MetroCheckList( )
+        public StepProgress( )
             : base( )
         {
             // Control Properties
-            SetResourceReference( StyleProperty, typeof( CheckListBox ) );
-            Width = 225.0;
-            Height = 200.0;
-            Background = _theme.ControlInterior;
-            Foreground = _theme.Foreground;
+            SetResourceReference( StyleProperty, typeof( SfStepProgressBar ) );
+            FontFamily = new FontFamily( "Roboto" );
+            FontSize = 12;
+            Background = _theme.Background;
+            Foreground = _theme.BorderBrush;
             BorderBrush = _theme.BorderBrush;
-            Padding = new Thickness( 10, 1, 1, 1 );
-            BorderThickness = new Thickness( 1 );
-            VerticalAlignment = VerticalAlignment.Stretch;
-            HorizontalAlignment = HorizontalAlignment.Center;
-            HorizontalContentAlignment = HorizontalAlignment.Left;
-            VerticalContentAlignment = VerticalAlignment.Bottom;
         }
 
         /// <summary>
