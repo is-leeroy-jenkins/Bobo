@@ -42,6 +42,7 @@
 namespace Bobo
 {
     using System;
+    using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading;
     using System.Threading.Tasks;
@@ -101,6 +102,9 @@ namespace Bobo
         public MainWindow( )
         {
             InitializeComponent( );
+
+            // Event Wiring
+            Closing += OnClosing;
         }
 
         /// <inheritdoc />
@@ -340,6 +344,25 @@ namespace Bobo
             catch( Exception ex )
             {
                 Fail( ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [closing].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/>
+        /// instance containing the event data.</param>
+        private protected void OnClosing( object sender, CancelEventArgs e)
+        {
+            try
+            {
+                SfSkinManager.Dispose( this );
+                Application.Current.Shutdown( 0 );
+            }
+            catch(Exception ex)
+            {
+                Fail(ex);
             }
         }
 

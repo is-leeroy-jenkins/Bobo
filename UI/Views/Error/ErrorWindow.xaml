@@ -20,7 +20,7 @@
     WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
 
-    <!-- ************************************************* RESOURCES  ***************************************-->
+    <!--  ************************************************* RESOURCES  ***************************************  -->
 
     <Window.Resources>
 
@@ -35,7 +35,7 @@
 
 
     </Window.Resources>
-    <!-- ************************************************* LAYOUT  ***************************************-->
+    <!--  ************************************************* LAYOUT  ***************************************  -->
 
     <Canvas x:Name="ErrorCanvas">
         <b:MetroImage
@@ -47,7 +47,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Source="/Resources/Assets/DialogImages/SplashNotification.png" />
-        
+
         <b:MetroLabel
             x:Name="Header"
             Canvas.Left="35"
@@ -57,7 +57,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Foreground="{StaticResource WhiteForeground}" />
-        
+
         <b:MetroLabel
             x:Name="StatusLabel"
             Canvas.Left="523"
@@ -71,7 +71,7 @@
             Content="MetroLabel"
             FontSize="9"
             Foreground="{StaticResource WhiteForeground}" />
-        
+
         <b:MetroTextBox
             x:Name="MessageText"
             Canvas.Left="60"

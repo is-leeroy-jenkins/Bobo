@@ -14,7 +14,6 @@
     <Style
         x:Key="MetroToolStripStyle"
         TargetType="{x:Type b:MetroToolStrip}">
-
         <Setter Property="Background" Value="{DynamicResource FormBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource FormBackground}" />
         <Setter Property="Foreground" Value="{DynamicResource LightBlueBrush}" />

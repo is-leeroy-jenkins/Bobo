@@ -1,13 +1,14 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 10-16-2024
+//     Created:                 11-01-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        10-16-2024
+//     Last Modified On:        11-01-2024
 // ******************************************************************************************
 // <copyright file="LiveChatUserControl.xaml.cs" company="Terry D. Eppler">
-//    A windows presentation foundation (WPF) app to communicate with the Chat GPT-3.5 Turbo API
+//   Bocifus is an open source windows (wpf) application that interacts with OpenAI GPT-3.5 Turbo API
+//   based on NET6 and written in C-Sharp.
 // 
 //    Copyright ©  2020-2024 Terry D. Eppler
 // 
@@ -37,7 +38,6 @@
 //   LiveChatUserControl.xaml.cs
 // </summary>
 // ******************************************************************************************
-
 
 namespace Bobo
 {
@@ -69,12 +69,14 @@ namespace Bobo
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
+    [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
+    [ SuppressMessage( "ReSharper", "UsePatternMatching" ) ]
     public partial class LiveChatUserControl : UserControl
     {
         /// <summary>
         /// The is disposed
         /// </summary>
-        private protected bool _isDisposed;
+        private protected bool _disposed;
 
         /// <summary>
         /// The busy
@@ -184,7 +186,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
@@ -197,18 +199,18 @@ namespace Bobo
         {
             try
             {
-                ThrowIf.Null(form, nameof( form ) );
-                while(form.Opacity < 1.0 )
+                ThrowIf.Null( form, nameof( form ) );
+                while( form.Opacity < 1.0 )
                 {
-                    await Task.Delay(interval);
+                    await Task.Delay( interval );
                     form.Opacity += 0.05;
                 }
 
                 form.Opacity = 1;
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
@@ -217,22 +219,22 @@ namespace Bobo
         /// </summary>
         /// <param name="form">The o.</param>
         /// <param name="interval">The interval.</param>
-        private async void FadeOutAsync(Window form, int interval = 80)
+        private async void FadeOutAsync( Window form, int interval = 80 )
         {
             try
             {
-                ThrowIf.Null(form, nameof(form));
-                while(form.Opacity > 0.0)
+                ThrowIf.Null( form, nameof( form ) );
+                while( form.Opacity > 0.0 )
                 {
-                    await Task.Delay(interval);
+                    await Task.Delay( interval );
                     form.Opacity -= 0.05;
                 }
 
                 form.Opacity = 0;
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
@@ -246,21 +248,21 @@ namespace Bobo
         {
             try
             {
-                var _position = new PrimaryScreenPositionProvider(Corner.BottomRight, 10, 10);
-                var _lifeTime = new TimeAndCountBasedLifetimeSupervisor(TimeSpan.FromSeconds(5),
-                    MaximumNotificationCount.UnlimitedNotifications());
+                var _position = new PrimaryScreenPositionProvider( Corner.BottomRight, 10, 10 );
+                var _lifeTime = new TimeAndCountBasedLifetimeSupervisor( TimeSpan.FromSeconds( 5 ),
+                    MaximumNotificationCount.UnlimitedNotifications( ) );
 
-                return new Notifier(cfg =>
+                return new Notifier( cfg =>
                 {
                     cfg.LifetimeSupervisor = _lifeTime;
                     cfg.PositionProvider = _position;
                     cfg.Dispatcher = Dispatcher;
-                });
+                } );
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
-                return default(Notifier);
+                Fail( ex );
+                return default( Notifier );
             }
         }
 
@@ -268,32 +270,32 @@ namespace Bobo
         /// Sends the message.
         /// </summary>
         /// <param name="message">The message.</param>
-        private void SendMessage(string message)
+        private void SendMessage( string message )
         {
             try
             {
-                ThrowIf.Null(message, nameof(message));
-                var _splashMessage = new SplashMessage(message);
-                _splashMessage.Show();
+                ThrowIf.Null( message, nameof( message ) );
+                var _splashMessage = new SplashMessage( message );
+                _splashMessage.Show( );
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
         /// <summary>
         /// Notifies this instance.
         /// </summary>
-        private void SendNotification()
+        private void SendNotification( )
         {
             try
             {
                 var _message = "THIS IS NOT YET IMPLEMENTED!";
-                var _notify = new Notification(_message);
-                _notify.Show();
+                var _notify = new Notification( _message );
+                _notify.Show( );
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
                 Fail( ex );
             }
@@ -303,23 +305,23 @@ namespace Bobo
         /// Invokes if needed.
         /// </summary>
         /// <param name="action">The action.</param>
-        public void InvokeIf(Action action)
+        public void InvokeIf( Action action )
         {
             try
             {
-                ThrowIf.Null(action, nameof(action));
-                if(Dispatcher.CheckAccess())
+                ThrowIf.Null( action, nameof( action ) );
+                if( Dispatcher.CheckAccess( ) )
                 {
-                    action?.Invoke();
+                    action?.Invoke( );
                 }
                 else
                 {
-                    Dispatcher.BeginInvoke(action);
+                    Dispatcher.BeginInvoke( action );
                 }
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
@@ -327,23 +329,23 @@ namespace Bobo
         /// Invokes if.
         /// </summary>
         /// <param name="action">The action.</param>
-        public void InvokeIf(Action<object> action)
+        public void InvokeIf( Action<object> action )
         {
             try
             {
-                ThrowIf.Null(action, nameof(action));
-                if(Dispatcher.CheckAccess())
+                ThrowIf.Null( action, nameof( action ) );
+                if( Dispatcher.CheckAccess( ) )
                 {
-                    action?.Invoke(null);
+                    action?.Invoke( null );
                 }
                 else
                 {
-                    Dispatcher.BeginInvoke(action);
+                    Dispatcher.BeginInvoke( action );
                 }
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
@@ -359,9 +361,9 @@ namespace Bobo
                     _busy = true;
                 }
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
@@ -372,14 +374,14 @@ namespace Bobo
         {
             try
             {
-                lock(_entry)
+                lock( _entry )
                 {
                     _busy = false;
                 }
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
@@ -417,16 +419,17 @@ namespace Bobo
             ScrollViewer _scrollViewer = null;
             if( element != null )
             {
-                for(var _i = 0; _i < VisualTreeHelper.GetChildrenCount( element ) && _scrollViewer == null; _i++ )
+                var _kids = VisualTreeHelper.GetChildrenCount( element );
+                for( var _i = 0; _i < _kids && _scrollViewer == null; _i++ )
                 {
-                    if(VisualTreeHelper.GetChild( element, _i ) is ScrollViewer )
+                    var _kido = VisualTreeHelper.GetChild( element, _i );
+                    if( _kido is ScrollViewer )
                     {
-                        _scrollViewer = (ScrollViewer)VisualTreeHelper.GetChild( element, _i );
+                        _scrollViewer = ( ScrollViewer )_kido;
                     }
                     else
                     {
-                        _scrollViewer =
-                            GetScrollViewer( VisualTreeHelper.GetChild( element, _i ) as UIElement );
+                        _scrollViewer = GetScrollViewer( _kido as UIElement );
                     }
                 }
             }
@@ -447,11 +450,11 @@ namespace Bobo
 
             // Based on: https://stackoverflow.com/a/1426312	
             var _notifyCollectionChanged = ChatListView.ItemsSource as INotifyCollectionChanged;
-            if(_notifyCollectionChanged != null )
+            if( _notifyCollectionChanged != null )
             {
-                _notifyCollectionChanged.CollectionChanged += (sender, e) =>
+                _notifyCollectionChanged.CollectionChanged += ( sender, e ) =>
                 {
-                    _chatListViewScrollViewer?.ScrollToBottom();
+                    _chatListViewScrollViewer?.ScrollToBottom( );
                 };
             }
         }
@@ -466,13 +469,13 @@ namespace Bobo
             _messageContextMenu.Items.Clear( );
 
             // Message header
-            _messageContextMenu.Items.Add(new MenuItem
+            _messageContextMenu.Items.Add( new MenuItem
             {
                 Header = "Message",
                 IsHitTestVisible = false,
                 FontSize = 20,
                 FontWeight = FontWeights.SemiBold
-            });
+            } );
 
             ;
             _messageContextMenu.Items.Add( new Separator( ) );
@@ -486,7 +489,7 @@ namespace Bobo
                 {
                     Glyph = "\uE16F"
                 }
-            });
+            } );
 
             _messageContextMenu.IsOpen = true;
         }
@@ -503,7 +506,7 @@ namespace Bobo
             }
             catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
@@ -516,9 +519,9 @@ namespace Bobo
             {
                 Dispatcher.BeginInvoke( _statusUpdate );
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                Fail(ex);
+                Fail( ex );
             }
         }
 
@@ -832,10 +835,10 @@ namespace Bobo
         /// associated with freeing, releasing,
         /// or resetting unmanaged resources.
         /// </summary>
-        public void Dispose()
+        public void Dispose( )
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            Dispose( true );
+            GC.SuppressFinalize( this );
         }
 
         /// <summary>
@@ -847,12 +850,12 @@ namespace Bobo
         /// and unmanaged resources;
         /// <c>false</c> to release only unmanaged resources.
         /// </param>
-        protected virtual void Dispose(bool disposing)
+        protected virtual void Dispose( bool disposing )
         {
-            if(disposing)
+            if( disposing )
             {
-                SfSkinManager.Dispose(this);
-                _timer?.Dispose();
+                SfSkinManager.Dispose( this );
+                _timer?.Dispose( );
             }
         }
 
@@ -860,11 +863,11 @@ namespace Bobo
         /// Fails the specified ex.
         /// </summary>
         /// <param name="ex">The ex.</param>
-        private protected static void Fail(Exception ex)
+        private protected static void Fail( Exception ex )
         {
-            using var _error = new ErrorWindow(ex);
-            _error?.SetText();
-            _error?.ShowDialog();
+            using var _error = new ErrorWindow( ex );
+            _error?.SetText( );
+            _error?.ShowDialog( );
         }
     }
 }

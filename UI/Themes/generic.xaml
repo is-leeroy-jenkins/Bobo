@@ -1,36 +1,23 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:b="clr-namespace:Bobo">
+    xmlns:b="clr-namespace:Bobo"
+    xmlns:ui="http://schemas.modernwpf.com/2019">
 
-    <!--  ****************************************  STYLES  *******************************************  -->
-
+    <!--****************************************  STYLES  *******************************************-->
 
     <ResourceDictionary.MergedDictionaries>
+        <!--  Styles  -->
         <ResourceDictionary Source="/UI/Themes/Colors.xaml" />
         <ResourceDictionary Source="/UI/Themes/Common/Fonts.xaml" />
         <ResourceDictionary Source="/UI/Themes/Common/Sizes.xaml" />
-        <ResourceDictionary Source="/UI/Themes/Window/Window.xaml" />
         <ResourceDictionary Source="/UI/Themes/Button/Button.xaml" />
-        <ResourceDictionary Source="/UI/Themes/Button/ButtonAdv.xaml" />
-        <ResourceDictionary Source="/UI/Themes/Button/MetroButton.xaml" />
         <ResourceDictionary Source="/UI/Themes/ComboBox/ComboBox.xaml" />
-        <ResourceDictionary Source="/UI/Themes/ComboBox/MetroComboBox.xaml" />
         <ResourceDictionary Source="/UI/Themes/ListBox/ListBox.xaml" />
         <ResourceDictionary Source="/UI/Themes/ListView/ListView.xaml" />
-        <ResourceDictionary Source="/UI/Themes/DropDown/DropDown.xaml" />
-        <ResourceDictionary Source="/UI/Themes/TabControl/TabControl.xaml" />
-        <ResourceDictionary Source="/UI/Themes/TabControl/BrowserTabItem.xaml" />
+        <ResourceDictionary Source="/UI/Themes/TabControl/TabItem.xaml" />
         <ResourceDictionary Source="/UI/Themes/TextBlock/TextBlock.xaml" />
         <ResourceDictionary Source="/UI/Themes/TextBox/TextBox.xaml" />
-        <ResourceDictionary Source="/UI/Themes/TextBox/MetroTextBox.xaml" />
-        <ResourceDictionary Source="/UI/Themes/RichTextBox/MetroRichTextBox.xaml" />
-        <ResourceDictionary Source="/UI/Themes/Tile/Tile.xaml" />
-        <ResourceDictionary Source="/UI/Themes/ToolStrip/MetroToolStrip.xaml" />
-        <ResourceDictionary Source="/UI/Themes/ToolStrip/ToolStripButton.xaml" />
-        <ResourceDictionary Source="/UI/Themes/ToolStrip/ToolStripDropDown.xaml" />
-        <ResourceDictionary Source="/UI/Themes/ToolStrip/ToolStripTextBox.xaml" />
-
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

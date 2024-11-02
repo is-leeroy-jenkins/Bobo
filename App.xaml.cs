@@ -125,8 +125,8 @@ namespace Bobo
                 BodyFontSize = 12,
                 HeaderFontSize = 16,
                 SubHeaderFontSize = 14,
-                TitleFontSize = 14,
-                SubTitleFontSize = 16,
+                TitleFontSize = 16,
+                SubTitleFontSize = 14,
                 BodyAltFontSize = 11,
                 FontFamily = new FontFamily( "Roboto" )
             };
@@ -141,9 +141,10 @@ namespace Bobo
         /// </summary>
         public App( )
         {
+            var _key = ConfigurationManager.AppSettings["UI"];
+            SyncfusionLicenseProvider.RegisterLicense(_key);
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             RegisterTheme( );
-            Startup += OnStartup;
-            Exit += OnExit;
         }
 
         /// <summary>
@@ -152,7 +153,7 @@ namespace Bobo
         /// <param name="mainWindow">
         /// The main window.
         /// </param>
-        private void SetupRestoreWindowPlace(MainWindow mainWindow)
+        private void SetupRestoreWindowPlace( MainWindow mainWindow )
         {
             var _config = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Bobo.config");
             _windowPlace = new WindowPlace(_config);
@@ -175,13 +176,10 @@ namespace Bobo
         /// <see cref="T:System.Windows.StartupEventArgs" />
         /// that contains the event data.
         /// </param>
-        protected void OnStartup( object sender, StartupEventArgs e )
+        protected override void OnStartup( StartupEventArgs e )
         {
             try
             {
-                var _key = ConfigurationManager.AppSettings[ "UI" ];
-                SyncfusionLicenseProvider.RegisterLicense( _key );
-                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 DispatcherUnhandledException += ( s, args ) => HandleException( args.Exception );
                 TaskScheduler.UnobservedTaskException += ( s, args ) =>
                     HandleException( args.Exception?.InnerException );
@@ -225,10 +223,9 @@ namespace Bobo
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Application.Exit" /> event.
         /// </summary>
-        /// <param name = "sender" > </param>
         /// <param name="e">An <see cref="T:System.Windows.ExitEventArgs" />
         /// that contains the event data.</param>
-        private protected void OnExit( object sender, ExitEventArgs e )
+        protected override void OnExit( ExitEventArgs e )
         {
             try
             {

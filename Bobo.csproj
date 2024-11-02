@@ -171,6 +171,7 @@
     <None Remove="Resources\Assets\ProviderImages\SqlCe.png" />
     <None Remove="Resources\Assets\ProviderImages\SQLite.png" />
     <None Remove="Resources\Assets\ProviderImages\SqlServer.png" />
+    <None Remove="SplashScreen.png" />
     <None Remove="workload-install.ps1" />
   </ItemGroup>
   
@@ -317,6 +318,10 @@
     <Resource Include="Resources\Assets\ProviderImages\SqlCe.png" />
     <Resource Include="Resources\Assets\ProviderImages\SQLite.png" />
     <Resource Include="Resources\Assets\ProviderImages\SqlServer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="SplashScreen.png" />
   </ItemGroup>
 
   <ItemGroup>

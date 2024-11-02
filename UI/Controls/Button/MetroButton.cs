@@ -56,7 +56,7 @@ namespace Bobo
     [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    public class MetroButton : ButtonAdv
+    public class MetroButton : MetroTile
     {
         /// <summary>
         /// The theme
@@ -72,14 +72,11 @@ namespace Bobo
             : base( )
         {
             // Control Properties
-            SetResourceReference( StyleProperty, typeof( ButtonAdv ) );
+            SetResourceReference( StyleProperty, typeof( MetroButton ) );
             FontFamily = _theme.FontFamily;
             FontSize = _theme.FontSize;
             Width = 140;
             Height = 50;
-            IconHeight = 16;
-            IconWidth = 16;
-            SizeMode = SizeMode.Normal;
             HorizontalContentAlignment = HorizontalAlignment.Center;
             VerticalContentAlignment = VerticalAlignment.Center;
             BorderThickness = _theme.BorderThickness;

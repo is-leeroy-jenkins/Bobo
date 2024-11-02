@@ -20,6 +20,11 @@
 
     <UserControl.Resources>
 
+        <Style TargetType="ui:ListView">
+            <!--Avoid 'narrow' vertical scrollbar.-->
+            <Setter Property="ui:ScrollViewerHelper.AutoHideScrollBars" Value="False" />
+        </Style>
+
         <Style TargetType="ToolTip">
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="Padding" Value="10" />
@@ -151,86 +156,92 @@
         <Border
             Grid.Row="0"
             Grid.ColumnSpan="4"
-            BorderThickness="1"
+            BorderThickness="0"
             IsEnabled="{Binding IsCommandNotBusy}">
             <ui:SimpleStackPanel
-                Background="{StaticResource ControlBackground}"
-                Orientation="Horizontal">
+                Orientation="Horizontal"
+                Background="{StaticResource FormBackground}">
                 <ui:CommandBar
                     HorizontalAlignment="Left"
                     Background="{StaticResource FormBackground}"
+                    Foreground="{StaticResource LightBlueBrush}"
                     DefaultLabelPosition="Bottom">
                     <!--  SymbolIcon: enum Symbol in Symbol.cs in ModernWpf  -->
+                    
                     <ui:AppBarButton
+                        x:Name="NewChatButton"
                         Width="60"
                         Margin="10,0,5,0"
-                        Padding="1,1,1,10"
-                        VerticalAlignment="Stretch"
-                        VerticalContentAlignment="Stretch"
-                        Command="{Binding NewChatCommand}"
-                        FontWeight="SemiBold"
-                        Foreground="{StaticResource LightBlueBrush}"
                         Icon="NewFolder"
                         Label="New Chat"
-                        ToolTip="Begin New Chat" />
-                    <ui:AppBarButton
-                        Width="90"
-                        Height="58"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Command="{Binding AddToHistoryCommand}"
-                        CommandParameter="{Binding SelectedChat}"
                         FontWeight="SemiBold"
                         Foreground="{StaticResource LightBlueBrush}"
+                        Command="{Binding NewChatCommand}" />
+                    
+                    <ui:AppBarButton
+                        x:Name="AddHistoryButton"
+                        Width="90"
+                        Margin="5,0"
                         Icon="Add"
+                        Label="Add to History"
+                        Foreground="{StaticResource LightBlueBrush}"
+                        FontWeight="SemiBold"
                         IsEnabled="{Binding AddToHistoryButtonEnabled}"
-                        Label="Add to History" />
+                        Command="{Binding AddToHistoryCommand}"
+                        CommandParameter="{Binding SelectedChat}" />
+                    
                     <ui:AppBarSeparator
-                        Margin="0,0,0,0"
-                        Foreground="{StaticResource LightBlueBrush}" 
-                        Background="{StaticResource ControlBackground}"/>
+                        Margin="0,10,0,0"
+                        Foreground="{StaticResource LightBlueBrush}" />
+
                 </ui:CommandBar>
                 <CheckBox
+                    x:Name="StreamingModeCheckBox"
                     Margin="0,15,0,0"
                     VerticalAlignment="Top"
                     Content="Streaming Mode"
-                    FontWeight="SemiBold"
+                    FontFamily="Roboto"
+                    FontSize="12"
                     Foreground="{StaticResource LightBlueBrush}"
+                    ToolTip="Streaming Mode: return a piece at a time"
                     IsChecked="{Binding IsStreamingMode}"
-                    Style="{DynamicResource CheckBoxStyle}"
-                    ToolTip="Streaming Mode: return a piece at a time" />
-                <ui:AppBarSeparator Margin="0,10,0,0" />
+                    FontWeight="Regular" />
+
+                <ui:AppBarSeparator
+                    Margin="0,10,0,0"
+                    Foreground="{StaticResource LightBlueBrush}" />
+
                 <ui:SimpleStackPanel Orientation="Horizontal">
                     <TextBox
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Background="Transparent"
-                        BorderThickness="0"
+                        Text="GPT-3.5 Turbo"
                         FontSize="20"
                         FontWeight="SemiBold"
-                        Foreground="{StaticResource LightBlueBrush}"
                         IsReadOnly="True"
-                        Text="GPT-3.5 Turbo" />
+                        Foreground="{StaticResource LightBlueBrush}"
+                        Background="Transparent"
+                        BorderThickness="0" />
                 </ui:SimpleStackPanel>
             </ui:SimpleStackPanel>
         </Border>
 
         <!--  Chat list  -->
+
         <ui:ListView
             x:Name="ChatListView"
             Grid.Row="1"
             Grid.Column="0"
             Margin="0,0,0,2"
-            Background="{StaticResource ControlBackground}"
-            BorderBrush="{StaticResource BlueBorderBrush}"
-            BorderThickness="0,1"
             IsEnabled="{Binding IsCommandNotBusy}"
             ItemsSource="{Binding ChatList}"
-            ScrollViewer.CanContentScroll="True"
-            ScrollViewer.IsDeferredScrollingEnabled="False"
             SelectedItem="{Binding SelectedChat}"
-
-            SelectionMode="Single">
+            Background="{StaticResource FormBackground}"
+            BorderBrush="{StaticResource BlueBorderBrush}"
+            BorderThickness="1"
+            SelectionMode="Single"
+            ScrollViewer.IsDeferredScrollingEnabled="False"
+            ScrollViewer.CanContentScroll="True">
             <ui:ListView.ItemContainerStyle>
                 <Style TargetType="ui:ListViewItem">
                     <Style.Triggers>
@@ -241,53 +252,62 @@
                     </Style.Triggers>
                 </Style>
             </ui:ListView.ItemContainerStyle>
+
             <ui:ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0">
                         <TextBlock
                             Margin="5,5,0,5"
-                            FontSize="18"
-                            Foreground="{StaticResource FormForeground}"
                             Text="{Binding Name, Mode=OneWay}"
-                            TextWrapping="Wrap" />
+                            TextWrapping="Wrap"
+                            FontSize="18"
+                            Foreground="White" />
                     </Grid>
                 </DataTemplate>
             </ui:ListView.ItemTemplate>
         </ui:ListView>
         <!--  Selected chat's message list  -->
         <!--  Without VirtualizingPanel.ScrollUnit="Pixel", the last row doesn't seem to be fully visible  -->
+
         <ui:ListView
             x:Name="MessageListView"
             Grid.Row="1"
             Grid.Column="1"
             Margin="0,2,2,2"
-            AlternationCount="2"
-            Background="{StaticResource ControlInteriorBrush}"
-            BorderBrush="{StaticResource BlueBorderBrush}"
-            BorderThickness="0,1"
             ItemsSource="{Binding SelectedChat.MessageList}"
-            ScrollViewer.CanContentScroll="True"
-            ScrollViewer.IsDeferredScrollingEnabled="False"
+            AlternationCount="2"
+            Background="{StaticResource FormBackground}"
+            BorderBrush="{StaticResource BlueBorderBrush}"
+            BorderThickness="1"
             SelectionMode="Single"
+            ScrollViewer.IsDeferredScrollingEnabled="False"
+            ScrollViewer.CanContentScroll="True"
             VirtualizingPanel.ScrollUnit="Pixel">
+
+            <!--  Disable selection: https://stackoverflow.com/questions/1051215/wpf-listview-turn-off-selection  -->
+
             <ui:ListView.ItemContainerStyle>
                 <Style TargetType="ui:ListViewItem">
-                    <!--  Disable selection: https://stackoverflow.com/questions/1051215/wpf-listview-turn-off-selection  -->
+
                     <Setter Property="Focusable" Value="False" />
                     <Style.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="FontWeight" Value="SemiBold" />
                         </Trigger>
+
                         <!--  RichTextBox Background="Transparent" below needed to look smooth  -->
+
                         <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="{StaticResource BlackBackground}" />
+                            <Setter Property="Background" Value="{StaticResource ControlInteriorBrush}" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </ui:ListView.ItemContainerStyle>
             <ui:ListView.ItemTemplate>
                 <DataTemplate>
+
                     <!--  Need Grid (not StackPanel) for TextBlock to wrap  -->
+
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30" />
@@ -298,33 +318,35 @@
                             <TextBlock
                                 Margin="0,8,0,5"
                                 VerticalAlignment="Top"
+                                Text="{Binding Sender}"
                                 FontSize="16"
-                                FontWeight="Bold"
-                                Text="{Binding Sender}" />
+                                FontWeight="Bold" />
                             <Button
                                 Margin="-8,0,0,0"
-                                Background="Transparent"
+                                IsEnabled="{Binding DataContext.IsCommandNotBusy, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
                                 Command="{Binding DataContext.CopyMessageCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
                                 CommandParameter="{Binding .}"
-                                IsEnabled="{Binding DataContext.IsCommandNotBusy, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
                                 ToolTip="Copy Me and Bot messages to clipboard"
-                                Visibility="{Binding CopyButtonVisibility}">
+                                Visibility="{Binding CopyButtonVisibility}"
+                                Background="Transparent">
                                 <ui:SymbolIcon Symbol="Copy" />
                             </Button>
                         </StackPanel>
+
                         <!--  RichTextBox allows copying selection in the RichTextBox control  -->
+
                         <RichTextBox
                             Grid.Column="1"
                             Margin="0,0,5,2"
-                            Background="{StaticResource TransparentBrush}"
+                            Background="Transparent"
                             BorderThickness="0"
                             IsReadOnly="True">
                             <FlowDocument>
                                 <Paragraph>
                                     <Run
+                                        Text="{Binding Text}"
                                         FontSize="20"
-                                        FontWeight="Normal"
-                                        Text="{Binding Text}" />
+                                        FontWeight="Normal" />
                                 </Paragraph>
                             </FlowDocument>
                         </RichTextBox>
@@ -332,7 +354,9 @@
                 </DataTemplate>
             </ui:ListView.ItemTemplate>
         </ui:ListView>
+
         <!--  Image Pane on the right  -->
+
         <Grid
             Grid.Row="1"
             Grid.Column="2"
@@ -348,23 +372,21 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <b:MetroTextBox
-                Width="180"
-                Height="42"
-                Margin="10,0,0,0"
+            <TextBox
+                x:Name="ImageGeneratorTextBox"
+                Height="35"
+                Margin="12,10,10,5"
                 Padding="7,7,0,5"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
                 ui:ControlHelper.PlaceholderText="A place name, etc."
-                Background="{StaticResource ControlInteriorBrush}"
+                BorderThickness="1"
                 BorderBrush="{StaticResource BlueBorderBrush}"
-                FontSize="20"
-                Foreground="{StaticResource FormForeground}"
+                Text="{Binding ImageInput, UpdateSourceTrigger=PropertyChanged}"
+                TextWrapping="Wrap"
                 IsEnabled="{Binding IsCommandNotBusy}"
                 SpellCheck.IsEnabled="True"
-                Style="{DynamicResource TextBoxStyle}"
-                Text="{Binding ImageInput, UpdateSourceTrigger=PropertyChanged}"
-                TextWrapping="Wrap">
+                FontFamily="Roboto"
+                FontSize="12">
+
                 <TextBox.InputBindings>
                     <KeyBinding
                         Key="Enter"
@@ -373,60 +395,64 @@
                         Key="Esc"
                         Command="{Binding ClearImageInputCommand}" />
                 </TextBox.InputBindings>
+
                 <TextBox.CaretBrush>
                     <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
                         <LinearGradientBrush.GradientStops>
-                            <GradientStop Offset="0" Color="{StaticResource HoverColor2}" />
-                            <GradientStop Offset="0.5" Color="{StaticResource HoverColor3}" />
-                            <GradientStop Offset="1" Color="{StaticResource HoverColor5}" />
+                            <GradientStop Offset="0" Color="{StaticResource BlueBorderColor}" />
+                            <GradientStop Offset="0.5" Color="{StaticResource BlueBorderColor}" />
+                            <GradientStop Offset="1" Color="{StaticResource BlueBorderColor}" />
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
                 </TextBox.CaretBrush>
-            </b:MetroTextBox>
+            </TextBox>
 
-            <b:MetroButton
+            <Button
+                x:Name="ImageGeneratorButton"
                 Grid.Column="1"
                 Height="40"
                 Margin="2,8,10,5"
-                Padding="30,1,1,3"
+                Padding="10,0,10,3"
+                BorderThickness="1"
+                Content="Image"
+                ToolTip="Create an image by a name"
                 Command="{Binding CreateImageCommand}"
-                Title="Image"
-                FontSize="20"
                 IsEnabled="{Binding IsCommandNotBusy}"
-                ToolTip="Create an image by a name" />
+                FontFamily="Roboto"
+                FontSize="12"/>
             <Image
                 Grid.Row="1"
                 Grid.ColumnSpan="2"
                 MaxWidth="600"
                 MaxHeight="400"
-                Margin="10,10,10,0"
+                Margin="10,10,10,10"
                 VerticalAlignment="Top"
                 Source="{Binding ResultImage, TargetNullValue={x:Null}}" />
         </Grid>
+
         <!--  Expand/Collapse button on right side for Image Pane  -->
+
         <Button
             Grid.Row="1"
             Grid.Column="3"
             Height="50"
-            Background="Transparent"
-            BorderBrush="{StaticResource ControlInteriorBrush}"
-            BorderThickness="1,0,0,0"
+            Margin="1"
+            BorderThickness="1"
+            FontFamily="Roboto"
+            FontSize="12"
             Command="{Binding ExpandOrCollapseImagePaneCommand}"
             ToolTip="Expand / Collapse Image Pane">
             <Button.Resources>
                 <Polygon
                     x:Key="PolygonRight"
                     Margin="0,0,3,0"
-                    Fill="{StaticResource BlueBorderBrush}"
-                    Points="0,0,0,40,10,20" />
+                    Points="0,0,0,40,10,20"
+                    Fill="{StaticResource BlueBorderBrush}" />
                 <Polygon
                     x:Key="PolygonLeft"
                     Margin="0,0,3,0"
-                    Fill="{StaticResource BlueBorderBrush}"
-                    Points="10,0,10,40,0,20" />
-                <SolidColorBrush
-                    x:Key="MouseOverBackground"
-                    Color="{StaticResource ForeColor5}" />
+                    Points="10,0,10,40,0,20"
+                    Fill="{StaticResource BlueBorderBrush}" />
             </Button.Resources>
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
@@ -469,8 +495,8 @@
         <!--  Vertical splitter between the 2 lists  -->
         <GridSplitter
             Grid.Row="1"
-            Width="6"
-            Margin="0,0,0,2"
+            Width="2"
+            Margin="1"
             HorizontalAlignment="Right"
             VerticalAlignment="Stretch"
             Background="{StaticResource BlueBorderBrush}" />
@@ -488,23 +514,23 @@
 
             <!--  #08000000 ligher than #19000000  -->
             <!--  AcceptsReturn="True" needed for Paste from clipboard, MaxHeight for height limit  -->
-            <b:MetroTextBox
+            <TextBox
                 x:Name="ChatInputTextBox"
                 MaxHeight="170"
-                Width="150"
                 Margin="12,10,10,7"
                 Padding="7,2,0,5"
                 VerticalAlignment="Stretch"
-                AcceptsReturn="False"
-                Background="{StaticResource ControlInteriorBrush}"
+                BorderThickness="1"
                 BorderBrush="{StaticResource BlueBorderBrush}"
-                FontSize="20"
-                IsEnabled="{Binding IsCommandNotBusy}"
                 SpellCheck.IsEnabled="True"
-                Style="{DynamicResource TextBoxStyle}"
+                IsEnabled="{Binding IsCommandNotBusy}"
                 Text="{Binding ChatInput, UpdateSourceTrigger=PropertyChanged}"
                 TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto">
+                VerticalScrollBarVisibility="Auto"
+                AcceptsReturn="False"
+                Background="{StaticResource ControlInteriorBrush}"
+                FontSize="16">
+
                 <TextBox.InputBindings>
                     <!--  Now Enter to Send  -->
                     <KeyBinding
@@ -514,91 +540,95 @@
                         Key="Esc"
                         Command="{Binding ClearChatInputCommand}" />
                 </TextBox.InputBindings>
+
                 <TextBox.CaretBrush>
                     <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="0,1">
                         <LinearGradientBrush.GradientStops>
-                            <GradientStop Offset="0" Color="{StaticResource HoverColor2}" />
-                            <GradientStop Offset="0.5" Color="{StaticResource HoverColor3}" />
-                            <GradientStop Offset="1" Color="{StaticResource HoverColor5}" />
+                            <GradientStop Offset="0" Color="{StaticResource BlueBorderColor}" />
+                            <GradientStop Offset="0.5" Color="{StaticResource BlueBorderColor}" />
+                            <GradientStop Offset="1" Color="{StaticResource BlueBorderColor}" />
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
                 </TextBox.CaretBrush>
-            </b:MetroTextBox>
+            </TextBox>
 
             <StackPanel
                 Grid.Column="1"
                 Orientation="Horizontal">
-                <b:MetroButton
-                    x:Name="SendButton"
-                    Width="140"
-                    Height="30"
+                <StackPanel.Resources>
+                    <!--  AccentButtonStyle is from modernwpf  -->
+                    <Style
+                        TargetType="Button"
+                        BasedOn="{StaticResource AccentButtonStyle}">
+                        <Setter Property="Height" Value="35" />
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="Padding" Value="10,0,10,3" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <Button
                     Margin="3,2,0,0"
-                    Padding="30,1,1,1"
-                    Header="Send"
-                    Foreground="{StaticResource LightBlueBrush}"
-                    Command="{Binding SendCommand}"
                     Content="Send"
-                    ToolTip="Enter is the same as Send" />
+                    BorderThickness="1"
+                    FontFamily="Roboto"
+                    FontSize="12"
+                    ToolTip="Enter is the same as Send"
+                    Command="{Binding SendCommand}" />
                 <Expander
                     Margin="10,0,0,0"
-                    Height="60"
+                    Padding="1,5,5,1"
                     VerticalAlignment="Bottom"
                     ExpandDirection="Right"
                     IsExpanded="False">
-
                     <StackPanel
                         Margin="0,0,0,8"
                         Orientation="Horizontal">
-                        
-                        <b:MetroButton
-                            Margin="3"
-                            Width="140"
-                            Height="30"
-                            Command="{Binding ExplainCommand}"
+                        <Button
+                            Margin="5,0,0,0"
                             Content="Explain"
-                            Padding="30,1,1,1"
-                            Header="Explain"
-                            IsEnabled="{Binding IsCommandNotBusy}"
-                            ToolTip="Explain input (usually short like ML.NET)" />
-                        
-                        <b:MetroButton                            
-                            Margin="3"
-                            Width="140"
-                            Height="30"
-                            Padding="15,1,1,1"
-                            Command="{Binding TranslateToCommand}"
+                            BorderThickness="1"
+                            FontFamily="Roboto"
+                            FontSize="12"
+                            Command="{Binding ExplainCommand}"
+                            ToolTip="Explain input (usually short like ML.NET)"
+                            IsEnabled="{Binding IsCommandNotBusy}" />
+                        <Button
+                            Margin="15,0,0,0"
                             Content="Translate to"
-                            Header="Translate to"
-                            IsEnabled="{Binding IsCommandNotBusy}"
-                            ToolTip="Translate input to selected language" />
-                        
-                        <b:MetroDropDown
+                            BorderThickness="1"
+                            FontFamily="Roboto"
+                            FontSize="12"
+                            Command="{Binding TranslateToCommand}"
+                            ToolTip="Translate input to selected language"
+                            IsEnabled="{Binding IsCommandNotBusy}" />
+                        <ComboBox
                             Grid.Column="1"
                             Width="100"
-                            Height="32"
+                            Height="35"
                             Margin="10,0,0,0"
-                            FontWeight="SemiBold"
                             IsEditable="True"
                             IsEnabled="{Binding IsCommandNotBusy}"
+                            FontWeight="Regular"
                             ItemsSource="{Binding LangList}"
                             SelectedItem="{Binding SelectedLang}"
-                            Style="{DynamicResource MetroComboBoxStyle}" />
-                        
-                        <b:MetroButton
+                            FontFamily="Roboto"
+                            FontSize="12"
+                            BorderThickness="1" />
+                        <Button
                             Margin="15,0,0,0"
-                            Command="{Binding SpeakCommand}"
                             Content="Speak"
-                            Header="Speak"
-                            IsEnabled="{Binding IsCommandNotBusy}"
-                            ToolTip="Speak input (English only)" />
-                        
+                            BorderThickness="1"
+                            FontFamily="Roboto"
+                            FontSize="12"
+                            Command="{Binding SpeakCommand}"
+                            ToolTip="Speak input (English only)"
+                            IsEnabled="{Binding IsCommandNotBusy}" />
                         <CheckBox
                             Margin="10,0,0,0"
                             Content="Female voice"
-                            FontWeight="SemiBold"
-                            Foreground="{StaticResource FormForeground}"
+                            Foreground="{StaticResource LightBlueBrush}"
                             IsChecked="{Binding IsFemaleVoice}"
-                            Style="{DynamicResource CheckBoxStyle}" />
+                            FontWeight="Normal" />
                     </StackPanel>
                 </Expander>
             </StackPanel>
@@ -609,15 +639,15 @@
             Grid.Row="3"
             Grid.ColumnSpan="4"
             Margin="0,5,0,0"
-            Background="{StaticResource FormBackground}"
             BorderBrush="{StaticResource BlueBorderBrush}"
-            BorderThickness="0,1,0,0">
+            BorderThickness="0,1,0,0"
+            Background="{StaticResource FormBackground}">
             <TextBlock
                 Margin="10,5,0,0"
-                FontSize="18"
-                FontWeight="SemiBold"
                 Text="{Binding StatusMessage}"
-                ToolTip="{Binding StatusMessage}" />
+                ToolTip="{Binding StatusMessage}"
+                FontSize="18"
+                FontWeight="SemiBold" />
         </Border>
     </Grid>
 </UserControl>

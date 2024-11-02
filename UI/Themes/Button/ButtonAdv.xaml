@@ -133,7 +133,7 @@
     </ControlTemplate>
 
     <Style
-        x:Key="SyncfusionButtonAdvStyle"
+        x:Key="ButtonAdvStyle"
         TargetType="{x:Type sync:ButtonAdv}">
         <Setter Property="Label" Value="Button" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -144,7 +144,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BlueBorderBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource FormForeground}" />
         <Setter Property="FontFamily" Value="Roboto" />
-        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontSize" Value="12" />
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Template">
             <Setter.Value>

@@ -2,6 +2,8 @@
     x:Class="Bobo.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:b="clr-namespace:Bobo"
     xmlns:skin="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
     xmlns:sync="http://schemas.syncfusion.com/wpf"
     xmlns:ui="http://schemas.modernwpf.com/2019"
@@ -14,10 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
 
                 <!--  Styles  -->
-                <ResourceDictionary Source="/UI/Themes/Colors.xaml" />
-                <ResourceDictionary Source="/UI/Themes/Common/Fonts.xaml" />
-                <ResourceDictionary Source="/UI/Themes/Common/Sizes.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
+                <ResourceDictionary Source="/UI/Themes/generic.xaml" />
 
                 <!--  Fonts  -->
                 <ResourceDictionary>
@@ -27,29 +26,49 @@
                 <!--  Fluent Theme  -->
                 <ui:ThemeResources>
                     <ui:ThemeResources.ThemeDictionaries>
-
-                        <ResourceDictionary x:Key="Dark">
-                            <ResourceDictionary.MergedDictionaries>
-                                <ResourceDictionary Source="/FluentWPF;component/Styles/Colors.Dark.xaml" />
-                                <ResourceDictionary Source="/FluentWPF;component/Styles/Brushes.xaml" />
-                                <ResourceDictionary Source="/ModernWpf;component/ThemeResources/Dark.xaml" />
-                            </ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary
+                            x:Key="Dark"
+                            ui:ThemeDictionary.Key="Dark">
+                            <SolidColorBrush
+                                x:Key="AppBackgroundBrush"
+                                Color="{StaticResource DefaultBackColor}" />
+                            <SolidColorBrush
+                                x:Key="AppContentBackgroundBrush"
+                                Color="{StaticResource ControlInteriorColor}" />
+                            <SolidColorBrush
+                                x:Key="CustomThemeBrush"
+                                Color="{StaticResource BlueBorderColor}" />
                         </ResourceDictionary>
-
-                        <ResourceDictionary x:Key="Light">
-                            <ResourceDictionary.MergedDictionaries>
-                                <ResourceDictionary Source="/FluentWPF;component/Styles/Colors.Light.xaml" />
-                                <ResourceDictionary Source="/FluentWPF;component/Styles/Brushes.xaml" />
-                                <ResourceDictionary Source="/ModernWpf;component/ThemeResources/Light.xaml" />
-                            </ResourceDictionary.MergedDictionaries>
-                        </ResourceDictionary>
-
                     </ui:ThemeResources.ThemeDictionaries>
                 </ui:ThemeResources>
 
                 <ui:XamlControlsResources />
 
+
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="ui:ListView">
+                <!--  Avoid 'narrow' vertical scrollbar.  -->
+                <Setter Property="ui:ScrollViewerHelper.AutoHideScrollBars" Value="False" />
+            </Style>
+
+            <Style
+                TargetType="TabItem"
+                BasedOn="{StaticResource DefaultTabItemStyle}">
+                <!--  Note: FontFamily affect all under a tab. Got "Cascadia Mono Light" from comment section in https://www.youtube.com/watch?v=Hf9HQVPinqQ  -->
+                <Setter Property="FontFamily" Value="Roboto" />
+                <Setter Property="FontSize" Value="18" />
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="FontWeight" Value="SemiBold" />
+
+                    </Trigger>
+                    <Trigger Property="IsSelected" Value="False">
+                        <Setter Property="FontWeight" Value="Normal" />
+
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
