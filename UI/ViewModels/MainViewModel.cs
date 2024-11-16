@@ -72,7 +72,7 @@ namespace Bobo
         /// <summary>
         /// The live chat view model
         /// </summary>
-        private protected LiveChatViewModel _liveChatViewModel;
+        private protected ChatViewModel _chatViewModel;
 
         /// <summary>
         /// The history view model
@@ -96,7 +96,7 @@ namespace Bobo
         public MainViewModel( IHistoryRepo historyRepo, ChatGptService chatGptService )
         {
             _historyViewModel = new HistoryViewModel( historyRepo );
-            _liveChatViewModel = new LiveChatViewModel( historyRepo, chatGptService );
+            _chatViewModel = new ChatViewModel( historyRepo, chatGptService );
             _appVersion = Assembly.GetExecutingAssembly( ).GetName( ).Version;
             _dotNetVersion = Environment.Version;
             _appTitle = CreateVersion( );
@@ -175,18 +175,18 @@ namespace Bobo
         /// <value>
         /// The live chat view model.
         /// </value>
-        public LiveChatViewModel LiveChatViewModel
+        public ChatViewModel LiveChatViewModel
         {
             get
             {
-                return _liveChatViewModel;
+                return _chatViewModel;
             }
             set
             {
-                if( _liveChatViewModel != value )
+                if( _chatViewModel != value )
                 {
-                    _liveChatViewModel = value;
-                    OnPropertyChanged( nameof( LiveChatViewModel ) );
+                    _chatViewModel = value;
+                    OnPropertyChanged( nameof( ChatViewModel ) );
                 }
             }
         }

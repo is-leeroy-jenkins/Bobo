@@ -4,7 +4,7 @@
     xmlns:b="clr-namespace:Bobo"
     xmlns:ui="http://schemas.modernwpf.com/2019">
 
-    <!--****************************************  STYLES  *******************************************-->
+    <!--  ****************************************  STYLES  *******************************************  -->
 
     <ResourceDictionary.MergedDictionaries>
         <!--  Styles  -->
@@ -13,11 +13,15 @@
         <ResourceDictionary Source="/UI/Themes/Common/Sizes.xaml" />
         <ResourceDictionary Source="/UI/Themes/Button/Button.xaml" />
         <ResourceDictionary Source="/UI/Themes/ComboBox/ComboBox.xaml" />
+        <ResourceDictionary Source="/UI/Themes/ComboBox/MetroComboBox.xaml" />
+        <ResourceDictionary Source="/UI/Themes/DropDown/DropDown.xaml" />
+        <ResourceDictionary Source="/UI/Themes/CheckBox/CheckBox.xaml" />
         <ResourceDictionary Source="/UI/Themes/ListBox/ListBox.xaml" />
         <ResourceDictionary Source="/UI/Themes/ListView/ListView.xaml" />
         <ResourceDictionary Source="/UI/Themes/TabControl/TabItem.xaml" />
         <ResourceDictionary Source="/UI/Themes/TextBlock/TextBlock.xaml" />
         <ResourceDictionary Source="/UI/Themes/TextBox/TextBox.xaml" />
+        <ResourceDictionary Source="/UI/Themes/RichTextBox/RichTextBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

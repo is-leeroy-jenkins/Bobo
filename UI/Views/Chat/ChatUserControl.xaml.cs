@@ -71,7 +71,7 @@ namespace Bobo
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
     [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
     [ SuppressMessage( "ReSharper", "UsePatternMatching" ) ]
-    public partial class LiveChatUserControl : UserControl
+    public partial class ChatUserControl : UserControl
     {
         /// <summary>
         /// The is disposed
@@ -116,34 +116,34 @@ namespace Bobo
         /// <summary>
         /// The already loaded
         /// </summary>
-        private bool _alreadyLoaded;
+        private protected bool _alreadyLoaded;
 
         /// <summary>
         /// The chat ListView scroll viewer
         /// </summary>
-        private ScrollViewer _chatListViewScrollViewer;
+        private protected ScrollViewer _chatScrollViewer;
 
         /// <summary>
         /// The message ListView scroll viewer
         /// </summary>
-        private ScrollViewer _messageListViewScrollViewer;
+        private protected ScrollViewer _messageScrollViewer;
 
         /// <summary>
         /// The message context menu
         /// </summary>
-        private ContextMenu _messageContextMenu;
+        private protected ContextMenu _messageContextMenu;
 
         /// <summary>
         /// The live chat view model
         /// </summary>
-        private protected LiveChatViewModel _liveChatViewModel;
+        private protected ChatViewModel _chatViewModel;
 
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
         /// <see cref="T:Bobo.UI.Views.LiveChatUserControl" /> class.
         /// </summary>
-        public LiveChatUserControl( )
+        public ChatUserControl( )
         {
             InitializeComponent( );
             _messageContextMenu = new ContextMenu( );
@@ -162,15 +162,15 @@ namespace Bobo
         /// <value>
         /// The live chat view model.
         /// </value>
-        public LiveChatViewModel LiveChatViewModel
+        public ChatViewModel LiveChatViewModel
         {
             get
             {
-                return _liveChatViewModel;
+                return _chatViewModel;
             }
             set
             {
-                _liveChatViewModel = value;
+                _chatViewModel = value;
             }
         }
 
@@ -401,7 +401,7 @@ namespace Bobo
                     SetupMessageListViewScrollViewer( );
                     break;
                 case InterfaceUpdate.MessageListViewScrollToBottom:
-                    _messageListViewScrollViewer?.ScrollToBottom( );
+                    _messageScrollViewer?.ScrollToBottom( );
                     break;
             }
         }
@@ -446,7 +446,7 @@ namespace Bobo
             // We'll need that in order to reliably
             // implement "automatically scroll to the bottom
             // when new items are added" functionality.            
-            _chatListViewScrollViewer = GetScrollViewer( ChatListView );
+            _chatScrollViewer = GetScrollViewer( ChatListView );
 
             // Based on: https://stackoverflow.com/a/1426312	
             var _notifyCollectionChanged = ChatListView.ItemsSource as INotifyCollectionChanged;
@@ -454,7 +454,7 @@ namespace Bobo
             {
                 _notifyCollectionChanged.CollectionChanged += ( sender, e ) =>
                 {
-                    _chatListViewScrollViewer?.ScrollToBottom( );
+                    _chatScrollViewer?.ScrollToBottom( );
                 };
             }
         }
@@ -536,9 +536,9 @@ namespace Bobo
             if( !_alreadyLoaded )
             {
                 _alreadyLoaded = true;
-                _liveChatViewModel = ( LiveChatViewModel )DataContext;
+                _chatViewModel = ( ChatViewModel )DataContext;
                 SetupChatListViewScrollViewer( );
-                _messageListViewScrollViewer = GetScrollViewer( MessageListView );
+                _messageScrollViewer = GetScrollViewer( MessageListView );
                 SetupMessageListViewScrollViewer( );
             }
         }
@@ -555,7 +555,7 @@ namespace Bobo
                 && Keyboard.Modifiers == ModifierKeys.Control )
             {
                 // Ctrl+Enter for input of multiple lines
-                var _liveChatUserControl = sender as LiveChatUserControl;
+                var _liveChatUserControl = sender as ChatUserControl;
                 if( _liveChatUserControl != null )
                 {
                     // ChatGPT mostly answered this!
@@ -573,7 +573,7 @@ namespace Bobo
                 var _inputTextBox = Keyboard.FocusedElement as TextBox;
                 if( _inputTextBox?.Name == "ChatInputTextBox" )
                 {
-                    _liveChatViewModel?.PrevNextChatInput( e.Key == Key.Up );
+                    _chatViewModel?.PrevNextChatInput( e.Key == Key.Up );
                 }
             }
         }
@@ -592,7 +592,7 @@ namespace Bobo
             {
                 _notifyCollectionChanged.CollectionChanged += ( sender, e ) =>
                 {
-                    _messageListViewScrollViewer?.ScrollToBottom( );
+                    _messageScrollViewer?.ScrollToBottom( );
                 };
             }
         }
@@ -637,12 +637,12 @@ namespace Bobo
             var _message = _messageContextMenu.Tag as Message;
             if( _mi != null
                 && _message != null
-                && _liveChatViewModel != null )
+                && _chatViewModel != null )
             {
                 switch( _mi.Header as string )
                 {
                     case COPY_MESSAGE:
-                        _liveChatViewModel.CopyMessage( _message );
+                        _chatViewModel.CopyMessage( _message );
                         break;
                 }
             }

@@ -1,14 +1,14 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Bobo
 //     Author:                  Terry D. Eppler
-//     Created:                 10-16-2024
+//     Created:                 11-02-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        10-16-2024
+//     Last Modified On:        11-02-2024
 // ******************************************************************************************
-// <copyright file="LiveChatViewModel.cs" company="Terry D. Eppler">
-//    A windows presentation foundation (WPF) application for communication
-//    with the Chat GPT-3.5 Turbo API and Chat GPT-4
+// <copyright file="ChatViewModel.cs" company="Terry D. Eppler">
+//   Bocifus is an open source windows (wpf) application that interacts with OpenAI GPT-3.5 Turbo API
+//   based on NET6 and written in C-Sharp.
 // 
 //    Copyright ©  2020-2024 Terry D. Eppler
 // 
@@ -35,7 +35,7 @@
 //    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   LiveChatViewModel.cs
+//   ChatViewModel.cs
 // </summary>
 // ******************************************************************************************
 
@@ -66,7 +66,7 @@ namespace Bobo
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    public partial class LiveChatViewModel : ObservableObject
+    public partial class ChatViewModel : ObservableObject
     {
         /// <summary>
         /// The history repo
@@ -101,13 +101,13 @@ namespace Bobo
         /// <summary>
         /// The is command busy
         /// </summary>
-        [ObservableProperty]
+        [ ObservableProperty ]
         private protected bool _isCommandBusy;
 
         /// <summary>
         /// The selected chat
         /// </summary>
-        [ObservableProperty]
+        [ ObservableProperty ]
         private protected Chat _selectedChat;
 
         /// <summary>
@@ -118,19 +118,19 @@ namespace Bobo
         /// <summary>
         /// The chat input
         /// </summary>
-        [ObservableProperty]
+        [ ObservableProperty ]
         private protected string _chatInput;
 
         /// <summary>
         /// The image pane visibility
         /// </summary>
-        [ObservableProperty]
+        [ ObservableProperty ]
         private protected Visibility _imagePaneVisibility = Visibility.Collapsed;
 
         /// <summary>
         /// The image input
         /// </summary>
-        [ObservableProperty]
+        [ ObservableProperty ]
         private protected string _imageInput = "A tennis court";
 
         /// <summary>
@@ -170,11 +170,11 @@ namespace Bobo
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="LiveChatViewModel"/> class.
+        /// <see cref="ChatViewModel"/> class.
         /// </summary>
         /// <param name="historyRepo">The history repo.</param>
         /// <param name="chatGptService">The chat GPT service.</param>
-        public LiveChatViewModel( IHistoryRepo historyRepo, ChatGptService chatGptService )
+        public ChatViewModel( IHistoryRepo historyRepo, ChatGptService chatGptService )
         {
             _historyRepo = historyRepo;
             _chatGptService = chatGptService;

@@ -21,6 +21,26 @@
         <Setter Property="MinHeight" Value="30" />
         <Setter Property="Padding" Value="30,1,1,1" />
         <Setter Property="Margin" Value="5,4,5,4" />
+        <Setter Property="FontFamily" Value="Roboto" />
+        <Setter Property="FontSize" Value="12" />
+
+
+        <Style.Triggers>
+
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Background" Value="{DynamicResource BlackBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SteelBlueBackground}" />
+                <Setter Property="Foreground" Value="{DynamicResource WhiteForeground}" />
+            </Trigger>
+
+            <Trigger Property="IsFocused" Value="False">
+                <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlInteriorBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource LightBlueBrush}" />
+            </Trigger>
+
+
+        </Style.Triggers>
 
     </Style>
 

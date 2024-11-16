@@ -41,7 +41,9 @@
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="1" />
+        <Setter Property="FontFamily" Value="Roboto" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Padding" Value="30,1,1,1" />
         <Setter Property="Margin" Value="1" />
         <Setter Property="Height" Value="24" />
 
@@ -52,12 +54,14 @@
                 <Setter Property="Background" Value="{DynamicResource SteelBlueBackground}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource SteelBlueBackground}" />
                 <Setter Property="Foreground" Value="{DynamicResource WhiteForeground}" />
+                <Setter Property="FontWeight" Value="Bold" />
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="False">
                 <Setter Property="Background" Value="{DynamicResource ControlInteriorBrush}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource ControlInteriorBrush}" />
                 <Setter Property="Foreground" Value="{DynamicResource LightBlueBrush}" />
+                <Setter Property="FontWeight" Value="Normal" />
             </Trigger>
 
 

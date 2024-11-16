@@ -147,7 +147,7 @@
                     Text="Live Chat" />
             </TabItem.Header>
 
-            <b:LiveChatUserControl DataContext="{Binding LiveChatViewModel}" />
+            <b:ChatUserControl DataContext="{Binding LiveChatViewModel}" />
 
         </TabItem>
 

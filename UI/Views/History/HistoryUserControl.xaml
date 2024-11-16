@@ -61,7 +61,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     FontSize="20"
-                    Foreground="{StaticResource BlueBorderBrush}"
+                    Foreground="{StaticResource LightBlueBrush}"
                     Text="{Binding DbConfigInfo, Mode=OneWay}" />
             </ui:SimpleStackPanel>
         </Border>
@@ -71,10 +71,10 @@
             x:Name="ChatListView"
             Grid.Row="1"
             Grid.Column="0"
-            Margin="0,0,0,0"
+            Margin="1"
             Background="{StaticResource ControlBackground}"
             BorderBrush="{StaticResource BlueBorderBrush}"
-            BorderThickness="0,1"
+            BorderThickness="1"
             ItemsSource="{Binding ChatList}"
             ScrollViewer.CanContentScroll="True"
             ScrollViewer.IsDeferredScrollingEnabled="False"
@@ -87,7 +87,7 @@
                     <Style.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="FontWeight" Value="SemiBold" />
-                            <Setter Property="Background" Value="{StaticResource SteelBlueBackground}" />
+                            <Setter Property="Background" Value="{StaticResource ControlHoverBrush}" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -103,6 +103,7 @@
                         <TextBlock
                             Margin="5,5,0,5"
                             FontSize="18"
+                            Foreground="{StaticResource LightBlueBrush}"
                             Text="{Binding Name, Mode=OneWay}"
                             TextWrapping="Wrap" />
                         <DockPanel Grid.Column="1">
@@ -129,8 +130,6 @@
             Grid.Column="1"
             Margin="0,2,5,0"
             AlternationCount="2"
-            Background="{StaticResource ControlBackground}"
-            BorderBrush="{StaticResource BlueBorderBrush}"
             BorderThickness="1"
             ItemsSource="{Binding SelectedChat.MessageList}"
             ScrollViewer.CanContentScroll="True"
@@ -167,8 +166,8 @@
                             <TextBlock
                                 Margin="0,8,0,5"
                                 VerticalAlignment="Top"
-                                FontSize="16"
-                                FontWeight="Bold"
+                                FontSize="14"
+                                FontWeight="Normal"
                                 Text="{Binding Sender}" />
                             <Button
                                 Margin="-8,0,0,0"
@@ -186,12 +185,12 @@
                             Grid.Column="1"
                             Margin="0,0,5,2"
                             Background="Transparent"
-                            BorderThickness="0"
+                            BorderThickness="1"
                             IsReadOnly="True">
                             <FlowDocument>
                                 <Paragraph>
                                     <Run
-                                        FontSize="18"
+                                        FontSize="14"
                                         FontWeight="Normal"
                                         Text="{Binding Text}" />
                                 </Paragraph>
@@ -207,7 +206,7 @@
         <GridSplitter
             Grid.Row="1"
             Grid.Column="0"
-            Width="6"
+            Width="1"
             Margin="0,0,0,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Stretch"
@@ -218,7 +217,6 @@
             Grid.Row="2"
             Grid.ColumnSpan="2"
             Margin="0,3,0,0"
-            Background="{StaticResource FormBackground}"
             BorderBrush="{StaticResource BlueBorderBrush}"
             BorderThickness="0,1,0,0">
             <TextBlock
