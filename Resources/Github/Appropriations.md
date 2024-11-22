@@ -1,10 +1,10 @@
 ![](https://github.com/is-leeroy-jenkins/Bubba/blob/master/Resources/Assets/GitHubImages/Appropriation.png)
-## Bobo's AI layer provides access to the OpenAI VectorStores and Files
+# Federal Appropriations
 
 
-## Bobo's AI layer provides access to the OpenAI VectorStores for fine-tuning using the OpenAI API
+### Bobo's AI layer provides access to the OpenAI VectorStores for fine-tuning using the OpenAI API
 
-### ![](https://github.com/is-leeroy-jenkins/Bubba/blob/master/Resources/Assets/GitHubImages/Appropriation.png)Federal Appropriations
+
 
 
 |               Public Law                     |           Explanatory Statement       |	  	Appropriation Title			                                                  |   
