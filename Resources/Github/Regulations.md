@@ -1,8 +1,7 @@
-![](https://github.com/is-leeroy-jenkins/Bubba/blob/master/Resources/Assets/GitHubImages/congress.png) Regulations
-## Bubba's AI layer provides access to the OpenAI VectorStores and Files
+![](https://github.com/is-leeroy-jenkins/Bubba/blob/master/Resources/Assets/GitHubImages/congress.png) 
+# Federal Regulations
 
-## Federal Regulations
- 
+### Bobo's AI layer provides access to the OpenAI VectorStores and Files
 
 - Federal Trust Fund Accounting Guide
 - Fiscal Responsibility Act
