@@ -134,10 +134,10 @@
 
 
 
-## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/openai.png)  OpenAI Vector Stores 
+## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/openai.png)  OpenAI 
 
-- [Federal Appropriations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Github/Appropriations.md) - vectorized dataset of federal appropriations available for fine-tuning learning models
-- [Federal Regulations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Github/Regulations.md) - vectorized dataset of federal finance regulations available for fine-tuning learning models
+- [Federal Appropriations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Github/Appropriations.md) - vectorized dataset of federal appropriations available for fine-tuning machine learning models
+- [Federal Regulations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Github/Regulations.md) - vectorized dataset of federal finance regulations available for fine-tuning machine learning models
 
 
 
