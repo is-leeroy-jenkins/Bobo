@@ -134,18 +134,16 @@
 
 
 
-## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/openai.png)  OpenAI 
+## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/openai.png) Gnerative AI 
 
-- [Federal Appropriations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Github/Appropriations.md) - vectorized dataset of federal appropriations available for fine-tuning machine learning models
-- [Federal Regulations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Github/Regulations.md) - vectorized dataset of federal finance regulations available for fine-tuning machine learning models
-
+- [Federal Appropriations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Github/Appropriations.md) - vectorized dataset of federal appropriations available for fine-tuning learning models
+- [Federal Regulations](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Github/Regulations.md) - vectorized dataset of federal finance regulations available for fine-tuning learning models
 
 
 ### ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/csharp.png)    Code
 - Bobo is built on NET 6
 - Bobo supports AnyCPU as well as x86/x64 specific builds
 - `MainWindow.cs` - main web browser UI and related functionality
-
 
 
 ## 🙏 Acknowledgements
@@ -181,3 +179,29 @@ Bubba uses the following projects and libraries. Please consider supporting them
 
 
 
+
+## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/signature.png)  Code Signing 
+
+Bobo uses free code signing provided by [SignPath.io](https://signpath.io/) and a free code signing certificate
+from [SignPath Foundation](https://signpath.org/).
+
+The binaries and installer are built on [AppVeyor](https://ci.appveyor.com/project/is-leeroy-jenkins/networkmanager) directly from the [GitHub repository](https://github.com/is-leeroy-jenkins/Bobo/blob/main/appveyor.yml).
+Build artifacts are automatically sent to [SignPath.io](https://signpath.io/) via webhook, where they are signed after manual approval by the maintainer.
+The signed binaries are then uploaded to the [GitHub releases](https://github.com/is-leeroy-jenkins/Bobo/releases) page.
+
+
+## ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/web.png) Privacy Policy
+
+This program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it.
+
+Bobo has integrated the following services for additional functions, which can be enabled or disabled at the first start (in the welcome dialog) or at any time in the settings:
+
+- [api.github.com](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) (Check for program updates)
+- [ipify.org](https://www.ipify.org/) (Retrieve the public IP address used by the client)
+- [ip-api.com](https://ip-api.com/docs/legal) (Retrieve network information such as geo location, ISP, DNS resolver used, etc. used by the client)
+
+## 📝 License
+
+Bobo is published under the [MIT General Public License v3](https://github.com/is-leeroy-jenkins/Bobo/blob/main/LICENSE).
+
+The licenses of the libraries used can be found [here](https://github.com/is-leeroy-jenkins/Bobo/tree/main/Resources/Licenses).
