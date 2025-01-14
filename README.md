@@ -1,4 +1,4 @@
-#### _
+#### Bobo
 ![](https://github.com/is-leeroy-jenkins/Bobo/blob/master/Resources/Assets/GitHubImages/ProjectTemplate.png)
 ## C# WPF app that communicates with OpenAI GPT-3.5 Turbo API 
 
