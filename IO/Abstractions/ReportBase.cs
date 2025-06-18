@@ -79,7 +79,7 @@ namespace Bobo
         /// <summary>
         /// The bottom margin
         /// </summary>
-        private protected decimal _bottomMargin;
+        private protected double _bottomMargin;
 
         /// <summary>
         /// The chart range
@@ -184,7 +184,7 @@ namespace Bobo
         /// <summary>
         /// The footer margin
         /// </summary>
-        private protected decimal _footerMargin;
+        private protected double _footerMargin;
 
         /// <summary>
         /// The footer range
@@ -194,7 +194,7 @@ namespace Bobo
         /// <summary>
         /// The header margin
         /// </summary>
-        private protected decimal _headerMargin;
+        private protected double _headerMargin;
 
         /// <summary>
         /// The header range
@@ -209,7 +209,7 @@ namespace Bobo
         /// <summary>
         /// The left margin
         /// </summary>
-        private protected decimal _leftMargin;
+        private protected double _leftMargin;
 
         /// <summary>
         /// The pie chart
@@ -239,7 +239,7 @@ namespace Bobo
         /// <summary>
         /// The right margin
         /// </summary>
-        private protected decimal _rightMargin;
+        private protected double _rightMargin;
 
         /// <summary>
         /// The row count
@@ -284,7 +284,7 @@ namespace Bobo
         /// <summary>
         /// The top margin
         /// </summary>
-        private protected decimal _topMargin;
+        private protected double _topMargin;
 
         /// <summary>
         /// The zoom level
